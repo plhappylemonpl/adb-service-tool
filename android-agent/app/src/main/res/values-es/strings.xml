@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Wygenerowane przez tools/gen_strings.py - nie edytuj ręcznie. -->
+<resources>
+    <string name="title_backup">Herramienta de servicio – Copia de seguridad</string>
+    <string name="title_restore">Herramienta de servicio – Restauración</string>
+    <string name="session_fmt">Sesión: %1$s</string>
+    <string name="intro_backup">Drapco ADB Service Tool hará una copia de seguridad de tus contactos (archivo .vcf) y mensajes SMS (archivo .xml) en la carpeta Download/Backup. Cuando el ordenador los descargue, los archivos se eliminarán de este dispositivo y esta aplicación se desinstalará. No se envía nada por internet.</string>
+    <string name="intro_restore">Drapco ADB Service Tool ha copiado una copia de seguridad a este dispositivo. Restaura tus contactos y mensajes SMS con los botones de abajo. Al terminar, toca Listo: el ordenador eliminará los archivos temporales y desinstalará esta aplicación.</string>
+    <string name="btn_backup">HACER COPIA</string>
+    <string name="btn_backup_done">COPIA REALIZADA</string>
+    <string name="btn_restore_contacts">Restaurar contactos</string>
+    <string name="btn_restore_sms">Restaurar SMS</string>
+    <string name="btn_default_sms_back">Restablecer la app de SMS predeterminada</string>
+    <string name="btn_done">Listo</string>
+    <string name="st_perms_ok">Permisos concedidos. Toca «Hacer copia».</string>
+    <string name="st_need_both">La aplicación necesita acceso a Contactos y SMS: acepta los diálogos del sistema.</string>
+    <string name="st_no_sms">Sin acceso a SMS: solo se copiarán los contactos (o concede el permiso).</string>
+    <string name="st_no_contacts">Sin acceso a los contactos: solo se copiarán los SMS (o concede el permiso).</string>
+    <string name="st_no_storage">Sin permiso para escribir en el almacenamiento: acepta el diálogo del sistema.</string>
+    <string name="st_grant_dialogs">Acepta los permisos en los diálogos del sistema para hacer la copia.</string>
+    <string name="st_perm_blocked">Los permisos están bloqueados. Abriendo los ajustes de la aplicación: activa Contactos y SMS y vuelve aquí.</string>
+    <string name="st_working">Exportando… no cierres la aplicación.</string>
+    <string name="st_done_fmt">Listo ✔ (%1$s).\nEl ordenador está descargando los archivos: puedes volver al ordenador.</string>
+    <string name="part_contacts_fmt">contactos: %1$d</string>
+    <string name="part_contacts_denied">contactos: sin permiso</string>
+    <string name="part_sms_fmt">SMS: %1$d</string>
+    <string name="part_sms_denied">SMS: sin permiso</string>
+    <string name="err_backup_fmt">Error de copia: %1$s</string>
+    <string name="err_no_perms">Sin permiso para Contactos y SMS: no hay nada que copiar</string>
+    <string name="progress_contacts_fmt">Contactos: %1$d / %2$d</string>
+    <string name="progress_sms_fmt">SMS: %1$d / %2$d</string>
+    <string name="rs_files_fmt">Copia encontrada: %1$s</string>
+    <string name="rs_none">No se encontraron archivos de copia en Download/Restore.</string>
+    <string name="rs_need_files">Permite el acceso a los archivos para poder leer la copia.</string>
+    <string name="rs_contacts_started_fmt">La aplicación de contactos está importando %1$d contactos: confirma si te lo pide y espera a que termine.</string>
+    <string name="rs_contacts_done_fmt">Contactos importados: %1$d</string>
+    <string name="rs_need_contacts_perm">Permite el acceso a los contactos para importarlos.</string>
+    <string name="rs_need_default">Para restaurar los SMS, esta aplicación debe ser temporalmente la app de SMS predeterminada: confírmalo en el siguiente diálogo.</string>
+    <string name="rs_default_denied">No se cambió la app de SMS predeterminada: no se pueden restaurar los SMS.</string>
+    <string name="rs_sms_progress_fmt">Restaurando SMS: %1$d / %2$d</string>
+    <string name="rs_sms_done_fmt">SMS restaurados: %1$d (duplicados omitidos: %2$d).</string>
+    <string name="rs_default_back">IMPORTANTE: vuelve a establecer tu app de SMS habitual (p. ej. Google Mensajes, Samsung Messages) como predeterminada: toca «Restablecer la app de SMS predeterminada».</string>
+    <string name="rs_default_back_ok">App de SMS predeterminada restablecida ✔</string>
+    <string name="rs_finish_hint">Cuando hayas terminado, toca Listo.</string>
+    <string name="rs_error_fmt">Error de restauración: %1$s</string>
+    <string name="rs_done_sent">Listo ✔ El ordenador está limpiando: puedes volver al ordenador.</string>
+    <string name="rs_still_default">Esta aplicación sigue siendo la app de SMS predeterminada. Restablece primero tu app de SMS habitual o vuelve a tocar Listo para terminar igualmente (se restablecerá automáticamente tras la desinstalación).</string>
+    <string name="compose_info">Esta es una herramienta de servicio temporal y no puede enviar mensajes. Vuelve a establecer tu app de SMS habitual como predeterminada.</string>
+    <string name="rs_contacts_importing_fmt">Importando contactos: %1$d / %2$d</string>
+    <string name="rs_mms_skipped_fmt">Mensajes MMS omitidos (no compatibles): %1$d</string>
+    <string name="rs_restricted_hint">Si Android indica que el ajuste está restringido: abre Información de la aplicación → ⋮ → Permitir ajustes restringidos y vuelve a intentarlo.</string>
+</resources>

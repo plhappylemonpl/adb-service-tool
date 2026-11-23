@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Wygenerowane przez tools/gen_strings.py - nie edytuj ręcznie. -->
+<resources>
+    <string name="title_backup">Service-Tool – Sicherung</string>
+    <string name="title_restore">Service-Tool – Wiederherstellung</string>
+    <string name="session_fmt">Sitzung: %1$s</string>
+    <string name="intro_backup">Drapco ADB Service Tool sichert deine Kontakte (.vcf-Datei) und SMS (.xml-Datei) im Ordner Download/Backup. Nachdem der Computer sie heruntergeladen hat, werden die Dateien von diesem Gerät gelöscht und diese App deinstalliert. Es wird nichts über das Internet gesendet.</string>
+    <string name="intro_restore">Drapco ADB Service Tool hat eine Sicherung auf dieses Gerät kopiert. Stelle Kontakte und SMS mit den Schaltflächen unten wieder her. Tippe zum Schluss auf Fertig – der Computer löscht die temporären Dateien und deinstalliert diese App.</string>
+    <string name="btn_backup">SICHERUNG ERSTELLEN</string>
+    <string name="btn_backup_done">SICHERUNG ERSTELLT</string>
+    <string name="btn_restore_contacts">Kontakte wiederherstellen</string>
+    <string name="btn_restore_sms">SMS wiederherstellen</string>
+    <string name="btn_default_sms_back">Standard-SMS-App wiederherstellen</string>
+    <string name="btn_done">Fertig</string>
+    <string name="st_perms_ok">Berechtigungen erteilt. Tippe auf „Sicherung erstellen“.</string>
+    <string name="st_need_both">Die App benötigt Zugriff auf Kontakte und SMS – bestätige die Systemdialoge.</string>
+    <string name="st_no_sms">Kein Zugriff auf SMS – es werden nur Kontakte gesichert (oder erteile die Berechtigung).</string>
+    <string name="st_no_contacts">Kein Zugriff auf Kontakte – es werden nur SMS gesichert (oder erteile die Berechtigung).</string>
+    <string name="st_no_storage">Keine Berechtigung zum Schreiben in den Speicher – bestätige den Systemdialog.</string>
+    <string name="st_grant_dialogs">Bestätige die Berechtigungen in den Systemdialogen, um eine Sicherung zu erstellen.</string>
+    <string name="st_perm_blocked">Die Berechtigungen sind blockiert. App-Einstellungen werden geöffnet – aktiviere Kontakte und SMS und kehre dann hierher zurück.</string>
+    <string name="st_working">Export läuft… App nicht schließen.</string>
+    <string name="st_done_fmt">Fertig ✔ (%1$s).\nDer Computer lädt jetzt die Dateien herunter – du kannst zum Computer zurückkehren.</string>
+    <string name="part_contacts_fmt">Kontakte: %1$d</string>
+    <string name="part_contacts_denied">Kontakte: keine Berechtigung</string>
+    <string name="part_sms_fmt">SMS: %1$d</string>
+    <string name="part_sms_denied">SMS: keine Berechtigung</string>
+    <string name="err_backup_fmt">Sicherungsfehler: %1$s</string>
+    <string name="err_no_perms">Keine Berechtigung für Kontakte und SMS – nichts zu sichern</string>
+    <string name="progress_contacts_fmt">Kontakte: %1$d / %2$d</string>
+    <string name="progress_sms_fmt">SMS: %1$d / %2$d</string>
+    <string name="rs_files_fmt">Gefundene Sicherung: %1$s</string>
+    <string name="rs_none">Keine Sicherungsdateien in Download/Restore gefunden.</string>
+    <string name="rs_need_files">Erlaube den Zugriff auf Dateien, damit die Sicherung gelesen werden kann.</string>
+    <string name="rs_contacts_started_fmt">Die Kontakte-App importiert %1$d Kontakte – bestätige dort, falls gefragt, und warte bis zum Ende.</string>
+    <string name="rs_contacts_done_fmt">Importierte Kontakte: %1$d</string>
+    <string name="rs_need_contacts_perm">Erlaube den Zugriff auf Kontakte, um sie zu importieren.</string>
+    <string name="rs_need_default">Um SMS wiederherzustellen, muss diese App vorübergehend die Standard-SMS-App sein – bestätige im nächsten Dialog.</string>
+    <string name="rs_default_denied">Die Standard-SMS-App wurde nicht geändert – SMS können nicht wiederhergestellt werden.</string>
+    <string name="rs_sms_progress_fmt">SMS werden wiederhergestellt: %1$d / %2$d</string>
+    <string name="rs_sms_done_fmt">Wiederhergestellte SMS: %1$d (übersprungene Duplikate: %2$d).</string>
+    <string name="rs_default_back">WICHTIG: Lege deine gewohnte SMS-App (z. B. Google Messages, Samsung Nachrichten) wieder als Standard fest – tippe auf „Standard-SMS-App wiederherstellen“.</string>
+    <string name="rs_default_back_ok">Standard-SMS-App wiederhergestellt ✔</string>
+    <string name="rs_finish_hint">Wenn du fertig bist, tippe auf Fertig.</string>
+    <string name="rs_error_fmt">Wiederherstellungsfehler: %1$s</string>
+    <string name="rs_done_sent">Fertig ✔ Der Computer räumt auf – du kannst zum Computer zurückkehren.</string>
+    <string name="rs_still_default">Diese App ist noch die Standard-SMS-App. Stelle zuerst deine gewohnte SMS-App wieder her oder tippe erneut auf Fertig, um trotzdem abzuschließen (nach der Deinstallation wird automatisch zurückgeschaltet).</string>
+    <string name="compose_info">Dies ist ein temporäres Service-Tool und kann keine Nachrichten senden. Lege deine gewohnte SMS-App wieder als Standard fest.</string>
+    <string name="rs_contacts_importing_fmt">Kontakte werden importiert: %1$d / %2$d</string>
+    <string name="rs_mms_skipped_fmt">MMS übersprungen (nicht unterstützt): %1$d</string>
+    <string name="rs_restricted_hint">Wenn Android meldet, dass die Einstellung eingeschränkt ist: App-Info → ⋮ → Eingeschränkte Einstellungen zulassen öffnen und erneut versuchen.</string>
+</resources>

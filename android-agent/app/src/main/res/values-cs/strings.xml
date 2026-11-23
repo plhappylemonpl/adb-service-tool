@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Wygenerowane przez tools/gen_strings.py - nie edytuj ręcznie. -->
+<resources>
+    <string name="title_backup">Servisní nástroj – Záloha</string>
+    <string name="title_restore">Servisní nástroj – Obnovení</string>
+    <string name="session_fmt">Relace: %1$s</string>
+    <string name="intro_backup">Drapco ADB Service Tool zálohuje vaše kontakty (soubor .vcf) a SMS zprávy (soubor .xml) do složky Download/Backup. Po stažení do počítače budou soubory z tohoto zařízení smazány a tato aplikace odinstalována. Nic se neodesílá přes internet.</string>
+    <string name="intro_restore">Drapco ADB Service Tool zkopíroval zálohu do tohoto zařízení. Obnovte kontakty a SMS zprávy pomocí tlačítek níže. Nakonec klepněte na Hotovo – počítač smaže dočasné soubory a odinstaluje tuto aplikaci.</string>
+    <string name="btn_backup">ZÁLOHOVAT</string>
+    <string name="btn_backup_done">ZÁLOHA DOKONČENA</string>
+    <string name="btn_restore_contacts">Obnovit kontakty</string>
+    <string name="btn_restore_sms">Obnovit SMS</string>
+    <string name="btn_default_sms_back">Obnovit výchozí aplikaci SMS</string>
+    <string name="btn_done">Hotovo</string>
+    <string name="st_perms_ok">Oprávnění udělena. Klepněte na „Zálohovat“.</string>
+    <string name="st_need_both">Aplikace potřebuje přístup ke Kontaktům a SMS – potvrďte systémová okna.</string>
+    <string name="st_no_sms">Bez přístupu k SMS – zkopírují se jen kontakty (nebo udělte oprávnění).</string>
+    <string name="st_no_contacts">Bez přístupu ke kontaktům – zkopírují se jen SMS (nebo udělte oprávnění).</string>
+    <string name="st_no_storage">Chybí oprávnění k zápisu do úložiště – potvrďte systémové okno.</string>
+    <string name="st_grant_dialogs">Pro zálohu potvrďte oprávnění v systémových oknech.</string>
+    <string name="st_perm_blocked">Oprávnění jsou zablokována. Otevírám nastavení aplikace – zapněte Kontakty a SMS a vraťte se sem.</string>
+    <string name="st_working">Probíhá export… nezavírejte aplikaci.</string>
+    <string name="st_done_fmt">Hotovo ✔ (%1$s).\nPočítač nyní stahuje soubory – můžete se vrátit k počítači.</string>
+    <string name="part_contacts_fmt">kontakty: %1$d</string>
+    <string name="part_contacts_denied">kontakty: bez oprávnění</string>
+    <string name="part_sms_fmt">SMS: %1$d</string>
+    <string name="part_sms_denied">SMS: bez oprávnění</string>
+    <string name="err_backup_fmt">Chyba zálohy: %1$s</string>
+    <string name="err_no_perms">Chybí oprávnění ke Kontaktům a SMS – není co zálohovat</string>
+    <string name="progress_contacts_fmt">Kontakty: %1$d / %2$d</string>
+    <string name="progress_sms_fmt">SMS: %1$d / %2$d</string>
+    <string name="rs_files_fmt">Nalezena záloha: %1$s</string>
+    <string name="rs_none">Ve složce Download/Restore nebyly nalezeny žádné soubory zálohy.</string>
+    <string name="rs_need_files">Povolte přístup k souborům, aby bylo možné zálohu přečíst.</string>
+    <string name="rs_contacts_started_fmt">Aplikace Kontakty importuje %1$d kontaktů – potvrďte, pokud se zeptá, a počkejte na dokončení.</string>
+    <string name="rs_contacts_done_fmt">Importováno kontaktů: %1$d</string>
+    <string name="rs_need_contacts_perm">Povolte přístup ke kontaktům, aby je bylo možné importovat.</string>
+    <string name="rs_need_default">Pro obnovení SMS musí být tato aplikace dočasně výchozí aplikací SMS – potvrďte v dalším okně.</string>
+    <string name="rs_default_denied">Výchozí aplikace SMS nebyla změněna – SMS nelze obnovit.</string>
+    <string name="rs_sms_progress_fmt">Obnovování SMS: %1$d / %2$d</string>
+    <string name="rs_sms_done_fmt">Obnoveno SMS: %1$d (přeskočené duplikáty: %2$d).</string>
+    <string name="rs_default_back">DŮLEŽITÉ: znovu nastavte svou obvyklou aplikaci SMS (např. Google Zprávy, Samsung Zprávy) jako výchozí – klepněte na „Obnovit výchozí aplikaci SMS“.</string>
+    <string name="rs_default_back_ok">Výchozí aplikace SMS obnovena ✔</string>
+    <string name="rs_finish_hint">Až budete hotovi, klepněte na Hotovo.</string>
+    <string name="rs_error_fmt">Chyba obnovení: %1$s</string>
+    <string name="rs_done_sent">Hotovo ✔ Počítač uklízí – můžete se vrátit k počítači.</string>
+    <string name="rs_still_default">Tato aplikace je stále výchozí aplikací SMS. Nejprve obnovte svou obvyklou aplikaci SMS, nebo znovu klepněte na Hotovo a dokončete i tak (po odinstalaci se nastavení vrátí automaticky).</string>
+    <string name="compose_info">Toto je dočasný servisní nástroj a nemůže odesílat zprávy. Znovu nastavte svou obvyklou aplikaci SMS jako výchozí.</string>
+    <string name="rs_contacts_importing_fmt">Import kontaktů: %1$d / %2$d</string>
+    <string name="rs_mms_skipped_fmt">Přeskočené zprávy MMS (nepodporováno): %1$d</string>
+    <string name="rs_restricted_hint">Pokud Android hlásí, že je nastavení omezené: otevřete Informace o aplikaci → ⋮ → Povolit omezená nastavení a zkuste to znovu.</string>
+</resources>

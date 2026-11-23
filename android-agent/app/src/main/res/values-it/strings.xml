@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Wygenerowane przez tools/gen_strings.py - nie edytuj ręcznie. -->
+<resources>
+    <string name="title_backup">Strumento di assistenza – Backup</string>
+    <string name="title_restore">Strumento di assistenza – Ripristino</string>
+    <string name="session_fmt">Sessione: %1$s</string>
+    <string name="intro_backup">Drapco ADB Service Tool eseguirà il backup dei tuoi contatti (file .vcf) e degli SMS (file .xml) nella cartella Download/Backup. Dopo che il computer li avrà scaricati, i file verranno eliminati da questo dispositivo e questa app verrà disinstallata. Nulla viene inviato tramite Internet.</string>
+    <string name="intro_restore">Drapco ADB Service Tool ha copiato un backup su questo dispositivo. Ripristina contatti e SMS con i pulsanti qui sotto. Al termine tocca Fine: il computer eliminerà i file temporanei e disinstallerà questa app.</string>
+    <string name="btn_backup">ESEGUI BACKUP</string>
+    <string name="btn_backup_done">BACKUP COMPLETATO</string>
+    <string name="btn_restore_contacts">Ripristina contatti</string>
+    <string name="btn_restore_sms">Ripristina SMS</string>
+    <string name="btn_default_sms_back">Ripristina app SMS predefinita</string>
+    <string name="btn_done">Fine</string>
+    <string name="st_perms_ok">Autorizzazioni concesse. Tocca «Esegui backup».</string>
+    <string name="st_need_both">L’app ha bisogno dell’accesso a Contatti e SMS: accetta le finestre di sistema.</string>
+    <string name="st_no_sms">Nessun accesso agli SMS: verranno copiati solo i contatti (oppure concedi l’autorizzazione).</string>
+    <string name="st_no_contacts">Nessun accesso ai contatti: verranno copiati solo gli SMS (oppure concedi l’autorizzazione).</string>
+    <string name="st_no_storage">Nessuna autorizzazione di scrittura nella memoria: accetta la finestra di sistema.</string>
+    <string name="st_grant_dialogs">Accetta le autorizzazioni nelle finestre di sistema per eseguire il backup.</string>
+    <string name="st_perm_blocked">Le autorizzazioni sono bloccate. Apertura delle impostazioni dell’app: attiva Contatti e SMS, poi torna qui.</string>
+    <string name="st_working">Esportazione in corso… non chiudere l’app.</string>
+    <string name="st_done_fmt">Fatto ✔ (%1$s).\nIl computer sta scaricando i file: puoi tornare al computer.</string>
+    <string name="part_contacts_fmt">contatti: %1$d</string>
+    <string name="part_contacts_denied">contatti: nessuna autorizzazione</string>
+    <string name="part_sms_fmt">SMS: %1$d</string>
+    <string name="part_sms_denied">SMS: nessuna autorizzazione</string>
+    <string name="err_backup_fmt">Errore di backup: %1$s</string>
+    <string name="err_no_perms">Nessuna autorizzazione per Contatti e SMS: niente da copiare</string>
+    <string name="progress_contacts_fmt">Contatti: %1$d / %2$d</string>
+    <string name="progress_sms_fmt">SMS: %1$d / %2$d</string>
+    <string name="rs_files_fmt">Backup trovato: %1$s</string>
+    <string name="rs_none">Nessun file di backup trovato in Download/Restore.</string>
+    <string name="rs_need_files">Consenti l’accesso ai file per poter leggere il backup.</string>
+    <string name="rs_contacts_started_fmt">L’app Contatti sta importando %1$d contatti: conferma se richiesto e attendi il termine.</string>
+    <string name="rs_contacts_done_fmt">Contatti importati: %1$d</string>
+    <string name="rs_need_contacts_perm">Consenti l’accesso ai contatti per importarli.</string>
+    <string name="rs_need_default">Per ripristinare gli SMS questa app deve diventare temporaneamente l’app SMS predefinita: conferma nella finestra successiva.</string>
+    <string name="rs_default_denied">L’app SMS predefinita non è stata cambiata: impossibile ripristinare gli SMS.</string>
+    <string name="rs_sms_progress_fmt">Ripristino SMS: %1$d / %2$d</string>
+    <string name="rs_sms_done_fmt">SMS ripristinati: %1$d (duplicati saltati: %2$d).</string>
+    <string name="rs_default_back">IMPORTANTE: imposta di nuovo come predefinita la tua solita app SMS (ad es. Google Messaggi, Samsung Messaggi): tocca «Ripristina app SMS predefinita».</string>
+    <string name="rs_default_back_ok">App SMS predefinita ripristinata ✔</string>
+    <string name="rs_finish_hint">Quando hai finito, tocca Fine.</string>
+    <string name="rs_error_fmt">Errore di ripristino: %1$s</string>
+    <string name="rs_done_sent">Fatto ✔ Il computer sta facendo pulizia: puoi tornare al computer.</string>
+    <string name="rs_still_default">Questa app è ancora l’app SMS predefinita. Ripristina prima la tua solita app SMS oppure tocca di nuovo Fine per terminare comunque (verrà ripristinata automaticamente dopo la disinstallazione).</string>
+    <string name="compose_info">Questo è uno strumento di assistenza temporaneo e non può inviare messaggi. Imposta di nuovo la tua solita app SMS come predefinita.</string>
+    <string name="rs_contacts_importing_fmt">Importazione contatti: %1$d / %2$d</string>
+    <string name="rs_mms_skipped_fmt">MMS saltati (non supportati): %1$d</string>
+    <string name="rs_restricted_hint">Se Android segnala che l’impostazione è limitata: apri Info app → ⋮ → Consenti impostazioni limitate e riprova.</string>
+</resources>

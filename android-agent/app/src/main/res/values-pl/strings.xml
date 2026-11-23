@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Wygenerowane przez tools/gen_strings.py - nie edytuj ręcznie. -->
+<resources>
+    <string name="title_backup">Narzędzie Serwisowe - Kopia Zapasowa</string>
+    <string name="title_restore">Narzędzie Serwisowe - Przywracanie</string>
+    <string name="session_fmt">Sesja: %1$s</string>
+    <string name="intro_backup">Drapco ADB Service Tool wykona kopię Twoich kontaktów (plik .vcf) i wiadomości SMS (plik .xml) do folderu Download/Backup. Po pobraniu na komputer pliki zostaną usunięte z urządzenia, a ta aplikacja odinstalowana. Dane nie są nigdzie wysyłane przez internet.</string>
+    <string name="intro_restore">Drapco ADB Service Tool skopiował kopię zapasową na to urządzenie. Przywróć kontakty i wiadomości SMS przyciskami poniżej. Na koniec kliknij Gotowe – komputer usunie pliki tymczasowe i odinstaluje tę aplikację.</string>
+    <string name="btn_backup">WYKONAJ KOPIĘ</string>
+    <string name="btn_backup_done">KOPIA WYKONANA</string>
+    <string name="btn_restore_contacts">Przywróć kontakty</string>
+    <string name="btn_restore_sms">Przywróć SMS</string>
+    <string name="btn_default_sms_back">Przywróć domyślną aplikację SMS</string>
+    <string name="btn_done">Gotowe</string>
+    <string name="st_perms_ok">Uprawnienia przyznane. Kliknij „Wykonaj kopię”.</string>
+    <string name="st_need_both">Aplikacja potrzebuje dostępu do Kontaktów i SMS – zaakceptuj okna systemowe.</string>
+    <string name="st_no_sms">Brak dostępu do SMS – zostaną skopiowane tylko kontakty (lub nadaj uprawnienie).</string>
+    <string name="st_no_contacts">Brak dostępu do kontaktów – zostaną skopiowane tylko SMS-y (lub nadaj uprawnienie).</string>
+    <string name="st_no_storage">Brak uprawnienia do zapisu w pamięci – zaakceptuj okno systemowe.</string>
+    <string name="st_grant_dialogs">Zaakceptuj uprawnienia w oknach systemowych, aby wykonać kopię.</string>
+    <string name="st_perm_blocked">Uprawnienia zostały zablokowane. Otwieram ustawienia aplikacji – włącz Kontakty i SMS, potem wróć tutaj.</string>
+    <string name="st_working">Trwa eksport… nie zamykaj aplikacji.</string>
+    <string name="st_done_fmt">Gotowe ✔ (%1$s).\nKomputer pobiera teraz pliki – możesz wrócić do komputera.</string>
+    <string name="part_contacts_fmt">kontakty: %1$d</string>
+    <string name="part_contacts_denied">kontakty: brak uprawnienia</string>
+    <string name="part_sms_fmt">SMS: %1$d</string>
+    <string name="part_sms_denied">SMS: brak uprawnienia</string>
+    <string name="err_backup_fmt">Błąd kopii: %1$s</string>
+    <string name="err_no_perms">Brak uprawnień do Kontaktów i SMS – nic do skopiowania</string>
+    <string name="progress_contacts_fmt">Kontakty: %1$d / %2$d</string>
+    <string name="progress_sms_fmt">SMS: %1$d / %2$d</string>
+    <string name="rs_files_fmt">Znaleziona kopia: %1$s</string>
+    <string name="rs_none">Nie znaleziono plików kopii w Download/Restore.</string>
+    <string name="rs_need_files">Zezwól na dostęp do plików, aby odczytać kopię.</string>
+    <string name="rs_contacts_started_fmt">Aplikacja kontaktów importuje %1$d kontaktów – potwierdź tam, jeśli zapyta, i poczekaj na koniec.</string>
+    <string name="rs_contacts_done_fmt">Zaimportowano kontaktów: %1$d</string>
+    <string name="rs_need_contacts_perm">Zezwól na dostęp do kontaktów, aby je zaimportować.</string>
+    <string name="rs_need_default">Aby przywrócić SMS-y, ta aplikacja musi chwilowo być domyślną aplikacją SMS – potwierdź w następnym oknie.</string>
+    <string name="rs_default_denied">Nie zmieniono domyślnej aplikacji SMS – nie można przywrócić SMS-ów.</string>
+    <string name="rs_sms_progress_fmt">Przywracanie SMS: %1$d / %2$d</string>
+    <string name="rs_sms_done_fmt">Przywrócono SMS-ów: %1$d (pominięte duplikaty: %2$d).</string>
+    <string name="rs_default_back">WAŻNE: ustaw z powrotem swoją aplikację SMS (np. Wiadomości Google, Samsung Wiadomości) jako domyślną – kliknij „Przywróć domyślną aplikację SMS”.</string>
+    <string name="rs_default_back_ok">Przywrócono domyślną aplikację SMS ✔</string>
+    <string name="rs_finish_hint">Gdy skończysz, kliknij Gotowe.</string>
+    <string name="rs_error_fmt">Błąd przywracania: %1$s</string>
+    <string name="rs_done_sent">Gotowe ✔ Komputer sprząta – możesz wrócić do komputera.</string>
+    <string name="rs_still_default">Ta aplikacja nadal jest domyślną aplikacją SMS. Najpierw przywróć swoją aplikację SMS albo kliknij Gotowe jeszcze raz, by mimo to zakończyć (po odinstalowaniu zostanie przełączona automatycznie).</string>
+    <string name="compose_info">To tymczasowe narzędzie serwisowe i nie wysyła wiadomości. Ustaw z powrotem swoją aplikację SMS jako domyślną.</string>
+    <string name="rs_contacts_importing_fmt">Import kontaktów: %1$d / %2$d</string>
+    <string name="rs_mms_skipped_fmt">Pominięte wiadomości MMS (nieobsługiwane): %1$d</string>
+    <string name="rs_restricted_hint">Jeśli Android pokaże komunikat o ustawieniu z ograniczeniami: otwórz Informacje o aplikacji → ⋮ → Zezwalaj na ustawienia z ograniczeniami i spróbuj ponownie.</string>
+</resources>

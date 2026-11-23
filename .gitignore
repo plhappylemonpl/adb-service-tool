@@ -1,0 +1,52 @@
+# --- zależności / dependencies
+node_modules/
+
+# --- wyniki buildów / build output
+/build/
+/.svelte-kit/
+/dist/
+src-tauri/target/
+src-tauri/gen/
+android-agent/build/
+android-agent/app/build/
+android-agent/.tools/
+android-agent/.gradle/
+android-agent/local.properties
+vite.config.ts.timestamp-*.mjs
+
+# --- dane robocze aplikacji / runtime leftovers
+.adbst-partial/
+.adb_pull_progress.jsonl
+*.log
+*.part
+
+# --- archiwa i kopie / archives and backups
+*.tar
+*.tar.gz
+*.tgz
+*.tar.md5
+*.zip
+*.7z
+*.bak
+*.orig
+*.rej
+*.swp
+*~
+.fuse_hidden*
+
+# --- sekrety / secrets (agent.keystore to jawny klucz deweloperski - patrz README)
+.env
+.env.*
+*.jks
+*.keystore
+!android-agent/agent.keystore
+*.p12
+*.pem
+
+# --- IDE / system
+.idea/
+.vscode/
+*.iml
+.DS_Store
+Thumbs.db
+desktop.ini

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Wygenerowane przez tools/gen_strings.py - nie edytuj ręcznie. -->
+<resources>
+    <string name="title_backup">Alat Servis – Cadangan</string>
+    <string name="title_restore">Alat Servis – Pemulihan</string>
+    <string name="session_fmt">Sesi: %1$s</string>
+    <string name="intro_backup">Drapco ADB Service Tool akan mencadangkan kontak (file .vcf) dan pesan SMS (file .xml) Anda ke folder Download/Backup. Setelah komputer mengunduhnya, file akan dihapus dari perangkat ini dan aplikasi ini dicopot. Tidak ada yang dikirim melalui internet.</string>
+    <string name="intro_restore">Drapco ADB Service Tool telah menyalin cadangan ke perangkat ini. Pulihkan kontak dan pesan SMS dengan tombol di bawah. Setelah selesai, ketuk Selesai – komputer akan menghapus file sementara dan mencopot aplikasi ini.</string>
+    <string name="btn_backup">BUAT CADANGAN</string>
+    <string name="btn_backup_done">CADANGAN SELESAI</string>
+    <string name="btn_restore_contacts">Pulihkan kontak</string>
+    <string name="btn_restore_sms">Pulihkan SMS</string>
+    <string name="btn_default_sms_back">Kembalikan aplikasi SMS default</string>
+    <string name="btn_done">Selesai</string>
+    <string name="st_perms_ok">Izin diberikan. Ketuk “Buat cadangan”.</string>
+    <string name="st_need_both">Aplikasi memerlukan akses ke Kontak dan SMS – terima dialog sistem.</string>
+    <string name="st_no_sms">Tidak ada akses ke SMS – hanya kontak yang dicadangkan (atau berikan izin).</string>
+    <string name="st_no_contacts">Tidak ada akses ke kontak – hanya SMS yang dicadangkan (atau berikan izin).</string>
+    <string name="st_no_storage">Tidak ada izin menulis ke penyimpanan – terima dialog sistem.</string>
+    <string name="st_grant_dialogs">Terima izin di dialog sistem untuk membuat cadangan.</string>
+    <string name="st_perm_blocked">Izin diblokir. Membuka setelan aplikasi – aktifkan Kontak dan SMS, lalu kembali ke sini.</string>
+    <string name="st_working">Mengekspor… jangan tutup aplikasi.</string>
+    <string name="st_done_fmt">Selesai ✔ (%1$s).\nKomputer sedang mengunduh file – Anda dapat kembali ke komputer.</string>
+    <string name="part_contacts_fmt">kontak: %1$d</string>
+    <string name="part_contacts_denied">kontak: tidak ada izin</string>
+    <string name="part_sms_fmt">SMS: %1$d</string>
+    <string name="part_sms_denied">SMS: tidak ada izin</string>
+    <string name="err_backup_fmt">Kesalahan cadangan: %1$s</string>
+    <string name="err_no_perms">Tidak ada izin untuk Kontak dan SMS – tidak ada yang dicadangkan</string>
+    <string name="progress_contacts_fmt">Kontak: %1$d / %2$d</string>
+    <string name="progress_sms_fmt">SMS: %1$d / %2$d</string>
+    <string name="rs_files_fmt">Cadangan ditemukan: %1$s</string>
+    <string name="rs_none">Tidak ada file cadangan di Download/Restore.</string>
+    <string name="rs_need_files">Izinkan akses ke file agar cadangan dapat dibaca.</string>
+    <string name="rs_contacts_started_fmt">Aplikasi Kontak sedang mengimpor %1$d kontak – konfirmasi jika diminta dan tunggu hingga selesai.</string>
+    <string name="rs_contacts_done_fmt">Kontak diimpor: %1$d</string>
+    <string name="rs_need_contacts_perm">Izinkan akses ke kontak untuk mengimpornya.</string>
+    <string name="rs_need_default">Untuk memulihkan SMS, aplikasi ini harus sementara menjadi aplikasi SMS default – konfirmasi di dialog berikutnya.</string>
+    <string name="rs_default_denied">Aplikasi SMS default tidak diubah – SMS tidak dapat dipulihkan.</string>
+    <string name="rs_sms_progress_fmt">Memulihkan SMS: %1$d / %2$d</string>
+    <string name="rs_sms_done_fmt">SMS dipulihkan: %1$d (duplikat dilewati: %2$d).</string>
+    <string name="rs_default_back">PENTING: jadikan kembali aplikasi SMS yang biasa Anda pakai (mis. Google Messages, Samsung Messages) sebagai default – ketuk “Kembalikan aplikasi SMS default”.</string>
+    <string name="rs_default_back_ok">Aplikasi SMS default dikembalikan ✔</string>
+    <string name="rs_finish_hint">Setelah selesai, ketuk Selesai.</string>
+    <string name="rs_error_fmt">Kesalahan pemulihan: %1$s</string>
+    <string name="rs_done_sent">Selesai ✔ Komputer sedang membersihkan – Anda dapat kembali ke komputer.</string>
+    <string name="rs_still_default">Aplikasi ini masih menjadi aplikasi SMS default. Kembalikan dulu aplikasi SMS yang biasa Anda pakai, atau ketuk Selesai lagi untuk tetap menyelesaikan (akan dikembalikan otomatis setelah dicopot).</string>
+    <string name="compose_info">Ini adalah alat servis sementara dan tidak dapat mengirim pesan. Jadikan kembali aplikasi SMS yang biasa Anda pakai sebagai default.</string>
+    <string name="rs_contacts_importing_fmt">Mengimpor kontak: %1$d / %2$d</string>
+    <string name="rs_mms_skipped_fmt">Pesan MMS dilewati (tidak didukung): %1$d</string>
+    <string name="rs_restricted_hint">Jika Android menyatakan setelan dibatasi: buka Info aplikasi → ⋮ → Izinkan setelan terbatas, lalu coba lagi.</string>
+</resources>

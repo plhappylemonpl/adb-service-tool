@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Wygenerowane przez tools/gen_strings.py - nie edytuj ręcznie. -->
+<resources>
+    <string name="title_backup">Công cụ dịch vụ – Sao lưu</string>
+    <string name="title_restore">Công cụ dịch vụ – Khôi phục</string>
+    <string name="session_fmt">Phiên: %1$s</string>
+    <string name="intro_backup">Drapco ADB Service Tool sẽ sao lưu danh bạ (tệp .vcf) và tin nhắn SMS (tệp .xml) của bạn vào thư mục Download/Backup. Sau khi máy tính tải xuống, các tệp sẽ bị xóa khỏi thiết bị này và ứng dụng này sẽ bị gỡ cài đặt. Không có gì được gửi qua Internet.</string>
+    <string name="intro_restore">Drapco ADB Service Tool đã sao chép bản sao lưu vào thiết bị này. Hãy khôi phục danh bạ và tin nhắn SMS bằng các nút bên dưới. Khi xong, nhấn Xong – máy tính sẽ xóa các tệp tạm và gỡ cài đặt ứng dụng này.</string>
+    <string name="btn_backup">SAO LƯU</string>
+    <string name="btn_backup_done">ĐÃ SAO LƯU XONG</string>
+    <string name="btn_restore_contacts">Khôi phục danh bạ</string>
+    <string name="btn_restore_sms">Khôi phục SMS</string>
+    <string name="btn_default_sms_back">Khôi phục ứng dụng SMS mặc định</string>
+    <string name="btn_done">Xong</string>
+    <string name="st_perms_ok">Đã cấp quyền. Nhấn “Sao lưu”.</string>
+    <string name="st_need_both">Ứng dụng cần quyền truy cập Danh bạ và SMS – hãy chấp nhận các hộp thoại hệ thống.</string>
+    <string name="st_no_sms">Không có quyền truy cập SMS – chỉ danh bạ được sao lưu (hoặc cấp quyền).</string>
+    <string name="st_no_contacts">Không có quyền truy cập danh bạ – chỉ SMS được sao lưu (hoặc cấp quyền).</string>
+    <string name="st_no_storage">Không có quyền ghi vào bộ nhớ – hãy chấp nhận hộp thoại hệ thống.</string>
+    <string name="st_grant_dialogs">Chấp nhận các quyền trong hộp thoại hệ thống để sao lưu.</string>
+    <string name="st_perm_blocked">Các quyền đã bị chặn. Đang mở cài đặt ứng dụng – bật Danh bạ và SMS rồi quay lại đây.</string>
+    <string name="st_working">Đang xuất… đừng đóng ứng dụng.</string>
+    <string name="st_done_fmt">Xong ✔ (%1$s).\nMáy tính đang tải tệp xuống – bạn có thể quay lại máy tính.</string>
+    <string name="part_contacts_fmt">danh bạ: %1$d</string>
+    <string name="part_contacts_denied">danh bạ: không có quyền</string>
+    <string name="part_sms_fmt">SMS: %1$d</string>
+    <string name="part_sms_denied">SMS: không có quyền</string>
+    <string name="err_backup_fmt">Lỗi sao lưu: %1$s</string>
+    <string name="err_no_perms">Không có quyền Danh bạ và SMS – không có gì để sao lưu</string>
+    <string name="progress_contacts_fmt">Danh bạ: %1$d / %2$d</string>
+    <string name="progress_sms_fmt">SMS: %1$d / %2$d</string>
+    <string name="rs_files_fmt">Đã tìm thấy bản sao lưu: %1$s</string>
+    <string name="rs_none">Không tìm thấy tệp sao lưu trong Download/Restore.</string>
+    <string name="rs_need_files">Cho phép truy cập tệp để có thể đọc bản sao lưu.</string>
+    <string name="rs_contacts_started_fmt">Ứng dụng Danh bạ đang nhập %1$d liên hệ – xác nhận nếu được hỏi và chờ đến khi hoàn tất.</string>
+    <string name="rs_contacts_done_fmt">Đã nhập liên hệ: %1$d</string>
+    <string name="rs_need_contacts_perm">Cho phép truy cập danh bạ để nhập liên hệ.</string>
+    <string name="rs_need_default">Để khôi phục SMS, ứng dụng này phải tạm thời là ứng dụng SMS mặc định – xác nhận trong hộp thoại tiếp theo.</string>
+    <string name="rs_default_denied">Ứng dụng SMS mặc định chưa được thay đổi – không thể khôi phục SMS.</string>
+    <string name="rs_sms_progress_fmt">Đang khôi phục SMS: %1$d / %2$d</string>
+    <string name="rs_sms_done_fmt">Đã khôi phục SMS: %1$d (bỏ qua bản trùng: %2$d).</string>
+    <string name="rs_default_back">QUAN TRỌNG: đặt lại ứng dụng SMS bạn thường dùng (ví dụ Google Tin nhắn, Samsung Tin nhắn) làm mặc định – nhấn “Khôi phục ứng dụng SMS mặc định”.</string>
+    <string name="rs_default_back_ok">Đã khôi phục ứng dụng SMS mặc định ✔</string>
+    <string name="rs_finish_hint">Khi đã xong, nhấn Xong.</string>
+    <string name="rs_error_fmt">Lỗi khôi phục: %1$s</string>
+    <string name="rs_done_sent">Xong ✔ Máy tính đang dọn dẹp – bạn có thể quay lại máy tính.</string>
+    <string name="rs_still_default">Ứng dụng này vẫn là ứng dụng SMS mặc định. Hãy khôi phục ứng dụng SMS bạn thường dùng trước, hoặc nhấn Xong lần nữa để vẫn kết thúc (sẽ tự động chuyển lại sau khi gỡ cài đặt).</string>
+    <string name="compose_info">Đây là công cụ dịch vụ tạm thời và không thể gửi tin nhắn. Hãy đặt lại ứng dụng SMS bạn thường dùng làm mặc định.</string>
+    <string name="rs_contacts_importing_fmt">Đang nhập danh bạ: %1$d / %2$d</string>
+    <string name="rs_mms_skipped_fmt">Đã bỏ qua tin nhắn MMS (không hỗ trợ): %1$d</string>
+    <string name="rs_restricted_hint">Nếu Android báo cài đặt bị hạn chế: mở Thông tin ứng dụng → ⋮ → Cho phép chế độ cài đặt bị hạn chế, rồi thử lại.</string>
+</resources>

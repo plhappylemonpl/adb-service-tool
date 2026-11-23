@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Wygenerowane przez tools/gen_strings.py - nie edytuj ręcznie. -->
+<resources>
+    <string name="title_backup">サービスツール – バックアップ</string>
+    <string name="title_restore">サービスツール – 復元</string>
+    <string name="session_fmt">セッション：%1$s</string>
+    <string name="intro_backup">Drapco ADB Service Tool は連絡先（.vcf ファイル）と SMS（.xml ファイル）を Download/Backup フォルダにバックアップします。パソコンがダウンロードした後、ファイルはこの端末から削除され、このアプリはアンインストールされます。インターネット経由で送信されるものはありません。</string>
+    <string name="intro_restore">Drapco ADB Service Tool がこの端末にバックアップをコピーしました。下のボタンで連絡先と SMS を復元してください。終わったら［完了］をタップすると、パソコンが一時ファイルを削除し、このアプリをアンインストールします。</string>
+    <string name="btn_backup">バックアップを作成</string>
+    <string name="btn_backup_done">バックアップ完了</string>
+    <string name="btn_restore_contacts">連絡先を復元</string>
+    <string name="btn_restore_sms">SMS を復元</string>
+    <string name="btn_default_sms_back">デフォルトの SMS アプリに戻す</string>
+    <string name="btn_done">完了</string>
+    <string name="st_perms_ok">権限が許可されました。［バックアップを作成］をタップしてください。</string>
+    <string name="st_need_both">このアプリには連絡先と SMS へのアクセスが必要です。システムのダイアログで許可してください。</string>
+    <string name="st_no_sms">SMS にアクセスできません。連絡先のみバックアップされます（または権限を許可してください）。</string>
+    <string name="st_no_contacts">連絡先にアクセスできません。SMS のみバックアップされます（または権限を許可してください）。</string>
+    <string name="st_no_storage">ストレージへの書き込み権限がありません。システムのダイアログで許可してください。</string>
+    <string name="st_grant_dialogs">バックアップするには、システムのダイアログで権限を許可してください。</string>
+    <string name="st_perm_blocked">権限がブロックされています。アプリの設定を開きます。連絡先と SMS を有効にしてから、ここに戻ってください。</string>
+    <string name="st_working">エクスポート中… アプリを閉じないでください。</string>
+    <string name="st_done_fmt">完了 ✔（%1$s）。\nパソコンがファイルをダウンロードしています。パソコンに戻ってかまいません。</string>
+    <string name="part_contacts_fmt">連絡先：%1$d</string>
+    <string name="part_contacts_denied">連絡先：権限なし</string>
+    <string name="part_sms_fmt">SMS：%1$d</string>
+    <string name="part_sms_denied">SMS：権限なし</string>
+    <string name="err_backup_fmt">バックアップエラー：%1$s</string>
+    <string name="err_no_perms">連絡先と SMS の権限がありません。バックアップするものがありません</string>
+    <string name="progress_contacts_fmt">連絡先：%1$d / %2$d</string>
+    <string name="progress_sms_fmt">SMS：%1$d / %2$d</string>
+    <string name="rs_files_fmt">バックアップが見つかりました：%1$s</string>
+    <string name="rs_none">Download/Restore にバックアップファイルが見つかりません。</string>
+    <string name="rs_need_files">バックアップを読み取れるよう、ファイルへのアクセスを許可してください。</string>
+    <string name="rs_contacts_started_fmt">連絡先アプリが %1$d 件の連絡先をインポートしています。確認を求められたら承認し、完了するまでお待ちください。</string>
+    <string name="rs_contacts_done_fmt">インポートした連絡先：%1$d</string>
+    <string name="rs_need_contacts_perm">連絡先をインポートするには、連絡先へのアクセスを許可してください。</string>
+    <string name="rs_need_default">SMS を復元するには、このアプリを一時的にデフォルトの SMS アプリにする必要があります。次のダイアログで確認してください。</string>
+    <string name="rs_default_denied">デフォルトの SMS アプリが変更されなかったため、SMS を復元できません。</string>
+    <string name="rs_sms_progress_fmt">SMS を復元中：%1$d / %2$d</string>
+    <string name="rs_sms_done_fmt">復元した SMS：%1$d（スキップした重複：%2$d）。</string>
+    <string name="rs_default_back">重要：いつもの SMS アプリ（例：Google メッセージ、Samsung メッセージ）をデフォルトに戻してください。［デフォルトの SMS アプリに戻す］をタップします。</string>
+    <string name="rs_default_back_ok">デフォルトの SMS アプリに戻しました ✔</string>
+    <string name="rs_finish_hint">終わったら［完了］をタップしてください。</string>
+    <string name="rs_error_fmt">復元エラー：%1$s</string>
+    <string name="rs_done_sent">完了 ✔ パソコンが後片付けをしています。パソコンに戻ってかまいません。</string>
+    <string name="rs_still_default">このアプリはまだデフォルトの SMS アプリです。先にいつもの SMS アプリに戻すか、もう一度［完了］をタップしてそのまま終了してください（アンインストール後に自動的に戻ります）。</string>
+    <string name="compose_info">これは一時的なサービスツールで、メッセージを送信できません。いつもの SMS アプリをデフォルトに戻してください。</string>
+    <string name="rs_contacts_importing_fmt">連絡先をインポート中：%1$d / %2$d</string>
+    <string name="rs_mms_skipped_fmt">スキップした MMS（未対応）：%1$d</string>
+    <string name="rs_restricted_hint">設定が制限されていると表示された場合：アプリ情報 → ⋮ →［制限付き設定を許可］を開いてから、もう一度お試しください。</string>
+</resources>

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Wygenerowane przez tools/gen_strings.py - nie edytuj ręcznie. -->
+<resources>
+    <string name="title_backup">서비스 도구 – 백업</string>
+    <string name="title_restore">서비스 도구 – 복원</string>
+    <string name="session_fmt">세션: %1$s</string>
+    <string name="intro_backup">Drapco ADB Service Tool이 연락처(.vcf 파일)와 문자 메시지(.xml 파일)를 Download/Backup 폴더에 백업합니다. 컴퓨터가 파일을 다운로드하면 이 기기에서 파일이 삭제되고 이 앱은 제거됩니다. 인터넷으로 전송되는 것은 없습니다.</string>
+    <string name="intro_restore">Drapco ADB Service Tool이 이 기기에 백업을 복사했습니다. 아래 버튼으로 연락처와 문자 메시지를 복원하세요. 완료되면 완료를 탭하세요. 컴퓨터가 임시 파일을 삭제하고 이 앱을 제거합니다.</string>
+    <string name="btn_backup">백업하기</string>
+    <string name="btn_backup_done">백업 완료</string>
+    <string name="btn_restore_contacts">연락처 복원</string>
+    <string name="btn_restore_sms">문자 복원</string>
+    <string name="btn_default_sms_back">기본 문자 앱 되돌리기</string>
+    <string name="btn_done">완료</string>
+    <string name="st_perms_ok">권한이 허용되었습니다. ‘백업하기’를 탭하세요.</string>
+    <string name="st_need_both">앱에 연락처와 문자 접근 권한이 필요합니다. 시스템 대화상자에서 허용하세요.</string>
+    <string name="st_no_sms">문자에 접근할 수 없습니다. 연락처만 백업됩니다(또는 권한을 허용하세요).</string>
+    <string name="st_no_contacts">연락처에 접근할 수 없습니다. 문자만 백업됩니다(또는 권한을 허용하세요).</string>
+    <string name="st_no_storage">저장공간 쓰기 권한이 없습니다. 시스템 대화상자에서 허용하세요.</string>
+    <string name="st_grant_dialogs">백업하려면 시스템 대화상자에서 권한을 허용하세요.</string>
+    <string name="st_perm_blocked">권한이 차단되었습니다. 앱 설정을 엽니다. 연락처와 문자를 켠 다음 여기로 돌아오세요.</string>
+    <string name="st_working">내보내는 중… 앱을 닫지 마세요.</string>
+    <string name="st_done_fmt">완료 ✔ (%1$s).\n컴퓨터가 파일을 다운로드하고 있습니다. 컴퓨터로 돌아가도 됩니다.</string>
+    <string name="part_contacts_fmt">연락처: %1$d</string>
+    <string name="part_contacts_denied">연락처: 권한 없음</string>
+    <string name="part_sms_fmt">문자: %1$d</string>
+    <string name="part_sms_denied">문자: 권한 없음</string>
+    <string name="err_backup_fmt">백업 오류: %1$s</string>
+    <string name="err_no_perms">연락처와 문자 권한이 없어 백업할 항목이 없습니다</string>
+    <string name="progress_contacts_fmt">연락처: %1$d / %2$d</string>
+    <string name="progress_sms_fmt">문자: %1$d / %2$d</string>
+    <string name="rs_files_fmt">백업을 찾았습니다: %1$s</string>
+    <string name="rs_none">Download/Restore에서 백업 파일을 찾을 수 없습니다.</string>
+    <string name="rs_need_files">백업을 읽을 수 있도록 파일 접근을 허용하세요.</string>
+    <string name="rs_contacts_started_fmt">연락처 앱이 연락처 %1$d개를 가져오는 중입니다. 확인을 요청하면 승인하고 완료될 때까지 기다리세요.</string>
+    <string name="rs_contacts_done_fmt">가져온 연락처: %1$d</string>
+    <string name="rs_need_contacts_perm">연락처를 가져오려면 연락처 접근을 허용하세요.</string>
+    <string name="rs_need_default">문자를 복원하려면 이 앱이 일시적으로 기본 문자 앱이어야 합니다. 다음 대화상자에서 확인하세요.</string>
+    <string name="rs_default_denied">기본 문자 앱이 변경되지 않아 문자를 복원할 수 없습니다.</string>
+    <string name="rs_sms_progress_fmt">문자 복원 중: %1$d / %2$d</string>
+    <string name="rs_sms_done_fmt">복원한 문자: %1$d (건너뛴 중복: %2$d).</string>
+    <string name="rs_default_back">중요: 평소 사용하는 문자 앱(예: Google 메시지, Samsung 메시지)을 다시 기본 앱으로 설정하세요. ‘기본 문자 앱 되돌리기’를 탭하세요.</string>
+    <string name="rs_default_back_ok">기본 문자 앱을 되돌렸습니다 ✔</string>
+    <string name="rs_finish_hint">작업이 끝나면 완료를 탭하세요.</string>
+    <string name="rs_error_fmt">복원 오류: %1$s</string>
+    <string name="rs_done_sent">완료 ✔ 컴퓨터가 정리 중입니다. 컴퓨터로 돌아가도 됩니다.</string>
+    <string name="rs_still_default">이 앱이 아직 기본 문자 앱입니다. 먼저 평소 사용하는 문자 앱을 되돌리거나, 그래도 끝내려면 완료를 다시 탭하세요(제거 후 자동으로 되돌아갑니다).</string>
+    <string name="compose_info">이 앱은 임시 서비스 도구이며 메시지를 보낼 수 없습니다. 평소 사용하는 문자 앱을 다시 기본 앱으로 설정하세요.</string>
+    <string name="rs_contacts_importing_fmt">연락처 가져오는 중: %1$d / %2$d</string>
+    <string name="rs_mms_skipped_fmt">건너뛴 MMS(지원되지 않음): %1$d</string>
+    <string name="rs_restricted_hint">Android에서 제한된 설정이라고 표시되면: 앱 정보 → ⋮ → 제한된 설정 허용을 연 다음 다시 시도하세요.</string>
+</resources>

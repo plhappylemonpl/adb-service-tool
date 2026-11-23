@@ -1,0 +1,141 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --gold: #c9a249;
+  color-scheme: dark;
+}
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+  background: #0a0a0a;
+  color: #e0e0e0;
+  font-family: Inter, 'Segoe UI', Ubuntu, 'Noto Sans', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  user-select: none;
+}
+
+::selection {
+  background: rgba(201, 162, 73, 0.35);
+}
+
+/* Pasek przewijania w złotym motywie */
+*::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+*::-webkit-scrollbar-track {
+  background: #121212;
+}
+*::-webkit-scrollbar-thumb {
+  background: #2d2d2d;
+  border-radius: 5px;
+  border: 2px solid #121212;
+}
+*::-webkit-scrollbar-thumb:hover {
+  background: var(--gold);
+}
+
+@layer components {
+  .view-title {
+    @apply text-lg font-semibold text-neutral-100;
+  }
+  .btn {
+    @apply inline-flex items-center gap-2 rounded-md border border-ink-400 bg-ink-500
+           px-4 py-2 text-sm text-neutral-200 transition-colors duration-150
+           hover:border-gold hover:text-gold active:bg-ink-600 disabled:pointer-events-none
+           disabled:opacity-40;
+  }
+  .btn-gold {
+    @apply border-gold bg-gold/10 text-gold hover:bg-gold/20;
+  }
+  .btn-danger {
+    @apply hover:border-err hover:text-err;
+  }
+  .btn-danger-solid {
+    @apply border-err bg-err/15 text-err hover:border-err hover:bg-err/25 hover:text-err;
+  }
+  .icon-btn {
+    @apply rounded p-1.5 text-neutral-400 transition-colors hover:bg-ink-600 hover:text-gold;
+  }
+  .card {
+    @apply rounded-xl border border-ink-500 bg-ink-800 p-4;
+  }
+  .input {
+    @apply w-full rounded-md border border-ink-400 bg-ink-900 px-3 py-2 text-sm text-neutral-200
+           outline-none transition-colors placeholder:text-neutral-600 focus:border-gold
+           disabled:opacity-50;
+  }
+  .label {
+    @apply mb-1 block text-xs text-neutral-500;
+  }
+  .check {
+    @apply flex cursor-pointer items-center gap-2 text-sm text-neutral-300;
+  }
+  .check input {
+    accent-color: #c9a249;
+  }
+  .chip {
+    @apply rounded-full border border-ink-400 bg-ink-700 px-2.5 py-0.5 text-xs text-neutral-400
+           transition-colors hover:border-gold hover:text-gold;
+  }
+  .chip-on {
+    @apply border-gold bg-gold/15 text-gold;
+  }
+  .badge {
+    @apply rounded px-1.5 py-0.5 text-[10px] font-medium uppercase tracking-wide;
+  }
+  .tab {
+    @apply flex w-full items-center gap-3 rounded-lg border-l-2 text-left border-transparent px-3 py-2
+           text-sm text-neutral-400 transition-colors hover:bg-ink-700 hover:text-neutral-200;
+  }
+  .tab-active {
+    @apply border-gold bg-ink-700 text-gold;
+  }
+  /* przełącznik (switch) w złotym motywie.
+     Pigułkę dostaje WYŁĄCZNIE <span> stojący bezpośrednio za <input> -
+     inne spany w etykiecie (np. kolorowanie tekstu) zostają zwykłym tekstem. */
+  .toggle {
+    @apply relative inline-flex cursor-pointer select-none items-center gap-2.5 text-sm text-neutral-300;
+  }
+  .toggle > input {
+    @apply sr-only;
+  }
+  .toggle > input + span {
+    @apply relative h-5 w-9 shrink-0 rounded-full border border-ink-400 bg-ink-600 transition-colors;
+  }
+  .toggle > input + span::after {
+    content: '';
+    @apply absolute left-0.5 top-0.5 h-3.5 w-3.5 rounded-full bg-neutral-400 transition-all;
+  }
+  .toggle > input:checked + span {
+    @apply border-gold bg-gold/25;
+  }
+  .toggle > input:checked + span::after {
+    @apply left-[18px] bg-gold;
+  }
+  .toggle > input:focus-visible + span {
+    @apply ring-2 ring-gold/50;
+  }
+  .toggle > input:disabled + span {
+    @apply opacity-40;
+  }
+  .slider {
+    @apply h-1.5 w-full cursor-pointer appearance-none rounded-full bg-ink-500;
+    accent-color: #c9a249;
+  }
+  .slider::-webkit-slider-thumb {
+    @apply h-4 w-4 appearance-none rounded-full border-2 border-black bg-gold;
+    box-shadow: 0 0 0 1px #c9a249;
+  }
+  .log-line {
+    @apply select-text whitespace-pre-wrap break-all font-mono text-[11px] leading-relaxed;
+  }
+}
+
+input[type='number'] {
+  -moz-appearance: textfield;
+}

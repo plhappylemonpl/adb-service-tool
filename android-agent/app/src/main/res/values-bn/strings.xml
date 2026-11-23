@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Wygenerowane przez tools/gen_strings.py - nie edytuj ręcznie. -->
+<resources>
+    <string name="title_backup">সার্ভিস টুল – ব্যাকআপ</string>
+    <string name="title_restore">সার্ভিস টুল – পুনরুদ্ধার</string>
+    <string name="session_fmt">সেশন: %1$s</string>
+    <string name="intro_backup">Drapco ADB Service Tool আপনার পরিচিতি (.vcf ফাইল) ও SMS বার্তার (.xml ফাইল) ব্যাকআপ Download/Backup ফোল্ডারে তৈরি করবে। কম্পিউটার ফাইলগুলো ডাউনলোড করার পর সেগুলো এই ডিভাইস থেকে মুছে ফেলা হবে এবং এই অ্যাপটি আনইনস্টল করা হবে। ইন্টারনেটে কিছুই পাঠানো হয় না।</string>
+    <string name="intro_restore">Drapco ADB Service Tool এই ডিভাইসে একটি ব্যাকআপ কপি করেছে। নিচের বোতামগুলো দিয়ে আপনার পরিচিতি ও SMS বার্তা পুনরুদ্ধার করুন। শেষ হলে সম্পন্ন-এ ট্যাপ করুন – কম্পিউটার অস্থায়ী ফাইলগুলো মুছে এই অ্যাপটি আনইনস্টল করবে।</string>
+    <string name="btn_backup">ব্যাকআপ নিন</string>
+    <string name="btn_backup_done">ব্যাকআপ সম্পন্ন</string>
+    <string name="btn_restore_contacts">পরিচিতি পুনরুদ্ধার করুন</string>
+    <string name="btn_restore_sms">SMS পুনরুদ্ধার করুন</string>
+    <string name="btn_default_sms_back">ডিফল্ট SMS অ্যাপ ফিরিয়ে আনুন</string>
+    <string name="btn_done">সম্পন্ন</string>
+    <string name="st_perms_ok">অনুমতি দেওয়া হয়েছে। “ব্যাকআপ নিন”-এ ট্যাপ করুন।</string>
+    <string name="st_need_both">অ্যাপটির পরিচিতি ও SMS-এ অ্যাক্সেস প্রয়োজন – সিস্টেম ডায়ালগগুলো গ্রহণ করুন।</string>
+    <string name="st_no_sms">SMS-এ অ্যাক্সেস নেই – শুধু পরিচিতির ব্যাকআপ হবে (অথবা অনুমতি দিন)।</string>
+    <string name="st_no_contacts">পরিচিতিতে অ্যাক্সেস নেই – শুধু SMS-এর ব্যাকআপ হবে (অথবা অনুমতি দিন)।</string>
+    <string name="st_no_storage">স্টোরেজে লেখার অনুমতি নেই – সিস্টেম ডায়ালগ গ্রহণ করুন।</string>
+    <string name="st_grant_dialogs">ব্যাকআপ নিতে সিস্টেম ডায়ালগে অনুমতিগুলো গ্রহণ করুন।</string>
+    <string name="st_perm_blocked">অনুমতিগুলো ব্লক করা আছে। অ্যাপ সেটিংস খোলা হচ্ছে – পরিচিতি ও SMS চালু করে এখানে ফিরে আসুন।</string>
+    <string name="st_working">এক্সপোর্ট হচ্ছে… অ্যাপটি বন্ধ করবেন না।</string>
+    <string name="st_done_fmt">সম্পন্ন ✔ (%1$s)।\nকম্পিউটার এখন ফাইলগুলো ডাউনলোড করছে – আপনি কম্পিউটারে ফিরে যেতে পারেন।</string>
+    <string name="part_contacts_fmt">পরিচিতি: %1$d</string>
+    <string name="part_contacts_denied">পরিচিতি: অনুমতি নেই</string>
+    <string name="part_sms_fmt">SMS: %1$d</string>
+    <string name="part_sms_denied">SMS: অনুমতি নেই</string>
+    <string name="err_backup_fmt">ব্যাকআপ ত্রুটি: %1$s</string>
+    <string name="err_no_perms">পরিচিতি ও SMS-এর অনুমতি নেই – ব্যাকআপ নেওয়ার কিছু নেই</string>
+    <string name="progress_contacts_fmt">পরিচিতি: %1$d / %2$d</string>
+    <string name="progress_sms_fmt">SMS: %1$d / %2$d</string>
+    <string name="rs_files_fmt">ব্যাকআপ পাওয়া গেছে: %1$s</string>
+    <string name="rs_none">Download/Restore-এ কোনো ব্যাকআপ ফাইল পাওয়া যায়নি।</string>
+    <string name="rs_need_files">ব্যাকআপ পড়ার জন্য ফাইলে অ্যাক্সেসের অনুমতি দিন।</string>
+    <string name="rs_contacts_started_fmt">পরিচিতি অ্যাপ %1$dটি পরিচিতি ইমপোর্ট করছে – জিজ্ঞাসা করলে নিশ্চিত করুন এবং শেষ হওয়া পর্যন্ত অপেক্ষা করুন।</string>
+    <string name="rs_contacts_done_fmt">ইমপোর্ট করা পরিচিতি: %1$d</string>
+    <string name="rs_need_contacts_perm">পরিচিতি ইমপোর্ট করতে পরিচিতিতে অ্যাক্সেসের অনুমতি দিন।</string>
+    <string name="rs_need_default">SMS পুনরুদ্ধার করতে এই অ্যাপটিকে সাময়িকভাবে ডিফল্ট SMS অ্যাপ হতে হবে – পরের ডায়ালগে নিশ্চিত করুন।</string>
+    <string name="rs_default_denied">ডিফল্ট SMS অ্যাপ পরিবর্তন করা হয়নি – SMS পুনরুদ্ধার করা যাবে না।</string>
+    <string name="rs_sms_progress_fmt">SMS পুনরুদ্ধার হচ্ছে: %1$d / %2$d</string>
+    <string name="rs_sms_done_fmt">পুনরুদ্ধার করা SMS: %1$d (বাদ দেওয়া ডুপ্লিকেট: %2$d)।</string>
+    <string name="rs_default_back">গুরুত্বপূর্ণ: আপনার সাধারণ SMS অ্যাপ (যেমন Google Messages, Samsung Messages) আবার ডিফল্ট করুন – “ডিফল্ট SMS অ্যাপ ফিরিয়ে আনুন”-এ ট্যাপ করুন।</string>
+    <string name="rs_default_back_ok">ডিফল্ট SMS অ্যাপ ফিরিয়ে আনা হয়েছে ✔</string>
+    <string name="rs_finish_hint">শেষ হলে সম্পন্ন-এ ট্যাপ করুন।</string>
+    <string name="rs_error_fmt">পুনরুদ্ধার ত্রুটি: %1$s</string>
+    <string name="rs_done_sent">সম্পন্ন ✔ কম্পিউটার পরিষ্কার করছে – আপনি কম্পিউটারে ফিরে যেতে পারেন।</string>
+    <string name="rs_still_default">এই অ্যাপটি এখনও ডিফল্ট SMS অ্যাপ। প্রথমে আপনার সাধারণ SMS অ্যাপ ফিরিয়ে আনুন, অথবা তবুও শেষ করতে আবার সম্পন্ন-এ ট্যাপ করুন (আনইনস্টলের পরে এটি স্বয়ংক্রিয়ভাবে ফিরে যাবে)।</string>
+    <string name="compose_info">এটি একটি অস্থায়ী সার্ভিস টুল এবং বার্তা পাঠাতে পারে না। আপনার সাধারণ SMS অ্যাপ আবার ডিফল্ট করুন।</string>
+    <string name="rs_contacts_importing_fmt">পরিচিতি ইমপোর্ট হচ্ছে: %1$d / %2$d</string>
+    <string name="rs_mms_skipped_fmt">বাদ দেওয়া MMS বার্তা (সমর্থিত নয়): %1$d</string>
+    <string name="rs_restricted_hint">Android যদি বলে সেটিংটি সীমাবদ্ধ: অ্যাপের তথ্য → ⋮ → সীমাবদ্ধ সেটিংসের অনুমতি দিন খুলুন, তারপর আবার চেষ্টা করুন।</string>
+</resources>

@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Drapco Backup Agent - aplikacja pomocnicza ADB Service Tool.
+  KOPIA: eksportuje kontakty (.vcf) i SMS-y (.xml) WYŁĄCZNIE po kliknięciu
+  przycisku przez użytkownika i po zaakceptowaniu systemowych uprawnień.
+  PRZYWRACANIE: importuje kopię wgraną przez komputer (Download/Restore/<sesja>/).
+  Instalowana na czas operacji, potem komputer ją odinstalowuje.
+
+  minSdk 21 (Android 5.0), targetSdk 34 (Android 14/15 nie blokują instalacji).
+  Pakiet (com.drapco.agent) w Gradle = namespace/applicationId w app/build.gradle.kts.
+  Teksty: res/values*/strings.xml (generator: tools/gen_strings.py).
+-->
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- kopia -->
+    <uses-permission android:name="android.permission.READ_CONTACTS" />
+    <uses-permission android:name="android.permission.READ_SMS" />
+    <!-- Android 5-9: zapis do publicznego Download/ przez ścieżkę pliku.
+         Android 10+: MediaStore.Downloads - bez żadnego uprawnienia do pamięci. -->
+    <uses-permission
+        android:name="android.permission.WRITE_EXTERNAL_STORAGE"
+        android:maxSdkVersion="28" />
+
+    <!-- przywracanie: kontakty (import bezpośredni, gdy brak aplikacji obsługującej .vcf) -->
+    <uses-permission android:name="android.permission.WRITE_CONTACTS" />
+    <!-- przywracanie: odczyt plików wgranych przez komputer do Download/Restore/.
+         Android 6-10: READ_EXTERNAL_STORAGE, Android 11+: dostęp do wszystkich plików
+         (nadawany przez komputer: appops set ... MANAGE_EXTERNAL_STORAGE allow). -->
+    <uses-permission
+        android:name="android.permission.READ_EXTERNAL_STORAGE"
+        android:maxSdkVersion="32" />
+    <uses-permission android:name="android.permission.MANAGE_EXTERNAL_STORAGE" />
+    <!-- przywracanie SMS: agent na chwilę zostaje domyślną aplikacją SMS -->
+    <uses-permission android:name="android.permission.RECEIVE_SMS" />
+    <uses-permission android:name="android.permission.RECEIVE_MMS" />
+    <uses-permission android:name="android.permission.RECEIVE_WAP_PUSH" />
+
+    <!-- Android 11+: widoczność aplikacji importujących .vcf (Kontakty) -->
+    <queries>
+        <intent>
+            <action android:name="android.intent.action.VIEW" />
+            <data android:mimeType="text/x-vcard" />
+        </intent>
+    </queries>
+
+    <application
+        android:allowBackup="false"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:requestLegacyExternalStorage="true"
+        android:supportsRtl="true"
+        android:theme="@android:style/Theme.Material.NoActionBar">
+
+        <activity
+            android:name=".MainActivity"
+            android:configChanges="orientation|screenSize|screenLayout|smallestScreenSize|keyboardHidden|keyboard|uiMode|density|locale|layoutDirection"
+            android:exported="true"
+            android:launchMode="singleTop">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <!-- Sprzątanie plików (wywoływane przez komputer: am broadcast).
+             android.permission.DUMP ma tylko powłoka ADB i system - inne
+             aplikacje nie mogą tego odbiornika wywołać. -->
+        <receiver
+            android:name=".CleanupReceiver"
+            android:exported="true"
+            android:permission="android.permission.DUMP" />
+
+        <!-- Kopia .vcf dla aplikacji Kontakty (tylko odczyt, jednorazowe uprawnienie do URI). -->
+        <provider
+            android:name=".VcfProvider"
+            android:authorities="com.drapco.agent.files"
+            android:exported="false"
+            android:grantUriPermissions="true" />
+
+        <!-- ===== Komponenty wymagane od domyślnej aplikacji SMS ===== -->
+        <receiver
+            android:name=".SmsDeliverReceiver"
+            android:exported="true"
+            android:permission="android.permission.BROADCAST_SMS">
+            <intent-filter>
+                <action android:name="android.provider.Telephony.SMS_DELIVER" />
+            </intent-filter>
+        </receiver>
+
+        <receiver
+            android:name=".MmsDeliverReceiver"
+            android:exported="true"
+            android:permission="android.permission.BROADCAST_WAP_PUSH">
+            <intent-filter>
+                <action android:name="android.provider.Telephony.WAP_PUSH_DELIVER" />
+                <data android:mimeType="application/vnd.wap.mms-message" />
+            </intent-filter>
+        </receiver>
+
+        <activity
+            android:name=".ComposeActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.SEND" />
+                <action android:name="android.intent.action.SENDTO" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data android:scheme="sms" />
+                <data android:scheme="smsto" />
+                <data android:scheme="mms" />
+                <data android:scheme="mmsto" />
+            </intent-filter>
+        </activity>
+
+        <service
+            android:name=".RespondService"
+            android:exported="true"
+            android:permission="android.permission.SEND_RESPOND_VIA_MESSAGE">
+            <intent-filter>
+                <action android:name="android.intent.action.RESPOND_VIA_MESSAGE" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <data android:scheme="sms" />
+                <data android:scheme="smsto" />
+                <data android:scheme="mms" />
+                <data android:scheme="mmsto" />
+            </intent-filter>
+        </service>
+    </application>
+</manifest>

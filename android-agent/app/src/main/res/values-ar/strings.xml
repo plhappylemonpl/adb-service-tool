@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Wygenerowane przez tools/gen_strings.py - nie edytuj ręcznie. -->
+<resources>
+    <string name="title_backup">أداة الخدمة – النسخ الاحتياطي</string>
+    <string name="title_restore">أداة الخدمة – الاستعادة</string>
+    <string name="session_fmt">الجلسة: %1$s</string>
+    <string name="intro_backup">ستنشئ أداة Drapco ADB Service Tool نسخة احتياطية من جهات الاتصال (ملف ‎.vcf) والرسائل النصية (ملف ‎.xml) في المجلد Download/Backup. بعد أن يُنزّلها الكمبيوتر، ستُحذف الملفات من هذا الجهاز وتُلغى تثبيت هذا التطبيق. لا يُرسل أي شيء عبر الإنترنت.</string>
+    <string name="intro_restore">نسخت أداة Drapco ADB Service Tool نسخة احتياطية إلى هذا الجهاز. استعد جهات الاتصال والرسائل النصية بالأزرار أدناه. عند الانتهاء، اضغط تم – سيحذف الكمبيوتر الملفات المؤقتة ويلغي تثبيت هذا التطبيق.</string>
+    <string name="btn_backup">إنشاء نسخة احتياطية</string>
+    <string name="btn_backup_done">اكتمل النسخ الاحتياطي</string>
+    <string name="btn_restore_contacts">استعادة جهات الاتصال</string>
+    <string name="btn_restore_sms">استعادة الرسائل النصية</string>
+    <string name="btn_default_sms_back">استعادة تطبيق الرسائل الافتراضي</string>
+    <string name="btn_done">تم</string>
+    <string name="st_perms_ok">تم منح الأذونات. اضغط «إنشاء نسخة احتياطية».</string>
+    <string name="st_need_both">يحتاج التطبيق إلى الوصول إلى جهات الاتصال والرسائل النصية – وافق على نوافذ النظام.</string>
+    <string name="st_no_sms">لا يوجد وصول إلى الرسائل النصية – سيتم نسخ جهات الاتصال فقط (أو امنح الإذن).</string>
+    <string name="st_no_contacts">لا يوجد وصول إلى جهات الاتصال – سيتم نسخ الرسائل النصية فقط (أو امنح الإذن).</string>
+    <string name="st_no_storage">لا يوجد إذن للكتابة في وحدة التخزين – وافق على نافذة النظام.</string>
+    <string name="st_grant_dialogs">وافق على الأذونات في نوافذ النظام لإنشاء النسخة الاحتياطية.</string>
+    <string name="st_perm_blocked">الأذونات محظورة. جارٍ فتح إعدادات التطبيق – فعّل جهات الاتصال والرسائل النصية ثم عد إلى هنا.</string>
+    <string name="st_working">جارٍ التصدير… لا تغلق التطبيق.</string>
+    <string name="st_done_fmt">تم ✔ (%1$s).\nيقوم الكمبيوتر الآن بتنزيل الملفات – يمكنك العودة إلى الكمبيوتر.</string>
+    <string name="part_contacts_fmt">جهات الاتصال: %1$d</string>
+    <string name="part_contacts_denied">جهات الاتصال: لا يوجد إذن</string>
+    <string name="part_sms_fmt">الرسائل النصية: %1$d</string>
+    <string name="part_sms_denied">الرسائل النصية: لا يوجد إذن</string>
+    <string name="err_backup_fmt">خطأ في النسخ الاحتياطي: %1$s</string>
+    <string name="err_no_perms">لا يوجد إذن لجهات الاتصال والرسائل النصية – لا شيء لنسخه</string>
+    <string name="progress_contacts_fmt">جهات الاتصال: %1$d / %2$d</string>
+    <string name="progress_sms_fmt">الرسائل النصية: %1$d / %2$d</string>
+    <string name="rs_files_fmt">تم العثور على نسخة احتياطية: %1$s</string>
+    <string name="rs_none">لم يتم العثور على ملفات نسخ احتياطي في Download/Restore.</string>
+    <string name="rs_need_files">اسمح بالوصول إلى الملفات حتى يمكن قراءة النسخة الاحتياطية.</string>
+    <string name="rs_contacts_started_fmt">يستورد تطبيق جهات الاتصال %1$d جهة اتصال – أكّد إذا طُلب منك وانتظر حتى ينتهي.</string>
+    <string name="rs_contacts_done_fmt">تم استيراد جهات الاتصال: %1$d</string>
+    <string name="rs_need_contacts_perm">اسمح بالوصول إلى جهات الاتصال لاستيرادها.</string>
+    <string name="rs_need_default">لاستعادة الرسائل النصية، يجب أن يكون هذا التطبيق مؤقتًا تطبيق الرسائل الافتراضي – أكّد في النافذة التالية.</string>
+    <string name="rs_default_denied">لم يتم تغيير تطبيق الرسائل الافتراضي – لا يمكن استعادة الرسائل النصية.</string>
+    <string name="rs_sms_progress_fmt">جارٍ استعادة الرسائل النصية: %1$d / %2$d</string>
+    <string name="rs_sms_done_fmt">تمت استعادة الرسائل النصية: %1$d (تم تخطي المكررات: %2$d).</string>
+    <string name="rs_default_back">مهم: اجعل تطبيق الرسائل المعتاد (مثل رسائل Google أو رسائل Samsung) افتراضيًا مرة أخرى – اضغط «استعادة تطبيق الرسائل الافتراضي».</string>
+    <string name="rs_default_back_ok">تمت استعادة تطبيق الرسائل الافتراضي ✔</string>
+    <string name="rs_finish_hint">عند الانتهاء، اضغط تم.</string>
+    <string name="rs_error_fmt">خطأ في الاستعادة: %1$s</string>
+    <string name="rs_done_sent">تم ✔ يقوم الكمبيوتر بالتنظيف – يمكنك العودة إلى الكمبيوتر.</string>
+    <string name="rs_still_default">لا يزال هذا التطبيق هو تطبيق الرسائل الافتراضي. استعد أولًا تطبيق الرسائل المعتاد، أو اضغط تم مرة أخرى للإنهاء على أي حال (سيُعاد الإعداد تلقائيًا بعد إلغاء التثبيت).</string>
+    <string name="compose_info">هذه أداة خدمة مؤقتة ولا يمكنها إرسال الرسائل. اجعل تطبيق الرسائل المعتاد افتراضيًا مرة أخرى.</string>
+    <string name="rs_contacts_importing_fmt">جارٍ استيراد جهات الاتصال: %1$d / %2$d</string>
+    <string name="rs_mms_skipped_fmt">تم تخطي رسائل الوسائط المتعددة (غير مدعومة): %1$d</string>
+    <string name="rs_restricted_hint">إذا أشار Android إلى أن الإعداد مقيّد: افتح معلومات التطبيق ← ⋮ ← السماح بالإعدادات المقيّدة ثم حاول مرة أخرى.</string>
+</resources>

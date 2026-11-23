@@ -1,0 +1,77 @@
+{
+  "$schema": "https://schema.tauri.app/config/2",
+  "productName": "ADB Service Tool",
+  "version": "0.8.0",
+  "identifier": "com.drapco.adbservicetool",
+  "build": {
+    "frontendDist": "../build",
+    "devUrl": "http://localhost:5173",
+    "beforeDevCommand": "npm run dev",
+    "beforeBuildCommand": "npm run build"
+  },
+  "app": {
+    "windows": [
+      {
+        "title": "ADB Service Tool",
+        "width": 1360,
+        "height": 860,
+        "minWidth": 1100,
+        "minHeight": 680,
+        "resizable": true,
+        "decorations": true,
+        "theme": "Dark",
+        "backgroundColor": "#0a0a0a"
+      }
+    ],
+    "security": {
+      "csp": null
+    }
+  },
+  "plugins": {},
+  "bundle": {
+    "active": true,
+    "targets": "all",
+    "icon": [
+      "icons/32x32.png",
+      "icons/64x64.png",
+      "icons/128x128.png",
+      "icons/128x128@2x.png",
+      "icons/icon.png",
+      "icons/icon.icns",
+      "icons/icon.ico"
+    ],
+    "category": "Utility",
+    "shortDescription": "Serwisowe narzędzie ADB / Fastboot / MTP",
+    "linux": {
+      "deb": {
+        "desktopTemplate": "linux/desktop.hbs"
+      },
+      "rpm": {
+        "desktopTemplate": "linux/desktop.hbs"
+      }
+    },
+    "resources": [
+      "resources/agent/Agent.apk"
+    ],
+    "publisher": "Drapco",
+    "copyright": "© Drapco",
+    "windows": {
+      "nsis": {
+        "template": "windows/installer.nsi",
+        "installerIcon": "icons/icon.ico",
+        "headerImage": "windows/installer-header.bmp",
+        "sidebarImage": "windows/installer-sidebar.bmp",
+        "installMode": "currentUser",
+        "languages": [
+          "Polish",
+          "English"
+        ],
+        "displayLanguageSelector": false,
+        "compression": "lzma",
+        "customLanguageFiles": {
+          "Polish": "windows/Polish.nsh"
+        }
+      }
+    }
+  }
+}

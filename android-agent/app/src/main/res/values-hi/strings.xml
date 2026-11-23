@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Wygenerowane przez tools/gen_strings.py - nie edytuj ręcznie. -->
+<resources>
+    <string name="title_backup">सर्विस टूल – बैकअप</string>
+    <string name="title_restore">सर्विस टूल – रीस्टोर</string>
+    <string name="session_fmt">सत्र: %1$s</string>
+    <string name="intro_backup">Drapco ADB Service Tool आपके संपर्कों (.vcf फ़ाइल) और SMS संदेशों (.xml फ़ाइल) का बैकअप Download/Backup फ़ोल्डर में बनाएगा। कंप्यूटर द्वारा डाउनलोड किए जाने के बाद फ़ाइलें इस डिवाइस से हटा दी जाएँगी और यह ऐप अनइंस्टॉल हो जाएगा। इंटरनेट पर कुछ भी नहीं भेजा जाता।</string>
+    <string name="intro_restore">Drapco ADB Service Tool ने इस डिवाइस पर एक बैकअप कॉपी किया है। नीचे दिए बटनों से अपने संपर्क और SMS संदेश रीस्टोर करें। पूरा होने पर हो गया पर टैप करें – कंप्यूटर अस्थायी फ़ाइलें हटाएगा और यह ऐप अनइंस्टॉल करेगा।</string>
+    <string name="btn_backup">बैकअप बनाएँ</string>
+    <string name="btn_backup_done">बैकअप पूरा हुआ</string>
+    <string name="btn_restore_contacts">संपर्क रीस्टोर करें</string>
+    <string name="btn_restore_sms">SMS रीस्टोर करें</string>
+    <string name="btn_default_sms_back">डिफ़ॉल्ट SMS ऐप वापस सेट करें</string>
+    <string name="btn_done">हो गया</string>
+    <string name="st_perms_ok">अनुमतियाँ मिल गईं। “बैकअप बनाएँ” पर टैप करें।</string>
+    <string name="st_need_both">ऐप को संपर्कों और SMS तक पहुँच चाहिए – सिस्टम डायलॉग स्वीकार करें।</string>
+    <string name="st_no_sms">SMS तक पहुँच नहीं – केवल संपर्कों का बैकअप होगा (या अनुमति दें)।</string>
+    <string name="st_no_contacts">संपर्कों तक पहुँच नहीं – केवल SMS का बैकअप होगा (या अनुमति दें)।</string>
+    <string name="st_no_storage">स्टोरेज में लिखने की अनुमति नहीं – सिस्टम डायलॉग स्वीकार करें।</string>
+    <string name="st_grant_dialogs">बैकअप बनाने के लिए सिस्टम डायलॉग में अनुमतियाँ स्वीकार करें।</string>
+    <string name="st_perm_blocked">अनुमतियाँ ब्लॉक हैं। ऐप सेटिंग्स खोली जा रही हैं – संपर्क और SMS चालू करें, फिर यहाँ लौटें।</string>
+    <string name="st_working">एक्सपोर्ट हो रहा है… ऐप बंद न करें।</string>
+    <string name="st_done_fmt">हो गया ✔ (%1$s)।\nकंप्यूटर अब फ़ाइलें डाउनलोड कर रहा है – आप कंप्यूटर पर लौट सकते हैं।</string>
+    <string name="part_contacts_fmt">संपर्क: %1$d</string>
+    <string name="part_contacts_denied">संपर्क: अनुमति नहीं</string>
+    <string name="part_sms_fmt">SMS: %1$d</string>
+    <string name="part_sms_denied">SMS: अनुमति नहीं</string>
+    <string name="err_backup_fmt">बैकअप त्रुटि: %1$s</string>
+    <string name="err_no_perms">संपर्कों और SMS की अनुमति नहीं – बैकअप के लिए कुछ नहीं</string>
+    <string name="progress_contacts_fmt">संपर्क: %1$d / %2$d</string>
+    <string name="progress_sms_fmt">SMS: %1$d / %2$d</string>
+    <string name="rs_files_fmt">बैकअप मिला: %1$s</string>
+    <string name="rs_none">Download/Restore में कोई बैकअप फ़ाइल नहीं मिली।</string>
+    <string name="rs_need_files">बैकअप पढ़ने के लिए फ़ाइलों तक पहुँच की अनुमति दें।</string>
+    <string name="rs_contacts_started_fmt">संपर्क ऐप %1$d संपर्क इम्पोर्ट कर रहा है – पूछे जाने पर पुष्टि करें और पूरा होने तक प्रतीक्षा करें।</string>
+    <string name="rs_contacts_done_fmt">इम्पोर्ट किए गए संपर्क: %1$d</string>
+    <string name="rs_need_contacts_perm">संपर्क इम्पोर्ट करने के लिए संपर्कों तक पहुँच की अनुमति दें।</string>
+    <string name="rs_need_default">SMS रीस्टोर करने के लिए इस ऐप को अस्थायी रूप से डिफ़ॉल्ट SMS ऐप बनना होगा – अगले डायलॉग में पुष्टि करें।</string>
+    <string name="rs_default_denied">डिफ़ॉल्ट SMS ऐप नहीं बदला गया – SMS रीस्टोर नहीं किए जा सकते।</string>
+    <string name="rs_sms_progress_fmt">SMS रीस्टोर हो रहे हैं: %1$d / %2$d</string>
+    <string name="rs_sms_done_fmt">रीस्टोर किए गए SMS: %1$d (छोड़े गए डुप्लिकेट: %2$d)।</string>
+    <string name="rs_default_back">महत्वपूर्ण: अपने सामान्य SMS ऐप (जैसे Google Messages, Samsung Messages) को फिर से डिफ़ॉल्ट बनाएँ – “डिफ़ॉल्ट SMS ऐप वापस सेट करें” पर टैप करें।</string>
+    <string name="rs_default_back_ok">डिफ़ॉल्ट SMS ऐप वापस सेट हो गया ✔</string>
+    <string name="rs_finish_hint">काम पूरा होने पर हो गया पर टैप करें।</string>
+    <string name="rs_error_fmt">रीस्टोर त्रुटि: %1$s</string>
+    <string name="rs_done_sent">हो गया ✔ कंप्यूटर सफ़ाई कर रहा है – आप कंप्यूटर पर लौट सकते हैं।</string>
+    <string name="rs_still_default">यह ऐप अभी भी डिफ़ॉल्ट SMS ऐप है। पहले अपना सामान्य SMS ऐप वापस सेट करें, या फिर भी समाप्त करने के लिए हो गया पर दोबारा टैप करें (अनइंस्टॉल के बाद यह अपने-आप वापस हो जाएगा)।</string>
+    <string name="compose_info">यह एक अस्थायी सर्विस टूल है और संदेश नहीं भेज सकता। अपने सामान्य SMS ऐप को फिर से डिफ़ॉल्ट बनाएँ।</string>
+    <string name="rs_contacts_importing_fmt">संपर्क इम्पोर्ट हो रहे हैं: %1$d / %2$d</string>
+    <string name="rs_mms_skipped_fmt">छोड़े गए MMS संदेश (समर्थित नहीं): %1$d</string>
+    <string name="rs_restricted_hint">अगर Android कहे कि सेटिंग प्रतिबंधित है: ऐप जानकारी → ⋮ → प्रतिबंधित सेटिंग की अनुमति दें खोलें, फिर दोबारा कोशिश करें।</string>
+</resources>

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Wygenerowane przez tools/gen_strings.py - nie edytuj ręcznie. -->
+<resources>
+    <string name="title_backup">Сервисный инструмент – Резервная копия</string>
+    <string name="title_restore">Сервисный инструмент – Восстановление</string>
+    <string name="session_fmt">Сеанс: %1$s</string>
+    <string name="intro_backup">Drapco ADB Service Tool создаст резервную копию ваших контактов (файл .vcf) и SMS-сообщений (файл .xml) в папке Download/Backup. После загрузки на компьютер файлы будут удалены с этого устройства, а приложение – удалено. Ничего не передаётся через интернет.</string>
+    <string name="intro_restore">Drapco ADB Service Tool скопировал резервную копию на это устройство. Восстановите контакты и SMS кнопками ниже. По завершении нажмите «Готово» – компьютер удалит временные файлы и это приложение.</string>
+    <string name="btn_backup">СОЗДАТЬ КОПИЮ</string>
+    <string name="btn_backup_done">КОПИЯ СОЗДАНА</string>
+    <string name="btn_restore_contacts">Восстановить контакты</string>
+    <string name="btn_restore_sms">Восстановить SMS</string>
+    <string name="btn_default_sms_back">Вернуть SMS-приложение по умолчанию</string>
+    <string name="btn_done">Готово</string>
+    <string name="st_perms_ok">Разрешения получены. Нажмите «Создать копию».</string>
+    <string name="st_need_both">Приложению нужен доступ к Контактам и SMS – подтвердите системные запросы.</string>
+    <string name="st_no_sms">Нет доступа к SMS – будут скопированы только контакты (или выдайте разрешение).</string>
+    <string name="st_no_contacts">Нет доступа к контактам – будут скопированы только SMS (или выдайте разрешение).</string>
+    <string name="st_no_storage">Нет разрешения на запись в память – подтвердите системный запрос.</string>
+    <string name="st_grant_dialogs">Подтвердите разрешения в системных окнах, чтобы создать копию.</string>
+    <string name="st_perm_blocked">Разрешения заблокированы. Открываю настройки приложения – включите Контакты и SMS, затем вернитесь сюда.</string>
+    <string name="st_working">Экспорт… не закрывайте приложение.</string>
+    <string name="st_done_fmt">Готово ✔ (%1$s).\nКомпьютер загружает файлы – можно вернуться к компьютеру.</string>
+    <string name="part_contacts_fmt">контакты: %1$d</string>
+    <string name="part_contacts_denied">контакты: нет разрешения</string>
+    <string name="part_sms_fmt">SMS: %1$d</string>
+    <string name="part_sms_denied">SMS: нет разрешения</string>
+    <string name="err_backup_fmt">Ошибка копирования: %1$s</string>
+    <string name="err_no_perms">Нет разрешений для Контактов и SMS – копировать нечего</string>
+    <string name="progress_contacts_fmt">Контакты: %1$d / %2$d</string>
+    <string name="progress_sms_fmt">SMS: %1$d / %2$d</string>
+    <string name="rs_files_fmt">Найдена копия: %1$s</string>
+    <string name="rs_none">В папке Download/Restore не найдено файлов резервной копии.</string>
+    <string name="rs_need_files">Разрешите доступ к файлам, чтобы прочитать резервную копию.</string>
+    <string name="rs_contacts_started_fmt">Приложение «Контакты» импортирует %1$d контактов – подтвердите, если потребуется, и дождитесь завершения.</string>
+    <string name="rs_contacts_done_fmt">Импортировано контактов: %1$d</string>
+    <string name="rs_need_contacts_perm">Разрешите доступ к контактам, чтобы импортировать их.</string>
+    <string name="rs_need_default">Для восстановления SMS это приложение должно временно стать SMS-приложением по умолчанию – подтвердите в следующем окне.</string>
+    <string name="rs_default_denied">SMS-приложение по умолчанию не изменено – восстановить SMS невозможно.</string>
+    <string name="rs_sms_progress_fmt">Восстановление SMS: %1$d / %2$d</string>
+    <string name="rs_sms_done_fmt">Восстановлено SMS: %1$d (пропущено дубликатов: %2$d).</string>
+    <string name="rs_default_back">ВАЖНО: снова назначьте привычное SMS-приложение (например, Google Сообщения, Samsung Messages) приложением по умолчанию – нажмите «Вернуть SMS-приложение по умолчанию».</string>
+    <string name="rs_default_back_ok">SMS-приложение по умолчанию восстановлено ✔</string>
+    <string name="rs_finish_hint">Когда закончите, нажмите «Готово».</string>
+    <string name="rs_error_fmt">Ошибка восстановления: %1$s</string>
+    <string name="rs_done_sent">Готово ✔ Компьютер выполняет очистку – можно вернуться к компьютеру.</string>
+    <string name="rs_still_default">Это приложение всё ещё является SMS-приложением по умолчанию. Сначала верните привычное SMS-приложение или нажмите «Готово» ещё раз, чтобы всё равно завершить (после удаления настройка вернётся автоматически).</string>
+    <string name="compose_info">Это временный сервисный инструмент, он не может отправлять сообщения. Снова назначьте привычное SMS-приложение по умолчанию.</string>
+    <string name="rs_contacts_importing_fmt">Импорт контактов: %1$d / %2$d</string>
+    <string name="rs_mms_skipped_fmt">Пропущено MMS (не поддерживаются): %1$d</string>
+    <string name="rs_restricted_hint">Если Android сообщает, что настройка ограничена: откройте «О приложении» → ⋮ → «Разрешить ограниченные настройки» и повторите попытку.</string>
+</resources>

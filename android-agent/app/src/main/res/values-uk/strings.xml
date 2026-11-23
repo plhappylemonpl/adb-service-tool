@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Wygenerowane przez tools/gen_strings.py - nie edytuj ręcznie. -->
+<resources>
+    <string name="title_backup">Сервісний інструмент – Резервна копія</string>
+    <string name="title_restore">Сервісний інструмент – Відновлення</string>
+    <string name="session_fmt">Сеанс: %1$s</string>
+    <string name="intro_backup">Drapco ADB Service Tool створить резервну копію ваших контактів (файл .vcf) і SMS-повідомлень (файл .xml) у папці Download/Backup. Після завантаження на комп’ютер файли буде видалено з цього пристрою, а цей застосунок – видалено. Нічого не надсилається через інтернет.</string>
+    <string name="intro_restore">Drapco ADB Service Tool скопіював резервну копію на цей пристрій. Відновіть контакти й SMS кнопками нижче. Після завершення натисніть «Готово» – комп’ютер видалить тимчасові файли й цей застосунок.</string>
+    <string name="btn_backup">СТВОРИТИ КОПІЮ</string>
+    <string name="btn_backup_done">КОПІЮ СТВОРЕНО</string>
+    <string name="btn_restore_contacts">Відновити контакти</string>
+    <string name="btn_restore_sms">Відновити SMS</string>
+    <string name="btn_default_sms_back">Повернути SMS-застосунок за замовчуванням</string>
+    <string name="btn_done">Готово</string>
+    <string name="st_perms_ok">Дозволи надано. Натисніть «Створити копію».</string>
+    <string name="st_need_both">Застосунку потрібен доступ до Контактів і SMS – підтвердьте системні запити.</string>
+    <string name="st_no_sms">Немає доступу до SMS – буде скопійовано лише контакти (або надайте дозвіл).</string>
+    <string name="st_no_contacts">Немає доступу до контактів – буде скопійовано лише SMS (або надайте дозвіл).</string>
+    <string name="st_no_storage">Немає дозволу на запис у пам’ять – підтвердьте системний запит.</string>
+    <string name="st_grant_dialogs">Підтвердьте дозволи в системних вікнах, щоб створити копію.</string>
+    <string name="st_perm_blocked">Дозволи заблоковано. Відкриваю налаштування застосунку – увімкніть Контакти й SMS, потім поверніться сюди.</string>
+    <string name="st_working">Експорт… не закривайте застосунок.</string>
+    <string name="st_done_fmt">Готово ✔ (%1$s).\nКомп’ютер завантажує файли – можна повернутися до комп’ютера.</string>
+    <string name="part_contacts_fmt">контакти: %1$d</string>
+    <string name="part_contacts_denied">контакти: немає дозволу</string>
+    <string name="part_sms_fmt">SMS: %1$d</string>
+    <string name="part_sms_denied">SMS: немає дозволу</string>
+    <string name="err_backup_fmt">Помилка копіювання: %1$s</string>
+    <string name="err_no_perms">Немає дозволів для Контактів і SMS – нічого копіювати</string>
+    <string name="progress_contacts_fmt">Контакти: %1$d / %2$d</string>
+    <string name="progress_sms_fmt">SMS: %1$d / %2$d</string>
+    <string name="rs_files_fmt">Знайдено копію: %1$s</string>
+    <string name="rs_none">У папці Download/Restore не знайдено файлів резервної копії.</string>
+    <string name="rs_need_files">Дозвольте доступ до файлів, щоб прочитати резервну копію.</string>
+    <string name="rs_contacts_started_fmt">Застосунок «Контакти» імпортує %1$d контактів – підтвердьте, якщо буде запит, і дочекайтеся завершення.</string>
+    <string name="rs_contacts_done_fmt">Імпортовано контактів: %1$d</string>
+    <string name="rs_need_contacts_perm">Дозвольте доступ до контактів, щоб імпортувати їх.</string>
+    <string name="rs_need_default">Щоб відновити SMS, цей застосунок має тимчасово стати SMS-застосунком за замовчуванням – підтвердьте в наступному вікні.</string>
+    <string name="rs_default_denied">SMS-застосунок за замовчуванням не змінено – відновити SMS неможливо.</string>
+    <string name="rs_sms_progress_fmt">Відновлення SMS: %1$d / %2$d</string>
+    <string name="rs_sms_done_fmt">Відновлено SMS: %1$d (пропущено дублікатів: %2$d).</string>
+    <string name="rs_default_back">ВАЖЛИВО: знову призначте звичний SMS-застосунок (наприклад, Google Повідомлення, Samsung Messages) за замовчуванням – натисніть «Повернути SMS-застосунок за замовчуванням».</string>
+    <string name="rs_default_back_ok">SMS-застосунок за замовчуванням повернуто ✔</string>
+    <string name="rs_finish_hint">Коли закінчите, натисніть «Готово».</string>
+    <string name="rs_error_fmt">Помилка відновлення: %1$s</string>
+    <string name="rs_done_sent">Готово ✔ Комп’ютер виконує очищення – можна повернутися до комп’ютера.</string>
+    <string name="rs_still_default">Цей застосунок досі є SMS-застосунком за замовчуванням. Спершу поверніть звичний SMS-застосунок або натисніть «Готово» ще раз, щоб усе одно завершити (після видалення налаштування повернеться автоматично).</string>
+    <string name="compose_info">Це тимчасовий сервісний інструмент, він не може надсилати повідомлення. Знову призначте звичний SMS-застосунок за замовчуванням.</string>
+    <string name="rs_contacts_importing_fmt">Імпорт контактів: %1$d / %2$d</string>
+    <string name="rs_mms_skipped_fmt">Пропущено MMS (не підтримуються): %1$d</string>
+    <string name="rs_restricted_hint">Якщо Android повідомляє, що налаштування обмежене: відкрийте «Про застосунок» → ⋮ → «Дозволити обмежені налаштування» і спробуйте ще раз.</string>
+</resources>

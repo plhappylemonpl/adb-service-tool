@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Wygenerowane przez tools/gen_strings.py - nie edytuj ręcznie. -->
+<resources>
+    <string name="app_name" translatable="false">Drapco Backup Agent</string>
+    <string name="title_backup">Service Tool – Backup</string>
+    <string name="title_restore">Service Tool – Restore</string>
+    <string name="session_fmt">Session: %1$s</string>
+    <string name="intro_backup">Drapco ADB Service Tool will back up your contacts (.vcf file) and text messages (.xml file) to the Download/Backup folder. After the computer downloads them, the files are deleted from this device and this app is uninstalled. Nothing is sent over the internet.</string>
+    <string name="intro_restore">Drapco ADB Service Tool has copied a backup to this device. Restore your contacts and text messages with the buttons below. When finished, tap Done – the computer will delete the temporary files and uninstall this app.</string>
+    <string name="btn_backup">MAKE BACKUP</string>
+    <string name="btn_backup_done">BACKUP COMPLETE</string>
+    <string name="btn_restore_contacts">Restore contacts</string>
+    <string name="btn_restore_sms">Restore SMS</string>
+    <string name="btn_default_sms_back">Restore default SMS app</string>
+    <string name="btn_done">Done</string>
+    <string name="st_perms_ok">Permissions granted. Tap “Make backup”.</string>
+    <string name="st_need_both">The app needs access to Contacts and SMS – accept the system dialogs.</string>
+    <string name="st_no_sms">No access to SMS – only contacts will be backed up (or grant the permission).</string>
+    <string name="st_no_contacts">No access to contacts – only SMS will be backed up (or grant the permission).</string>
+    <string name="st_no_storage">No permission to write to storage – accept the system dialog.</string>
+    <string name="st_grant_dialogs">Accept the permissions in the system dialogs to make a backup.</string>
+    <string name="st_perm_blocked">Permissions are blocked. Opening app settings – enable Contacts and SMS, then come back here.</string>
+    <string name="st_working">Exporting… do not close the app.</string>
+    <string name="st_done_fmt">Done ✔ (%1$s).\nThe computer is now downloading the files – you can go back to the computer.</string>
+    <string name="part_contacts_fmt">contacts: %1$d</string>
+    <string name="part_contacts_denied">contacts: no permission</string>
+    <string name="part_sms_fmt">SMS: %1$d</string>
+    <string name="part_sms_denied">SMS: no permission</string>
+    <string name="err_backup_fmt">Backup error: %1$s</string>
+    <string name="err_no_perms">No permission for Contacts and SMS – nothing to back up</string>
+    <string name="progress_contacts_fmt">Contacts: %1$d / %2$d</string>
+    <string name="progress_sms_fmt">SMS: %1$d / %2$d</string>
+    <string name="rs_files_fmt">Backup found: %1$s</string>
+    <string name="rs_none">No backup files found in Download/Restore.</string>
+    <string name="rs_need_files">Allow access to files so the backup can be read.</string>
+    <string name="rs_contacts_started_fmt">The contacts app is importing %1$d contacts – confirm there if asked and wait until it finishes.</string>
+    <string name="rs_contacts_done_fmt">Contacts imported: %1$d</string>
+    <string name="rs_need_contacts_perm">Allow access to contacts to import them.</string>
+    <string name="rs_need_default">To restore SMS, this app must temporarily be the default SMS app – confirm in the next dialog.</string>
+    <string name="rs_default_denied">The default SMS app was not changed – SMS cannot be restored.</string>
+    <string name="rs_sms_progress_fmt">Restoring SMS: %1$d / %2$d</string>
+    <string name="rs_sms_done_fmt">SMS restored: %1$d (duplicates skipped: %2$d).</string>
+    <string name="rs_default_back">IMPORTANT: set your usual SMS app (e.g. Google Messages, Samsung Messages) as the default again – tap “Restore default SMS app”.</string>
+    <string name="rs_default_back_ok">Default SMS app restored ✔</string>
+    <string name="rs_finish_hint">When you have finished, tap Done.</string>
+    <string name="rs_error_fmt">Restore error: %1$s</string>
+    <string name="rs_done_sent">Done ✔ The computer is cleaning up – you can go back to the computer.</string>
+    <string name="rs_still_default">This app is still the default SMS app. Restore your usual SMS app first, or tap Done again to finish anyway (it will be switched back automatically after uninstall).</string>
+    <string name="compose_info">This is a temporary service tool and cannot send messages. Set your usual SMS app as the default again.</string>
+    <string name="rs_contacts_importing_fmt">Importing contacts: %1$d / %2$d</string>
+    <string name="rs_mms_skipped_fmt">MMS messages skipped (not supported): %1$d</string>
+    <string name="rs_restricted_hint">If Android says the setting is restricted: open App info → ⋮ → Allow restricted settings, then try again.</string>
+</resources>

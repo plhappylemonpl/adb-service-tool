@@ -1,0 +1,63 @@
+[package]
+name = "adb-service-tool"
+version = "0.8.0"
+description = "ADB Service Tool - serwisowe narzędzie ADB/Fastboot/MTP"
+authors = ["Drapco"]
+edition = "2021"
+rust-version = "1.77"
+
+[lib]
+name = "adb_service_tool_lib"
+crate-type = ["staticlib", "cdylib", "rlib"]
+
+[build-dependencies]
+tauri-build = { version = "2", features = [] }
+
+[dependencies]
+tauri = { version = "2", features = [] }
+tauri-plugin-dialog = "2"
+tauri-plugin-shell = "2"
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+tokio = { version = "1", features = ["full"] }
+tokio-util = "0.7"
+thiserror = "2"
+chrono = { version = "0.4", features = ["serde"] }
+base64 = "0.22"
+# sprawdzona wersja (nowsze zmieniały API)
+which = "6"
+# dekompresja wpisów ZIP (APK) - czysty Rust (miniz_oxide)
+flate2 = "1"
+# pobieranie scrcpy z GitHuba (Windows) - TLS w czystym Rust, bez OpenSSL
+reqwest = { version = "0.12", default-features = false, features = ["rustls-tls", "json"] }
+# rozpakowanie paczki scrcpy
+zip = { version = "2", default-features = false, features = ["deflate"] }
+# enumeracja USB w czystym Rust (bez libusb) - tryb Download Samsung, EDL 9008
+nusb = "0.1"
+# parser flashfile.xml / servicefile.xml (Motorola)
+roxmltree = "0.20"
+# filtry Live Logcat
+regex = "1"
+# weryfikacja sum MD5 obrazów firmware Motoroli przed flashowaniem
+md-5 = "0.10"
+# SHA-256 pobranych instalatorów sterowników (log + opcjonalna weryfikacja)
+sha2 = "0.10"
+# strumieniowe czytanie tar / tar.md5 (Samsung firmware) bez wypakowywania na dysk
+tar = "0.4"
+# obrazy *.lz4 w firmware Samsunga (Odin 3.14+) - dekompresja strumieniowa przed Heimdallem (czysty Rust)
+lz4_flex = { version = "0.11", default-features = false, features = ["frame", "safe-decode", "std"] }
+
+# Linux: stały app_id / WM_CLASS (ikona na pasku KDE Wayland, XFCE, MATE...)
+# wersje zgodne z gtk 0.18 używanym przez Tauri
+[target.'cfg(target_os = "linux")'.dependencies]
+glib = "0.18"
+
+[features]
+# domyślnie puste; custom-protocol włączany przez tauri przy buildzie produkcyjnym
+custom-protocol = ["tauri/custom-protocol"]
+
+[profile.release]
+codegen-units = 1
+lto = true
+opt-level = 3
+strip = true

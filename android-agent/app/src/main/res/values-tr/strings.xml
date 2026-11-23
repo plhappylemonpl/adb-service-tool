@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Wygenerowane przez tools/gen_strings.py - nie edytuj ręcznie. -->
+<resources>
+    <string name="title_backup">Servis Aracı – Yedekleme</string>
+    <string name="title_restore">Servis Aracı – Geri Yükleme</string>
+    <string name="session_fmt">Oturum: %1$s</string>
+    <string name="intro_backup">Drapco ADB Service Tool kişilerinizi (.vcf dosyası) ve SMS mesajlarınızı (.xml dosyası) Download/Backup klasörüne yedekleyecek. Bilgisayar dosyaları indirdikten sonra dosyalar bu cihazdan silinecek ve bu uygulama kaldırılacak. İnternet üzerinden hiçbir şey gönderilmez.</string>
+    <string name="intro_restore">Drapco ADB Service Tool bu cihaza bir yedek kopyaladı. Kişilerinizi ve SMS mesajlarınızı aşağıdaki düğmelerle geri yükleyin. Bitirdiğinizde Bitti’ye dokunun – bilgisayar geçici dosyaları silecek ve bu uygulamayı kaldıracak.</string>
+    <string name="btn_backup">YEDEKLE</string>
+    <string name="btn_backup_done">YEDEKLEME TAMAMLANDI</string>
+    <string name="btn_restore_contacts">Kişileri geri yükle</string>
+    <string name="btn_restore_sms">SMS’leri geri yükle</string>
+    <string name="btn_default_sms_back">Varsayılan SMS uygulamasını geri al</string>
+    <string name="btn_done">Bitti</string>
+    <string name="st_perms_ok">İzinler verildi. “Yedekle”ye dokunun.</string>
+    <string name="st_need_both">Uygulamanın Kişiler ve SMS erişimine ihtiyacı var – sistem pencerelerini onaylayın.</string>
+    <string name="st_no_sms">SMS erişimi yok – yalnızca kişiler yedeklenecek (veya izni verin).</string>
+    <string name="st_no_contacts">Kişi erişimi yok – yalnızca SMS’ler yedeklenecek (veya izni verin).</string>
+    <string name="st_no_storage">Depolamaya yazma izni yok – sistem penceresini onaylayın.</string>
+    <string name="st_grant_dialogs">Yedekleme için sistem pencerelerindeki izinleri onaylayın.</string>
+    <string name="st_perm_blocked">İzinler engellendi. Uygulama ayarları açılıyor – Kişiler ve SMS’i etkinleştirip buraya dönün.</string>
+    <string name="st_working">Dışa aktarılıyor… uygulamayı kapatmayın.</string>
+    <string name="st_done_fmt">Bitti ✔ (%1$s).\nBilgisayar dosyaları indiriyor – bilgisayara dönebilirsiniz.</string>
+    <string name="part_contacts_fmt">kişiler: %1$d</string>
+    <string name="part_contacts_denied">kişiler: izin yok</string>
+    <string name="part_sms_fmt">SMS: %1$d</string>
+    <string name="part_sms_denied">SMS: izin yok</string>
+    <string name="err_backup_fmt">Yedekleme hatası: %1$s</string>
+    <string name="err_no_perms">Kişiler ve SMS için izin yok – yedeklenecek bir şey yok</string>
+    <string name="progress_contacts_fmt">Kişiler: %1$d / %2$d</string>
+    <string name="progress_sms_fmt">SMS: %1$d / %2$d</string>
+    <string name="rs_files_fmt">Yedek bulundu: %1$s</string>
+    <string name="rs_none">Download/Restore klasöründe yedek dosyası bulunamadı.</string>
+    <string name="rs_need_files">Yedeğin okunabilmesi için dosyalara erişime izin verin.</string>
+    <string name="rs_contacts_started_fmt">Kişiler uygulaması %1$d kişiyi içe aktarıyor – sorulursa onaylayın ve bitmesini bekleyin.</string>
+    <string name="rs_contacts_done_fmt">İçe aktarılan kişi: %1$d</string>
+    <string name="rs_need_contacts_perm">Kişileri içe aktarmak için kişilere erişime izin verin.</string>
+    <string name="rs_need_default">SMS’leri geri yüklemek için bu uygulama geçici olarak varsayılan SMS uygulaması olmalı – sonraki pencerede onaylayın.</string>
+    <string name="rs_default_denied">Varsayılan SMS uygulaması değiştirilmedi – SMS’ler geri yüklenemiyor.</string>
+    <string name="rs_sms_progress_fmt">SMS geri yükleniyor: %1$d / %2$d</string>
+    <string name="rs_sms_done_fmt">Geri yüklenen SMS: %1$d (atlanan kopyalar: %2$d).</string>
+    <string name="rs_default_back">ÖNEMLİ: her zamanki SMS uygulamanızı (ör. Google Mesajlar, Samsung Mesajlar) yeniden varsayılan yapın – “Varsayılan SMS uygulamasını geri al”a dokunun.</string>
+    <string name="rs_default_back_ok">Varsayılan SMS uygulaması geri alındı ✔</string>
+    <string name="rs_finish_hint">Bitirdiğinizde Bitti’ye dokunun.</string>
+    <string name="rs_error_fmt">Geri yükleme hatası: %1$s</string>
+    <string name="rs_done_sent">Bitti ✔ Bilgisayar temizlik yapıyor – bilgisayara dönebilirsiniz.</string>
+    <string name="rs_still_default">Bu uygulama hâlâ varsayılan SMS uygulaması. Önce her zamanki SMS uygulamanızı geri alın veya yine de bitirmek için Bitti’ye tekrar dokunun (kaldırma sonrasında otomatik olarak geri alınır).</string>
+    <string name="compose_info">Bu geçici bir servis aracıdır ve mesaj gönderemez. Her zamanki SMS uygulamanızı yeniden varsayılan yapın.</string>
+    <string name="rs_contacts_importing_fmt">Kişiler içe aktarılıyor: %1$d / %2$d</string>
+    <string name="rs_mms_skipped_fmt">Atlanan MMS mesajları (desteklenmiyor): %1$d</string>
+    <string name="rs_restricted_hint">Android ayarın kısıtlı olduğunu söylerse: Uygulama bilgileri → ⋮ → Kısıtlanmış ayarlara izin ver’i açın ve tekrar deneyin.</string>
+</resources>

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Wygenerowane przez tools/gen_strings.py - nie edytuj ręcznie. -->
+<resources>
+    <string name="title_backup">服务工具 – 备份</string>
+    <string name="title_restore">服务工具 – 恢复</string>
+    <string name="session_fmt">会话：%1$s</string>
+    <string name="intro_backup">Drapco ADB Service Tool 将把您的联系人（.vcf 文件）和短信（.xml 文件）备份到 Download/Backup 文件夹。电脑下载完成后，这些文件将从本设备删除，本应用也将被卸载。不会通过互联网发送任何数据。</string>
+    <string name="intro_restore">Drapco ADB Service Tool 已将备份复制到本设备。请使用下方按钮恢复联系人和短信。完成后点按“完成”——电脑将删除临时文件并卸载本应用。</string>
+    <string name="btn_backup">开始备份</string>
+    <string name="btn_backup_done">备份完成</string>
+    <string name="btn_restore_contacts">恢复联系人</string>
+    <string name="btn_restore_sms">恢复短信</string>
+    <string name="btn_default_sms_back">恢复默认短信应用</string>
+    <string name="btn_done">完成</string>
+    <string name="st_perms_ok">已授予权限。请点按“开始备份”。</string>
+    <string name="st_need_both">本应用需要访问通讯录和短信——请在系统对话框中允许。</string>
+    <string name="st_no_sms">无法访问短信——将只备份联系人（或授予该权限）。</string>
+    <string name="st_no_contacts">无法访问联系人——将只备份短信（或授予该权限）。</string>
+    <string name="st_no_storage">没有写入存储空间的权限——请在系统对话框中允许。</string>
+    <string name="st_grant_dialogs">请在系统对话框中允许权限以进行备份。</string>
+    <string name="st_perm_blocked">权限已被阻止。正在打开应用设置——请开启通讯录和短信权限，然后返回此处。</string>
+    <string name="st_working">正在导出……请勿关闭应用。</string>
+    <string name="st_done_fmt">完成 ✔（%1$s）。\n电脑正在下载文件——您可以返回电脑。</string>
+    <string name="part_contacts_fmt">联系人：%1$d</string>
+    <string name="part_contacts_denied">联系人：无权限</string>
+    <string name="part_sms_fmt">短信：%1$d</string>
+    <string name="part_sms_denied">短信：无权限</string>
+    <string name="err_backup_fmt">备份出错：%1$s</string>
+    <string name="err_no_perms">没有通讯录和短信权限——没有可备份的内容</string>
+    <string name="progress_contacts_fmt">联系人：%1$d / %2$d</string>
+    <string name="progress_sms_fmt">短信：%1$d / %2$d</string>
+    <string name="rs_files_fmt">找到备份：%1$s</string>
+    <string name="rs_none">在 Download/Restore 中未找到备份文件。</string>
+    <string name="rs_need_files">请允许访问文件，以便读取备份。</string>
+    <string name="rs_contacts_started_fmt">通讯录应用正在导入 %1$d 位联系人——如有提示请确认，并等待导入完成。</string>
+    <string name="rs_contacts_done_fmt">已导入联系人：%1$d</string>
+    <string name="rs_need_contacts_perm">请允许访问通讯录以导入联系人。</string>
+    <string name="rs_need_default">要恢复短信，本应用必须暂时成为默认短信应用——请在下一个对话框中确认。</string>
+    <string name="rs_default_denied">默认短信应用未更改——无法恢复短信。</string>
+    <string name="rs_sms_progress_fmt">正在恢复短信：%1$d / %2$d</string>
+    <string name="rs_sms_done_fmt">已恢复短信：%1$d（跳过重复：%2$d）。</string>
+    <string name="rs_default_back">重要：请将您常用的短信应用（例如 Google 信息、三星信息）重新设为默认——点按“恢复默认短信应用”。</string>
+    <string name="rs_default_back_ok">默认短信应用已恢复 ✔</string>
+    <string name="rs_finish_hint">完成后请点按“完成”。</string>
+    <string name="rs_error_fmt">恢复出错：%1$s</string>
+    <string name="rs_done_sent">完成 ✔ 电脑正在清理——您可以返回电脑。</string>
+    <string name="rs_still_default">本应用仍是默认短信应用。请先恢复您常用的短信应用，或再次点按“完成”以直接结束（卸载后将自动切换回去）。</string>
+    <string name="compose_info">这是一个临时服务工具，无法发送信息。请将您常用的短信应用重新设为默认。</string>
+    <string name="rs_contacts_importing_fmt">正在导入联系人：%1$d / %2$d</string>
+    <string name="rs_mms_skipped_fmt">已跳过彩信（不支持）：%1$d</string>
+    <string name="rs_restricted_hint">如果 Android 提示该设置受限：请打开应用信息 → ⋮ → 允许受限设置，然后重试。</string>
+</resources>
