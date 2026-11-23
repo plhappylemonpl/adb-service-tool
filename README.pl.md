@@ -65,6 +65,18 @@ Interfejs jest po polsku i angielsku.
 - **Zasilanie**: restart do systemu / recovery / download / bootloadera / fastbootd / sideload / EDL.
 - **Zaawansowane**: konsola `adb shell`, `adb sideload`.
 
+### Aktualizacje
+- Wbudowany aktualizator (bez `tauri-plugin-updater`, bez tokenów): czyta `latest.json` z najnowszego wydania na GitHubie (`releases/latest/download/latest.json`).
+  Gdy wydanie nie ma `latest.json`, pokazuje tylko numer wersji z publicznego API wydań.
+- Sprawdzanie w tle kilka sekund po starcie (do wyłączenia w zakładce *Zaawansowane*), ręczne *Sprawdź aktualizacje*, pominięcie wersji albo przypomnienie później.
+- Każdy pobrany plik jest sprawdzany sumą SHA-256 i rozmiarem z `latest.json`, zanim cokolwiek zostanie uruchomione lub podmienione; niezgodność usuwa plik i przerywa aktualizację.
+- Obsługiwane warianty:
+  - Windows instalator: uruchomienie nowego `*-setup.exe`.
+  - Windows portable: podmiana `.exe` (stary plik jako `.exe.old`, usuwany przy następnym starcie).
+  - Linux AppImage: atomowa podmiana `$APPIMAGE`.
+  - Linux portable `tar.gz`: atomowa podmiana binarki.
+  - Linux pakiet systemowy: pobranie `.deb` i polecenie instalacji albo `pkexec` po potwierdzeniu.
+
 ### Sterowniki / udev
 - **Windows**: wykrywanie pakietów sterowników (Google ADB/Fastboot, MTP, Samsung, Motorola, Qualcomm 9008) i urządzeń USB bez sterownika. Instalacja jednym monitem UAC (`pnputil` / `msiexec`), opcjonalna kontrola SHA-256.
 - **Linux**: sprawdzenie reguł udev i dostępu do `/dev/bus/usb`. Instalacja `51-android.rules` przez `pkexec` / `sudo` (hasło nie jest zapisywane), dodanie użytkownika do `adbusers`, przeładowanie udev.

@@ -1,6 +1,8 @@
 <script lang="ts">
   import { open } from '@tauri-apps/plugin-dialog';
-  import { TerminalSquare, Play, FileArchive, Upload } from 'lucide-svelte';
+  import { TerminalSquare, Play, FileArchive, Upload, Sparkles, RefreshCw, LoaderCircle } from 'lucide-svelte';
+  import { updater } from '$lib/updater.svelte';
+  import { toast } from '$lib/components/Toast.svelte';
   import { api } from '$lib/api';
   import { selectedDevice, Job, pushLog } from '$lib/stores.svelte';
   import { t } from '$lib/i18n';
@@ -35,6 +37,21 @@
     if (typeof f === 'string') zip = f;
   }
 
+  async function checkUpdates() {
+    await updater.check(true);
+    if (updater.error) toast('error', $t('update.checkFailed'), updater.error);
+    else if (updater.info && !updater.info.available) toast('ok', $t('update.noneFound'), `v${updater.info.current}`);
+  }
+
+  function unskip() {
+    try {
+      localStorage.removeItem('adbst.update.skip');
+    } catch {
+      /* brak storage */
+    }
+    updater.skipped = null;
+  }
+
   async function sideload() {
     if (!dev || !zip) return;
     pushLog('info', `sideload: ${zip}`, 'sideload');
@@ -44,6 +61,34 @@
 
 <section class="animate-fade-in space-y-4">
   <h2 class="view-title">{$t('adv.title')}</h2>
+
+  <div class="card space-y-3">
+    <div class="flex items-center gap-2 text-sm font-medium text-gold"><Sparkles size={16} />{$t('update.section')}</div>
+    <div class="flex flex-wrap items-center gap-3 text-sm">
+      <button class="btn btn-gold !py-1.5" disabled={updater.checking || updater.job.running} onclick={checkUpdates}>
+        {#if updater.checking}<LoaderCircle size={15} class="animate-spin" />{$t('update.checking')}{:else}<RefreshCw size={15} />{$t('update.check')}{/if}
+      </button>
+      <label class="toggle text-sm">
+        <input type="checkbox" checked={updater.autoCheck} onchange={(e) => updater.setAuto(e.currentTarget.checked)} /><span></span>{$t('update.auto')}
+      </label>
+    </div>
+    {#if updater.info}
+      <div class="flex flex-wrap gap-x-5 gap-y-1 text-xs text-neutral-400">
+        <span>{$t('update.current')}: <span class="font-mono text-neutral-200">{updater.info.current}</span></span>
+        {#if updater.info.latest}<span>{$t('update.latest')}: <span class="font-mono text-gold">{updater.info.latest}</span></span>{/if}
+        <span>{$t('update.kind')}: <span class="text-neutral-200">{$t('update.kind.' + updater.info.kind)}</span></span>
+        {#if updater.info.available}
+          <button class="text-gold underline" onclick={() => (updater.open = true)}>{$t('update.title')}</button>
+        {/if}
+      </div>
+    {/if}
+    {#if updater.skipped}
+      <div class="flex items-center gap-2 text-xs text-neutral-500">
+        {$t('update.skippedInfo').replace('{v}', updater.skipped)}
+        <button class="underline" onclick={unskip}>{$t('update.unskip')}</button>
+      </div>
+    {/if}
+  </div>
 
   <div class="card space-y-3">
     <div class="flex items-center gap-2 text-sm font-medium text-gold"><TerminalSquare size={16} />{$t('adv.shell')}</div>

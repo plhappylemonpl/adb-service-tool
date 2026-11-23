@@ -687,6 +687,39 @@ export interface PairRequest {
   connectPort: number | null;
 }
 
+export type InstallKind =
+  | 'windowsInstaller'
+  | 'windowsPortable'
+  | 'linuxAppImage'
+  | 'linuxPortable'
+  | 'linuxSystem'
+  | 'dev'
+  | 'unsupported';
+
+export interface UpdateAsset {
+  url: string;
+  filename: string;
+  size: number;
+  sha256: string;
+}
+
+export interface UpdateInfo {
+  current: string;
+  latest: string | null;
+  available: boolean;
+  notesPl: string;
+  notesEn: string;
+  publishedAt: string | null;
+  kind: InstallKind;
+  asset: UpdateAsset | null;
+  /** 'manifest' (latest.json) | 'api' (tylko informacja) */
+  source: 'manifest' | 'api';
+  releaseUrl: string;
+  canInstall: boolean;
+}
+
+export type UpdateOutcome = { action: 'restart' } | { action: 'manual'; path: string; command: string };
+
 type OnEvent = (e: TransferEvent) => void;
 
 function channel(onEvent: OnEvent): Channel<TransferEvent> {
@@ -698,6 +731,9 @@ function channel(onEvent: OnEvent): Channel<TransferEvent> {
 // --- wrappery komend --- //
 
 export const api = {
+  updateCheck: () => invoke<UpdateInfo>('update_check'),
+  updateInstall: (onEvent: OnEvent) => invoke<string>('update_install', { onEvent: channel(onEvent) }),
+  updateInstallPackage: (path: string) => invoke<string>('update_install_package', { path }),
   locateTools: () => invoke<ToolsInfo>('locate_tools'),
   setAdbPath: (path: string) => invoke<ToolsInfo>('set_adb_path', { path }),
   scanDevices: () => invoke<Device[]>('scan_devices'),

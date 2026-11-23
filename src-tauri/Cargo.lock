@@ -4,7 +4,7 @@ version = 3
 
 [[package]]
 name = "adb-service-tool"
-version = "0.8.0"
+version = "1.0.0"
 dependencies = [
  "base64 0.22.1",
  "chrono",
@@ -16,6 +16,7 @@ dependencies = [
  "regex",
  "reqwest 0.12.28",
  "roxmltree",
+ "semver",
  "serde",
  "serde_json",
  "sha2",

@@ -14,8 +14,13 @@ android-agent/.gradle/
 android-agent/local.properties
 vite.config.ts.timestamp-*.mjs
 
+# --- lokalny skrypt wydania (prywatny) i jego wyniki
+release.local.sh
+dist-release/
+
 # --- dane robocze aplikacji / runtime leftovers
 .adbst-partial/
+.adbst-update/
 .adb_pull_progress.jsonl
 *.log
 *.part

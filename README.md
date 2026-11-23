@@ -65,6 +65,18 @@ The UI is available in Polish and English.
 - **Power**: reboot to system / recovery / download / bootloader / fastbootd / sideload / EDL.
 - **Advanced**: `adb shell` console, `adb sideload`.
 
+### Updates
+- Built-in updater (no `tauri-plugin-updater`, no tokens): reads `latest.json` from the latest GitHub release (`releases/latest/download/latest.json`).
+  If the release has no `latest.json`, it only shows the version from the public releases API.
+- Background check a few seconds after start (can be turned off in *Advanced*), manual *Check for updates*, skip a version or remind later.
+- Every download is checked against the SHA-256 and size from `latest.json` before anything is run or replaced; a mismatch deletes the file and stops the update.
+- Supported install types:
+  - Windows installer: runs the new `*-setup.exe`.
+  - Windows portable: replaces the `.exe` (old file renamed to `.exe.old`, removed on next start).
+  - Linux AppImage: atomic replace of `$APPIMAGE`.
+  - Linux portable `tar.gz`: atomic replace of the binary.
+  - Linux system package: downloads the `.deb` and shows the install command, or runs `pkexec` after confirmation.
+
 ### Drivers / udev
 - **Windows**: detects driver packages (Google ADB/Fastboot, MTP, Samsung, Motorola, Qualcomm 9008) and USB devices without a driver. Installs with one UAC prompt (`pnputil` / `msiexec`), optional SHA-256 check.
 - **Linux**: checks udev rules and `/dev/bus/usb` access. Installs `51-android.rules` via `pkexec` / `sudo` (the password is never stored), adds the user to `adbusers`, reloads udev.

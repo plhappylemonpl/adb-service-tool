@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # ADB Service Tool - skrypt budujący (Linux).
-# Użycie:  ./build.sh [dev|build|check|windows|agent]      (domyślnie: build)
+# Użycie:  ./build.sh [dev|build|check|windows|agent] [argumenty tauri build]   (domyślnie: build)
 #   dev     - tauri dev (hot reload)
 #   build   - tauri build (produkcyjny pakiet dla Linuksa)
 #   check   - svelte-check + cargo check + testy jednostkowe Rust
@@ -24,6 +24,9 @@ say()  { echo -e "${GOLD}==>${NC} $*"; }
 warn() { echo -e "${YEL}UWAGA:${NC} $*"; }
 die()  { echo -e "${RED}BŁĄD:${NC} $*" >&2; exit 1; }
 
+# dalsze argumenty trafiają do `tauri build` (np. ./build.sh build --bundles appimage,deb)
+shift || true
+USER_ARGS=("$@")
 [ "$MODE" = "win" ] && MODE="windows"
 case "$MODE" in dev|build|check|windows|agent) ;; *) die "Nieznany tryb '$MODE'. Użyj: dev | build | check | windows | agent" ;; esac
 
@@ -358,7 +361,7 @@ build_windows() {
     *) export "$rf_var=${!rf_var:+${!rf_var} }-C link-arg=/IGNORE:4099" ;;
   esac
   say "Cross-compile dla Windows ($WIN_TARGET)..."
-  npm run tauri build -- --runner cargo-xwin --target "$WIN_TARGET" ${TAURI_EXTRA[@]+"${TAURI_EXTRA[@]}"}
+  npm run tauri build -- --runner cargo-xwin --target "$WIN_TARGET" ${TAURI_EXTRA[@]+"${TAURI_EXTRA[@]}"} ${USER_ARGS[@]+"${USER_ARGS[@]}"}
 
   # 5. zebranie wyników do dist/windows
   local rel="src-tauri/target/$WIN_TARGET/release"
@@ -401,7 +404,7 @@ case "$MODE" in
   build)
     prepare_agent
     say "Build produkcyjny..."
-    npm run tauri build -- ${TAURI_EXTRA[@]+"${TAURI_EXTRA[@]}"}
+    npm run tauri build -- ${TAURI_EXTRA[@]+"${TAURI_EXTRA[@]}"} ${USER_ARGS[@]+"${USER_ARGS[@]}"}
     say "Gotowe. Plik wykonywalny: src-tauri/target/release/adb-service-tool"
     say "Pakiety (deb/rpm/AppImage): src-tauri/target/release/bundle/"
     ;;

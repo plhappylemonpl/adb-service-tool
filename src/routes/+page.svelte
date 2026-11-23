@@ -1,6 +1,9 @@
 <script lang="ts">
   import { onMount } from 'svelte';
-  import { Smartphone, Info, Download, Upload, Package, Power, Wrench, Languages, CircleAlert, MonitorSmartphone, Factory, Activity, ScrollText, Cable, Rocket, FileCode2, Wifi, Contact } from 'lucide-svelte';
+  import { Smartphone, Info, Download, Upload, Package, Power, Wrench, Languages, CircleAlert, MonitorSmartphone, Factory, Activity, ScrollText, Cable, Rocket, FileCode2, Wifi, Contact, Sparkles } from 'lucide-svelte';
+  import { getVersion } from '@tauri-apps/api/app';
+  import { updater } from '$lib/updater.svelte';
+  import UpdateDialog from '$lib/components/UpdateDialog.svelte';
   import { api } from '$lib/api';
   import { app, setDevices, pushLog, selectedDevice } from '$lib/stores.svelte';
   import { t, toggleLang, lang } from '$lib/i18n';
@@ -58,9 +61,13 @@
   }
 
   const dev = $derived(selectedDevice());
+  let version = $state('');
 
   onMount(() => {
     let unlisten: (() => void) | undefined;
+    getVersion().then((v) => (version = v)).catch(() => {});
+    // sprawdzenie aktualizacji w tle (krótki timeout w backendzie, błędy po cichu)
+    updater.scheduleStartupCheck(5000);
     (async () => {
       try {
         app.tools = await api.locateTools();
@@ -97,6 +104,15 @@
           <span class="max-w-[180px] truncate text-neutral-300">{dev.modelHint ?? dev.serial}</span>
           <span class="text-neutral-500">{$t('mode.' + dev.mode)}</span>
         </div>
+      {/if}
+      {#if updater.pending}
+        <button
+          class="flex items-center gap-1.5 rounded-full border border-gold/50 bg-gold/10 px-3 py-1 text-xs text-gold transition hover:bg-gold/20"
+          onclick={() => (updater.open = true)}
+          title={$t('update.title')}
+        >
+          <Sparkles size={13} />{$t('update.badge').replace('{v}', updater.info?.latest ?? '')}
+        </button>
       {/if}
       <button class="btn btn-gold !py-1.5" onclick={() => openWifi('pair')} disabled={!app.tools?.adbPath} title={$t('wifi.subtitle')}>
         <Wifi size={15} />{$t('wifi.button')}
@@ -141,7 +157,7 @@
             <div class="text-neutral-500">{$t('devices.noneShort')}</div>
           {/if}
         </div>
-        <div class="text-center text-[10px] text-neutral-600">Drapco • v0.8.0</div>
+        <div class="text-center text-[10px] text-neutral-600">Drapco • v{version || '1.0.0'}</div>
       </div>
     </nav>
 
@@ -170,4 +186,5 @@
 
 <Confirm />
 <WifiDialog />
+<UpdateDialog />
 <Toast />

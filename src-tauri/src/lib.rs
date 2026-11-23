@@ -16,6 +16,7 @@ mod mirror;
 mod mtp_handler;
 mod parsers;
 mod state;
+mod updater;
 mod utils;
 mod vendors;
 
@@ -273,6 +274,43 @@ async fn agent_install_confirm(state: State<'_, AppState>, serial: String) -> Re
         }
         None => false,
     })
+}
+
+// --------------------------------------------------------------------------- //
+// Aktualizacje (własny aktualizator, publiczne wydania GitHub - bez tokenów)
+// --------------------------------------------------------------------------- //
+
+#[tauri::command]
+async fn update_check() -> Result<updater::UpdateInfo> {
+    updater::check().await
+}
+
+/// Pobiera, weryfikuje (SHA-256) i instaluje najnowszą wersję. Przy restarcie
+/// (instalator / podmiana binarki) aplikacja zamyka się sama po chwili.
+#[tauri::command]
+async fn update_install(app: AppHandle, state: State<'_, AppState>, on_event: Channel<TransferEvent>) -> Result<String> {
+    let em = Emitter::new(on_event);
+    Ok(spawn_job(&state, "update", move |c| async move {
+        match updater::run_install(em.clone(), c.clone()).await {
+            Ok(outcome) => {
+                em.item("result", true, serde_json::to_string(&outcome).unwrap_or_default());
+                em.finished(1, 0, 1, vec![], false);
+                if matches!(outcome, updater::InstallOutcome::Restart) {
+                    tokio::time::sleep(Duration::from_millis(1200)).await;
+                    app.exit(0);
+                }
+            }
+            Err(AdbError::Cancelled) => em.finished(0, 0, 1, vec![], true),
+            Err(e) => em.fatal(e.to_string()),
+        }
+    })
+    .await)
+}
+
+/// Instalacja pobranego pakietu .deb przez pkexec (tylko po potwierdzeniu w GUI).
+#[tauri::command]
+async fn update_install_package(path: String) -> Result<String> {
+    updater::install_system_package(&path).await
 }
 
 #[tauri::command]
@@ -1039,6 +1077,8 @@ pub fn run() {
         .plugin(tauri_plugin_dialog::init())
         .manage(AppState::new())
         .setup(|app| {
+            // po aktualizacji wersji portable: usuń *.exe.old i katalog roboczy
+            std::thread::spawn(updater::cleanup_after_update);
             // Ikona okna dla X11 (_NET_WM_ICON - pasek XFCE, MATE, KDE X11, Alt+Tab).
             // UWAGA: domyślna ikona Tauri to icon.png 512 px - GDK po cichu NIE ustawia
             // _NET_WM_ICON przy tak dużym obrazie (limit rozmiaru żądania X11), więc
@@ -1074,6 +1114,9 @@ pub fn run() {
             inspect_restore_dir,
             agent_install_confirm,
             cancel_job,
+            update_check,
+            update_install,
+            update_install_package,
             list_apps,
             load_apps,
             scrcpy_status,
