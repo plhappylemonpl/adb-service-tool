@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Wygenerowane przez tools/gen_strings.py - nie edytuj ręcznie. -->
+<resources>
+    <string name="title_backup">Serviceverktøy – Sikkerhetskopi</string>
+    <string name="title_restore">Serviceverktøy – Gjenoppretting</string>
+    <string name="session_fmt">Økt: %1$s</string>
+    <string name="intro_backup">Drapco ADB Service Tool tar sikkerhetskopi av kontaktene dine (.vcf-fil) og SMS-meldingene (.xml-fil) til mappen Download/Backup. Når datamaskinen har lastet dem ned, slettes filene fra denne enheten og appen avinstalleres. Ingenting sendes over internett.</string>
+    <string name="intro_restore">Drapco ADB Service Tool har kopiert en sikkerhetskopi til denne enheten. Gjenopprett kontakter og SMS-meldinger med knappene nedenfor. Trykk Ferdig når du er ferdig – datamaskinen sletter de midlertidige filene og avinstallerer appen.</string>
+    <string name="btn_backup">TA SIKKERHETSKOPI</string>
+    <string name="btn_backup_done">SIKKERHETSKOPI FERDIG</string>
+    <string name="btn_restore_contacts">Gjenopprett kontakter</string>
+    <string name="btn_restore_sms">Gjenopprett SMS</string>
+    <string name="btn_default_sms_back">Tilbakestill standard SMS-app</string>
+    <string name="btn_done">Ferdig</string>
+    <string name="st_perms_ok">Tillatelser gitt. Trykk «Ta sikkerhetskopi».</string>
+    <string name="st_need_both">Appen trenger tilgang til Kontakter og SMS – godta systemdialogene.</string>
+    <string name="st_no_sms">Ingen tilgang til SMS – bare kontakter sikkerhetskopieres (eller gi tillatelsen).</string>
+    <string name="st_no_contacts">Ingen tilgang til kontakter – bare SMS sikkerhetskopieres (eller gi tillatelsen).</string>
+    <string name="st_no_storage">Ingen tillatelse til å skrive til lagring – godta systemdialogen.</string>
+    <string name="st_grant_dialogs">Godta tillatelsene i systemdialogene for å ta sikkerhetskopi.</string>
+    <string name="st_perm_blocked">Tillatelsene er blokkert. Appinnstillingene åpnes – slå på Kontakter og SMS, og kom tilbake hit.</string>
+    <string name="st_working">Eksporterer… ikke lukk appen.</string>
+    <string name="st_done_fmt">Ferdig ✔ (%1$s).\nDatamaskinen laster nå ned filene – du kan gå tilbake til datamaskinen.</string>
+    <string name="part_contacts_fmt">kontakter: %1$d</string>
+    <string name="part_contacts_denied">kontakter: ingen tillatelse</string>
+    <string name="part_sms_fmt">SMS: %1$d</string>
+    <string name="part_sms_denied">SMS: ingen tillatelse</string>
+    <string name="err_backup_fmt">Feil ved sikkerhetskopiering: %1$s</string>
+    <string name="err_no_perms">Ingen tillatelse for Kontakter og SMS – ingenting å sikkerhetskopiere</string>
+    <string name="progress_contacts_fmt">Kontakter: %1$d / %2$d</string>
+    <string name="progress_sms_fmt">SMS: %1$d / %2$d</string>
+    <string name="rs_files_fmt">Sikkerhetskopi funnet: %1$s</string>
+    <string name="rs_none">Fant ingen sikkerhetskopifiler i Download/Restore.</string>
+    <string name="rs_need_files">Gi tilgang til filer slik at sikkerhetskopien kan leses.</string>
+    <string name="rs_contacts_started_fmt">Kontakter-appen importerer %1$d kontakter – bekreft der hvis du blir spurt, og vent til den er ferdig.</string>
+    <string name="rs_contacts_done_fmt">Importerte kontakter: %1$d</string>
+    <string name="rs_need_contacts_perm">Gi tilgang til kontakter for å importere dem.</string>
+    <string name="rs_need_default">For å gjenopprette SMS må denne appen midlertidig være standard SMS-app – bekreft i neste dialog.</string>
+    <string name="rs_default_denied">Standard SMS-app ble ikke endret – SMS kan ikke gjenopprettes.</string>
+    <string name="rs_sms_progress_fmt">Gjenoppretter SMS: %1$d / %2$d</string>
+    <string name="rs_sms_done_fmt">Gjenopprettede SMS: %1$d (duplikater hoppet over: %2$d).</string>
+    <string name="rs_default_back">VIKTIG: angi den vanlige SMS-appen din (f.eks. Google Meldinger, Samsung Meldinger) som standard igjen – trykk «Tilbakestill standard SMS-app».</string>
+    <string name="rs_default_back_ok">Standard SMS-app tilbakestilt ✔</string>
+    <string name="rs_finish_hint">Trykk Ferdig når du er ferdig.</string>
+    <string name="rs_error_fmt">Feil ved gjenoppretting: %1$s</string>
+    <string name="rs_done_sent">Ferdig ✔ Datamaskinen rydder opp – du kan gå tilbake til datamaskinen.</string>
+    <string name="rs_still_default">Denne appen er fortsatt standard SMS-app. Tilbakestill den vanlige SMS-appen din først, eller trykk Ferdig igjen for å avslutte likevel (den byttes tilbake automatisk etter avinstallering).</string>
+    <string name="compose_info">Dette er et midlertidig serviceverktøy som ikke kan sende meldinger. Angi den vanlige SMS-appen din som standard igjen.</string>
+    <string name="rs_contacts_importing_fmt">Importerer kontakter: %1$d / %2$d</string>
+    <string name="rs_mms_skipped_fmt">MMS hoppet over (støttes ikke): %1$d</string>
+    <string name="rs_restricted_hint">Hvis Android sier at innstillingen er begrenset: åpne Appinfo → ⋮ → Tillat begrensede innstillinger, og prøv igjen.</string>
+</resources>

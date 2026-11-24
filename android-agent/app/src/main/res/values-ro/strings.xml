@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Wygenerowane przez tools/gen_strings.py - nie edytuj ręcznie. -->
+<resources>
+    <string name="title_backup">Instrument de service – Backup</string>
+    <string name="title_restore">Instrument de service – Restaurare</string>
+    <string name="session_fmt">Sesiune: %1$s</string>
+    <string name="intro_backup">Drapco ADB Service Tool va face backup pentru contactele tale (fișier .vcf) și mesajele SMS (fișier .xml) în dosarul Download/Backup. După ce computerul le descarcă, fișierele sunt șterse de pe acest dispozitiv, iar această aplicație este dezinstalată. Nimic nu este trimis pe internet.</string>
+    <string name="intro_restore">Drapco ADB Service Tool a copiat un backup pe acest dispozitiv. Restaurează contactele și mesajele SMS cu butoanele de mai jos. La final, atinge Gata – computerul va șterge fișierele temporare și va dezinstala această aplicație.</string>
+    <string name="btn_backup">FĂ BACKUP</string>
+    <string name="btn_backup_done">BACKUP FINALIZAT</string>
+    <string name="btn_restore_contacts">Restaurează contactele</string>
+    <string name="btn_restore_sms">Restaurează SMS-urile</string>
+    <string name="btn_default_sms_back">Restabilește aplicația SMS implicită</string>
+    <string name="btn_done">Gata</string>
+    <string name="st_perms_ok">Permisiuni acordate. Atinge „Fă backup”.</string>
+    <string name="st_need_both">Aplicația are nevoie de acces la Contacte și SMS – acceptă dialogurile sistemului.</string>
+    <string name="st_no_sms">Fără acces la SMS – se vor salva doar contactele (sau acordă permisiunea).</string>
+    <string name="st_no_contacts">Fără acces la contacte – se vor salva doar SMS-urile (sau acordă permisiunea).</string>
+    <string name="st_no_storage">Fără permisiune de scriere în stocare – acceptă dialogul sistemului.</string>
+    <string name="st_grant_dialogs">Acceptă permisiunile în dialogurile sistemului pentru a face backup.</string>
+    <string name="st_perm_blocked">Permisiunile sunt blocate. Se deschid setările aplicației – activează Contacte și SMS, apoi revino aici.</string>
+    <string name="st_working">Se exportă… nu închide aplicația.</string>
+    <string name="st_done_fmt">Gata ✔ (%1$s).\nComputerul descarcă acum fișierele – poți reveni la computer.</string>
+    <string name="part_contacts_fmt">contacte: %1$d</string>
+    <string name="part_contacts_denied">contacte: fără permisiune</string>
+    <string name="part_sms_fmt">SMS: %1$d</string>
+    <string name="part_sms_denied">SMS: fără permisiune</string>
+    <string name="err_backup_fmt">Eroare la backup: %1$s</string>
+    <string name="err_no_perms">Fără permisiune pentru Contacte și SMS – nimic de salvat</string>
+    <string name="progress_contacts_fmt">Contacte: %1$d / %2$d</string>
+    <string name="progress_sms_fmt">SMS: %1$d / %2$d</string>
+    <string name="rs_files_fmt">Backup găsit: %1$s</string>
+    <string name="rs_none">Nu s-au găsit fișiere de backup în Download/Restore.</string>
+    <string name="rs_need_files">Permite accesul la fișiere pentru a citi backup-ul.</string>
+    <string name="rs_contacts_started_fmt">Aplicația Contacte importă %1$d contacte – confirmă acolo dacă ți se cere și așteaptă finalizarea.</string>
+    <string name="rs_contacts_done_fmt">Contacte importate: %1$d</string>
+    <string name="rs_need_contacts_perm">Permite accesul la contacte pentru a le importa.</string>
+    <string name="rs_need_default">Pentru a restaura SMS-urile, această aplicație trebuie să fie temporar aplicația SMS implicită – confirmă în dialogul următor.</string>
+    <string name="rs_default_denied">Aplicația SMS implicită nu a fost schimbată – SMS-urile nu pot fi restaurate.</string>
+    <string name="rs_sms_progress_fmt">Se restaurează SMS-urile: %1$d / %2$d</string>
+    <string name="rs_sms_done_fmt">SMS-uri restaurate: %1$d (duplicate omise: %2$d).</string>
+    <string name="rs_default_back">IMPORTANT: setează din nou aplicația ta obișnuită de SMS (ex. Mesaje Google, Mesaje Samsung) ca implicită – atinge „Restabilește aplicația SMS implicită”.</string>
+    <string name="rs_default_back_ok">Aplicația SMS implicită a fost restabilită ✔</string>
+    <string name="rs_finish_hint">Când ai terminat, atinge Gata.</string>
+    <string name="rs_error_fmt">Eroare la restaurare: %1$s</string>
+    <string name="rs_done_sent">Gata ✔ Computerul face curățenie – poți reveni la computer.</string>
+    <string name="rs_still_default">Această aplicație este încă aplicația SMS implicită. Restabilește mai întâi aplicația ta obișnuită de SMS sau atinge din nou Gata pentru a termina oricum (va fi comutată automat după dezinstalare).</string>
+    <string name="compose_info">Acesta este un instrument de service temporar și nu poate trimite mesaje. Setează din nou aplicația ta obișnuită de SMS ca implicită.</string>
+    <string name="rs_contacts_importing_fmt">Se importă contactele: %1$d / %2$d</string>
+    <string name="rs_mms_skipped_fmt">MMS-uri omise (neacceptat): %1$d</string>
+    <string name="rs_restricted_hint">Dacă Android spune că setarea este restricționată: deschide Informații aplicație → ⋮ → Permite setările restricționate, apoi încearcă din nou.</string>
+</resources>

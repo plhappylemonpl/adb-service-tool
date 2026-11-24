@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Wygenerowane przez tools/gen_strings.py - nie edytuj ręcznie. -->
+<resources>
+    <string name="title_backup">Εργαλείο σέρβις – Αντίγραφο ασφαλείας</string>
+    <string name="title_restore">Εργαλείο σέρβις – Επαναφορά</string>
+    <string name="session_fmt">Συνεδρία: %1$s</string>
+    <string name="intro_backup">Το Drapco ADB Service Tool θα δημιουργήσει αντίγραφο ασφαλείας των επαφών σας (αρχείο .vcf) και των SMS (αρχείο .xml) στον φάκελο Download/Backup. Μόλις ο υπολογιστής τα κατεβάσει, τα αρχεία διαγράφονται από αυτή τη συσκευή και η εφαρμογή απεγκαθίσταται. Τίποτα δεν αποστέλλεται μέσω διαδικτύου.</string>
+    <string name="intro_restore">Το Drapco ADB Service Tool αντέγραψε ένα αντίγραφο ασφαλείας σε αυτή τη συσκευή. Επαναφέρετε τις επαφές και τα SMS με τα παρακάτω κουμπιά. Στο τέλος πατήστε Τέλος – ο υπολογιστής θα διαγράψει τα προσωρινά αρχεία και θα απεγκαταστήσει την εφαρμογή.</string>
+    <string name="btn_backup">ΔΗΜΙΟΥΡΓΙΑ ΑΝΤΙΓΡΑΦΟΥ</string>
+    <string name="btn_backup_done">ΤΟ ΑΝΤΙΓΡΑΦΟ ΟΛΟΚΛΗΡΩΘΗΚΕ</string>
+    <string name="btn_restore_contacts">Επαναφορά επαφών</string>
+    <string name="btn_restore_sms">Επαναφορά SMS</string>
+    <string name="btn_default_sms_back">Επαναφορά προεπιλεγμένης εφαρμογής SMS</string>
+    <string name="btn_done">Τέλος</string>
+    <string name="st_perms_ok">Οι άδειες δόθηκαν. Πατήστε «Δημιουργία αντιγράφου».</string>
+    <string name="st_need_both">Η εφαρμογή χρειάζεται πρόσβαση στις Επαφές και στα SMS – αποδεχτείτε τα παράθυρα του συστήματος.</string>
+    <string name="st_no_sms">Χωρίς πρόσβαση στα SMS – θα αποθηκευτούν μόνο οι επαφές (ή δώστε την άδεια).</string>
+    <string name="st_no_contacts">Χωρίς πρόσβαση στις επαφές – θα αποθηκευτούν μόνο τα SMS (ή δώστε την άδεια).</string>
+    <string name="st_no_storage">Χωρίς άδεια εγγραφής στον αποθηκευτικό χώρο – αποδεχτείτε το παράθυρο του συστήματος.</string>
+    <string name="st_grant_dialogs">Αποδεχτείτε τις άδειες στα παράθυρα του συστήματος για να δημιουργηθεί αντίγραφο.</string>
+    <string name="st_perm_blocked">Οι άδειες είναι μπλοκαρισμένες. Ανοίγουν οι ρυθμίσεις της εφαρμογής – ενεργοποιήστε τις Επαφές και τα SMS και επιστρέψτε εδώ.</string>
+    <string name="st_working">Εξαγωγή… μην κλείσετε την εφαρμογή.</string>
+    <string name="st_done_fmt">Έτοιμο ✔ (%1$s).\nΟ υπολογιστής κατεβάζει τώρα τα αρχεία – μπορείτε να επιστρέψετε στον υπολογιστή.</string>
+    <string name="part_contacts_fmt">επαφές: %1$d</string>
+    <string name="part_contacts_denied">επαφές: χωρίς άδεια</string>
+    <string name="part_sms_fmt">SMS: %1$d</string>
+    <string name="part_sms_denied">SMS: χωρίς άδεια</string>
+    <string name="err_backup_fmt">Σφάλμα αντιγράφου ασφαλείας: %1$s</string>
+    <string name="err_no_perms">Χωρίς άδεια για Επαφές και SMS – δεν υπάρχει τίποτα για αντίγραφο</string>
+    <string name="progress_contacts_fmt">Επαφές: %1$d / %2$d</string>
+    <string name="progress_sms_fmt">SMS: %1$d / %2$d</string>
+    <string name="rs_files_fmt">Βρέθηκε αντίγραφο: %1$s</string>
+    <string name="rs_none">Δεν βρέθηκαν αρχεία αντιγράφου στο Download/Restore.</string>
+    <string name="rs_need_files">Επιτρέψτε την πρόσβαση στα αρχεία ώστε να διαβαστεί το αντίγραφο.</string>
+    <string name="rs_contacts_started_fmt">Η εφαρμογή Επαφές εισάγει %1$d επαφές – επιβεβαιώστε εκεί αν ζητηθεί και περιμένετε να ολοκληρωθεί.</string>
+    <string name="rs_contacts_done_fmt">Επαφές που εισήχθησαν: %1$d</string>
+    <string name="rs_need_contacts_perm">Επιτρέψτε την πρόσβαση στις επαφές για να εισαχθούν.</string>
+    <string name="rs_need_default">Για την επαναφορά SMS, αυτή η εφαρμογή πρέπει να είναι προσωρινά η προεπιλεγμένη εφαρμογή SMS – επιβεβαιώστε στο επόμενο παράθυρο.</string>
+    <string name="rs_default_denied">Η προεπιλεγμένη εφαρμογή SMS δεν άλλαξε – δεν είναι δυνατή η επαναφορά των SMS.</string>
+    <string name="rs_sms_progress_fmt">Επαναφορά SMS: %1$d / %2$d</string>
+    <string name="rs_sms_done_fmt">SMS που επαναφέρθηκαν: %1$d (διπλότυπα που παραλείφθηκαν: %2$d).</string>
+    <string name="rs_default_back">ΣΗΜΑΝΤΙΚΟ: ορίστε ξανά τη συνηθισμένη σας εφαρμογή SMS (π.χ. Μηνύματα Google, Μηνύματα Samsung) ως προεπιλογή – πατήστε «Επαναφορά προεπιλεγμένης εφαρμογής SMS».</string>
+    <string name="rs_default_back_ok">Η προεπιλεγμένη εφαρμογή SMS επαναφέρθηκε ✔</string>
+    <string name="rs_finish_hint">Όταν τελειώσετε, πατήστε Τέλος.</string>
+    <string name="rs_error_fmt">Σφάλμα επαναφοράς: %1$s</string>
+    <string name="rs_done_sent">Έτοιμο ✔ Ο υπολογιστής κάνει καθαρισμό – μπορείτε να επιστρέψετε στον υπολογιστή.</string>
+    <string name="rs_still_default">Αυτή η εφαρμογή είναι ακόμη η προεπιλεγμένη εφαρμογή SMS. Επαναφέρετε πρώτα τη συνηθισμένη σας εφαρμογή SMS ή πατήστε ξανά Τέλος για να ολοκληρώσετε έτσι κι αλλιώς (θα αλλάξει αυτόματα μετά την απεγκατάσταση).</string>
+    <string name="compose_info">Αυτό είναι ένα προσωρινό εργαλείο σέρβις και δεν μπορεί να στείλει μηνύματα. Ορίστε ξανά τη συνηθισμένη σας εφαρμογή SMS ως προεπιλογή.</string>
+    <string name="rs_contacts_importing_fmt">Εισαγωγή επαφών: %1$d / %2$d</string>
+    <string name="rs_mms_skipped_fmt">Τα MMS παραλείφθηκαν (δεν υποστηρίζονται): %1$d</string>
+    <string name="rs_restricted_hint">Αν το Android αναφέρει ότι η ρύθμιση είναι περιορισμένη: ανοίξτε Πληροφορίες εφαρμογής → ⋮ → Να επιτρέπονται οι περιορισμένες ρυθμίσεις και δοκιμάστε ξανά.</string>
+</resources>

@@ -4,7 +4,7 @@
 
 Desktopowe narzędzie serwisowe do telefonów z Androidem oparte na ADB, Fastboot i MTP: kopia i przywracanie plików, migracja kontaktów/SMS, zarządzanie aplikacjami, diagnostyka i narzędzia producentów (Samsung, Xiaomi, Motorola).
 Działa na **Linuksie** i **Windows** (Tauri v2: backend w Rust, frontend w SvelteKit) i jest przeznaczone dla serwisów GSM i techników.
-Interfejs jest po polsku i angielsku.
+Interfejs jest dostępny w 27 językach (zob. [Języki](#języki)).
 
 ## Funkcje
 
@@ -26,7 +26,7 @@ Interfejs jest po polsku i angielsku.
 - Wysyłanie: tworzy brakujące foldery, wznawia (pomija pliki o identycznym rozmiarze), postęp bajtowy.
 
 ### Kontakty i SMS (aplikacja pomocnicza Android)
-- `android-agent/`: mała aplikacja w Kotlinie bez AndroidX (minSdk 21, targetSdk 34), interfejs w **20 językach** (angielski domyślny, polski, niemiecki, hiszpański, francuski, …).
+- `android-agent/`: mała aplikacja w Kotlinie bez AndroidX (minSdk 21, targetSdk 34), interfejs w tych samych językach co aplikacja desktopowa (plus arabski, hindi i bengalski), wybierany automatycznie według języka telefonu.
 - **Kopia**: narzędzie instaluje agenta, użytkownik akceptuje `READ_CONTACTS` / `READ_SMS` i klika *Wykonaj kopię*. `contacts.vcf` i `sms.xml` (format SMS Backup & Restore) są pobierane i sprawdzane rozmiarem.
 - **Przywracanie**: folder kopii trafia do `Download/Restore/<sesja>/`.
   - Kontakty importuje systemowa aplikacja Kontakty (`ACTION_VIEW text/x-vcard`), awaryjnie agent importuje je sam (`WRITE_CONTACTS`).
@@ -77,6 +77,13 @@ Interfejs jest po polsku i angielsku.
   - Linux portable `tar.gz`: atomowa podmiana binarki.
   - Linux pakiet systemowy: pobranie `.deb` i polecenie instalacji albo `pkexec` po potwierdzeniu.
 
+### Języki
+- 27 języków: English, Polski, Čeština, Nederlands, Nederlands (België), Français, Deutsch, Español, Português (Brasil), Português, Italiano, Slovenčina, Українська, Русский, Magyar, Română, Türkçe, Svenska, Norsk, Dansk, Suomi, Ελληνικά, 日本語, 한국어, 简体中文, Bahasa Indonesia, Tiếng Việt.
+- Domyślnie **Auto (system)**: język pochodzi z systemu (Linux `LANGUAGE` / `LC_ALL` / `LC_MESSAGES` / `LANG`, Windows API przez `sys-locale`) w połączeniu z `navigator.languages`. Dopasowanie: najpierw dokładny tag (`nl-BE`, `pt-BR`, `zh-CN`), potem język bazowy (`cs-CZ` → `cs`, `fr-CA` → `fr`, `nn-NO` → `nb`), w przeciwnym razie **angielski**.
+- Język wybrany ręcznie w selektorze w nagłówku jest zapamiętywany; *Auto (system)* przywraca wykrywanie. Flagi to dołączone pliki SVG ([flag-icons](https://github.com/lipis/flag-icons), MIT), bez CDN.
+- `npm run check:i18n` (też w `./build.sh check`) sprawdza każdy `src/lib/locales/*.json` względem `en.json`: te same klucze, brak pustych tekstów, te same `{placeholdery}` i reguły dopasowania locale.
+- Android Agent: `android-agent/tools/gen_strings.py` generuje `res/values-*/strings.xml` (m.in. `values-pt-rBR`, `values-nl-rBE`, `values-zh-rCN`, `values-in` + `values-id`) z escapowaniem XML/apostrofów i kontrolą placeholderów.
+
 ### Sterowniki / udev
 - **Windows**: wykrywanie pakietów sterowników (Google ADB/Fastboot, MTP, Samsung, Motorola, Qualcomm 9008) i urządzeń USB bez sterownika. Instalacja jednym monitem UAC (`pnputil` / `msiexec`), opcjonalna kontrola SHA-256.
 - **Linux**: sprawdzenie reguł udev i dostępu do `/dev/bus/usb`. Instalacja `51-android.rules` przez `pkexec` / `sudo` (hasło nie jest zapisywane), dodanie użytkownika do `adbusers`, przeładowanie udev.
@@ -105,7 +112,7 @@ Linux:
 ```bash
 ./build.sh dev      # tryb developerski (hot reload)
 ./build.sh          # build produkcyjny (.deb / .rpm / AppImage zgodnie z celami Tauri)
-./build.sh check    # svelte-check + cargo check + testy Rust
+./build.sh check    # svelte-check + test tłumaczeń + cargo check + testy Rust
 ./build.sh windows  # cross-compile na Windows x64: instalator NSIS + przenośny .exe w dist/windows/
 ./build.sh agent    # tylko aplikacja pomocnicza -> src-tauri/resources/agent/Agent.apk
 ```
@@ -142,7 +149,7 @@ adb-service-tool/
 ├─ scripts/                    # generatory ikony i grafik instalatora (czysty Node)
 ├─ src/                        # GUI SvelteKit (Svelte 5, Tailwind)
 │  └─ lib/
-│     ├─ api.ts, stores.svelte.ts, i18n.ts, locales/{pl,en}.json
+│     ├─ api.ts, stores.svelte.ts, i18n.ts, locales/*.json (27 języków), localeMatch.js
 │     ├─ components/           # karta postępu, panel logu, okna dialogowe, powiadomienia
 │     ├─ vendors/              # panele Samsung / Xiaomi / Motorola, Samsung Flasher
 │     └─ views/                # jeden widok na zakładkę

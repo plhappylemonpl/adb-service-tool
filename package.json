@@ -1,6 +1,6 @@
 {
   "name": "adb-service-tool",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "ADB Service Tool - serwisowe narzędzie ADB/Fastboot/MTP (Drapco)",
   "type": "module",
   "scripts": {
@@ -8,7 +8,8 @@
     "build": "vite build",
     "preview": "vite preview",
     "tauri": "tauri",
-    "check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json"
+    "check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
+    "check:i18n": "node scripts/check-locales.mjs"
   },
   "devDependencies": {
     "@sveltejs/adapter-static": "^3.0.6",
@@ -27,6 +28,7 @@
     "@tauri-apps/api": "^2.1.0",
     "@tauri-apps/plugin-dialog": "^2.0.0",
     "@tauri-apps/plugin-shell": "^2.0.0",
+    "flag-icons": "^7.6.0",
     "lucide-svelte": "^0.454.0"
   }
 }

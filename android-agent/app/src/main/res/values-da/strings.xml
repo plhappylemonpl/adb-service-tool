@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Wygenerowane przez tools/gen_strings.py - nie edytuj ręcznie. -->
+<resources>
+    <string name="title_backup">Serviceværktøj – Sikkerhedskopi</string>
+    <string name="title_restore">Serviceværktøj – Gendannelse</string>
+    <string name="session_fmt">Session: %1$s</string>
+    <string name="intro_backup">Drapco ADB Service Tool tager en sikkerhedskopi af dine kontakter (.vcf-fil) og sms\'er (.xml-fil) til mappen Download/Backup. Når computeren har hentet dem, slettes filerne fra denne enhed, og appen afinstalleres. Intet sendes via internettet.</string>
+    <string name="intro_restore">Drapco ADB Service Tool har kopieret en sikkerhedskopi til denne enhed. Gendan dine kontakter og sms\'er med knapperne nedenfor. Tryk på Færdig, når du er færdig – computeren sletter de midlertidige filer og afinstallerer appen.</string>
+    <string name="btn_backup">TAG SIKKERHEDSKOPI</string>
+    <string name="btn_backup_done">SIKKERHEDSKOPI FÆRDIG</string>
+    <string name="btn_restore_contacts">Gendan kontakter</string>
+    <string name="btn_restore_sms">Gendan sms</string>
+    <string name="btn_default_sms_back">Nulstil standardapp til sms</string>
+    <string name="btn_done">Færdig</string>
+    <string name="st_perms_ok">Tilladelser givet. Tryk på »Tag sikkerhedskopi«.</string>
+    <string name="st_need_both">Appen skal have adgang til Kontakter og sms – acceptér systemdialogerne.</string>
+    <string name="st_no_sms">Ingen adgang til sms – kun kontakter sikkerhedskopieres (eller giv tilladelsen).</string>
+    <string name="st_no_contacts">Ingen adgang til kontakter – kun sms\'er sikkerhedskopieres (eller giv tilladelsen).</string>
+    <string name="st_no_storage">Ingen tilladelse til at skrive til lageret – acceptér systemdialogen.</string>
+    <string name="st_grant_dialogs">Acceptér tilladelserne i systemdialogerne for at tage en sikkerhedskopi.</string>
+    <string name="st_perm_blocked">Tilladelserne er blokeret. Appindstillingerne åbnes – slå Kontakter og sms til, og vend tilbage hertil.</string>
+    <string name="st_working">Eksporterer… luk ikke appen.</string>
+    <string name="st_done_fmt">Færdig ✔ (%1$s).\nComputeren henter nu filerne – du kan gå tilbage til computeren.</string>
+    <string name="part_contacts_fmt">kontakter: %1$d</string>
+    <string name="part_contacts_denied">kontakter: ingen tilladelse</string>
+    <string name="part_sms_fmt">sms: %1$d</string>
+    <string name="part_sms_denied">sms: ingen tilladelse</string>
+    <string name="err_backup_fmt">Fejl ved sikkerhedskopiering: %1$s</string>
+    <string name="err_no_perms">Ingen tilladelse til Kontakter og sms – intet at sikkerhedskopiere</string>
+    <string name="progress_contacts_fmt">Kontakter: %1$d / %2$d</string>
+    <string name="progress_sms_fmt">Sms: %1$d / %2$d</string>
+    <string name="rs_files_fmt">Sikkerhedskopi fundet: %1$s</string>
+    <string name="rs_none">Der blev ikke fundet nogen sikkerhedskopifiler i Download/Restore.</string>
+    <string name="rs_need_files">Tillad adgang til filer, så sikkerhedskopien kan læses.</string>
+    <string name="rs_contacts_started_fmt">Appen Kontakter importerer %1$d kontakter – bekræft der, hvis du bliver spurgt, og vent, til den er færdig.</string>
+    <string name="rs_contacts_done_fmt">Importerede kontakter: %1$d</string>
+    <string name="rs_need_contacts_perm">Tillad adgang til kontakter for at importere dem.</string>
+    <string name="rs_need_default">For at gendanne sms\'er skal denne app midlertidigt være standardapp til sms – bekræft i næste dialog.</string>
+    <string name="rs_default_denied">Standardappen til sms blev ikke ændret – sms\'er kan ikke gendannes.</string>
+    <string name="rs_sms_progress_fmt">Gendanner sms: %1$d / %2$d</string>
+    <string name="rs_sms_done_fmt">Gendannede sms\'er: %1$d (dubletter sprunget over: %2$d).</string>
+    <string name="rs_default_back">VIGTIGT: angiv din sædvanlige sms-app (f.eks. Google Beskeder, Samsung Beskeder) som standard igen – tryk på »Nulstil standardapp til sms«.</string>
+    <string name="rs_default_back_ok">Standardapp til sms nulstillet ✔</string>
+    <string name="rs_finish_hint">Tryk på Færdig, når du er færdig.</string>
+    <string name="rs_error_fmt">Fejl ved gendannelse: %1$s</string>
+    <string name="rs_done_sent">Færdig ✔ Computeren rydder op – du kan gå tilbage til computeren.</string>
+    <string name="rs_still_default">Denne app er stadig standardapp til sms. Nulstil din sædvanlige sms-app først, eller tryk på Færdig igen for at afslutte alligevel (den skiftes automatisk tilbage efter afinstallationen).</string>
+    <string name="compose_info">Dette er et midlertidigt serviceværktøj, som ikke kan sende beskeder. Angiv din sædvanlige sms-app som standard igen.</string>
+    <string name="rs_contacts_importing_fmt">Importerer kontakter: %1$d / %2$d</string>
+    <string name="rs_mms_skipped_fmt">Mms sprunget over (understøttes ikke): %1$d</string>
+    <string name="rs_restricted_hint">Hvis Android siger, at indstillingen er begrænset: åbn Appinfo → ⋮ → Tillad begrænsede indstillinger, og prøv igen.</string>
+</resources>

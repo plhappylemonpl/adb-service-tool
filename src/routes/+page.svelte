@@ -1,12 +1,13 @@
 <script lang="ts">
   import { onMount } from 'svelte';
-  import { Smartphone, Info, Download, Upload, Package, Power, Wrench, Languages, CircleAlert, MonitorSmartphone, Factory, Activity, ScrollText, Cable, Rocket, FileCode2, Wifi, Contact, Sparkles } from 'lucide-svelte';
+  import { Smartphone, Info, Download, Upload, Package, Power, Wrench, CircleAlert, MonitorSmartphone, Factory, Activity, ScrollText, Cable, Rocket, FileCode2, Wifi, Contact, Sparkles } from 'lucide-svelte';
   import { getVersion } from '@tauri-apps/api/app';
   import { updater } from '$lib/updater.svelte';
   import UpdateDialog from '$lib/components/UpdateDialog.svelte';
   import { api } from '$lib/api';
   import { app, setDevices, pushLog, selectedDevice } from '$lib/stores.svelte';
-  import { t, toggleLang, lang } from '$lib/i18n';
+  import { t, initLang } from '$lib/i18n';
+  import LangPicker from '$lib/components/LangPicker.svelte';
   import { errText } from '$lib/format';
   import LogPanel from '$lib/components/LogPanel.svelte';
   import Confirm from '$lib/components/Confirm.svelte';
@@ -66,6 +67,8 @@
   onMount(() => {
     let unlisten: (() => void) | undefined;
     getVersion().then((v) => (version = v)).catch(() => {});
+    // język systemu z backendu (WebKitGTK bywa ślepy na locale) - tylko w trybie auto
+    void initLang();
     // sprawdzenie aktualizacji w tle (krótki timeout w backendzie, błędy po cichu)
     updater.scheduleStartupCheck(5000);
     (async () => {
@@ -117,7 +120,7 @@
       <button class="btn btn-gold !py-1.5" onclick={() => openWifi('pair')} disabled={!app.tools?.adbPath} title={$t('wifi.subtitle')}>
         <Wifi size={15} />{$t('wifi.button')}
       </button>
-      <button class="btn !py-1.5" onclick={toggleLang} title="PL / EN"><Languages size={15} />{$lang.toUpperCase()}</button>
+      <LangPicker />
     </div>
   </header>
 
@@ -157,7 +160,7 @@
             <div class="text-neutral-500">{$t('devices.noneShort')}</div>
           {/if}
         </div>
-        <div class="text-center text-[10px] text-neutral-600">Drapco • v{version || '1.0.0'}</div>
+        <div class="text-center text-[10px] text-neutral-600">Drapco • v{version || '1.1.0'}</div>
       </div>
     </nav>
 

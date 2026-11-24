@@ -1,5 +1,6 @@
 pub mod cancel;
 pub mod download;
+pub mod locale;
 pub mod shell;
 
 pub use cancel::CancelToken;

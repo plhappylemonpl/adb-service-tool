@@ -686,5 +686,7 @@
   "update.checkFailed": "Nie udało się sprawdzić aktualizacji",
   "update.noneFound": "Brak nowszej wersji",
   "update.skippedInfo": "Pominięta wersja: {v}",
-  "update.unskip": "Cofnij pominięcie"
+  "update.unskip": "Cofnij pominięcie",
+  "lang.choose": "Język",
+  "lang.auto": "Auto (system)"
 }

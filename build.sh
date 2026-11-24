@@ -396,6 +396,8 @@ case "$MODE" in
   check)
     say "svelte-check..."
     npm run check
+    say "tłumaczenia (klucze, placeholdery, dopasowanie locale)..."
+    npm run --silent check:i18n
     say "cargo check + testy..."
     [ -f build/index.html ] || npm run build
     (cd src-tauri && cargo check && cargo test --lib)

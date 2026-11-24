@@ -1,6 +1,6 @@
 [package]
 name = "adb-service-tool"
-version = "1.0.0"
+version = "1.1.0"
 description = "ADB Service Tool - serwisowe narzędzie ADB/Fastboot/MTP"
 authors = ["Drapco"]
 edition = "2021"
@@ -47,6 +47,7 @@ tar = "0.4"
 # obrazy *.lz4 w firmware Samsunga (Odin 3.14+) - dekompresja strumieniowa przed Heimdallem (czysty Rust)
 lz4_flex = { version = "0.11", default-features = false, features = ["frame", "safe-decode", "std"] }
 semver = "1"
+sys-locale = "0.3"
 
 # Linux: stały app_id / WM_CLASS (ikona na pasku KDE Wayland, XFCE, MATE...)
 # wersje zgodne z gtk 0.18 używanym przez Tauri

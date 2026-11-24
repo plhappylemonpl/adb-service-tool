@@ -4,7 +4,7 @@
 
 A desktop service tool for Android phones built on ADB, Fastboot and MTP: file backup and restore, contacts/SMS migration, app management, diagnostics and vendor tools (Samsung, Xiaomi, Motorola).
 It runs on **Linux** and **Windows** (Tauri v2: Rust backend, SvelteKit frontend) and is made for phone repair shops and technicians.
-The UI is available in Polish and English.
+The UI is available in 27 languages (see [Languages](#languages)).
 
 ## Features
 
@@ -26,7 +26,7 @@ The UI is available in Polish and English.
 - Push: creates missing folders, resumes (skips files with identical size), byte progress.
 
 ### Contacts and SMS (helper Android app)
-- `android-agent/`: a small Kotlin app without AndroidX (minSdk 21, targetSdk 34), UI in **20 languages** (English default, Polish, German, Spanish, French, …).
+- `android-agent/`: a small Kotlin app without AndroidX (minSdk 21, targetSdk 34), UI in the same languages as the desktop app (plus Arabic, Hindi and Bengali), picked automatically from the phone's language.
 - **Backup**: the tool installs the agent, the user accepts `READ_CONTACTS` / `READ_SMS` and taps *Make backup*. `contacts.vcf` and `sms.xml` (SMS Backup & Restore format) are pulled and size-checked.
 - **Restore**: the backup folder is pushed to `Download/Restore/<session>/`.
   - Contacts are imported through the system Contacts app (`ACTION_VIEW text/x-vcard`), with a direct `WRITE_CONTACTS` import as fallback.
@@ -77,6 +77,13 @@ The UI is available in Polish and English.
   - Linux portable `tar.gz`: atomic replace of the binary.
   - Linux system package: downloads the `.deb` and shows the install command, or runs `pkexec` after confirmation.
 
+### Languages
+- 27 languages: English, Polski, Čeština, Nederlands, Nederlands (België), Français, Deutsch, Español, Português (Brasil), Português, Italiano, Slovenčina, Українська, Русский, Magyar, Română, Türkçe, Svenska, Norsk, Dansk, Suomi, Ελληνικά, 日本語, 한국어, 简体中文, Bahasa Indonesia, Tiếng Việt.
+- **Auto (System)** by default: the language comes from the OS (Linux `LANGUAGE` / `LC_ALL` / `LC_MESSAGES` / `LANG`, Windows API via `sys-locale`) combined with `navigator.languages`. Matching: exact tag first (`nl-BE`, `pt-BR`, `zh-CN`), then the base language (`cs-CZ` → `cs`, `fr-CA` → `fr`, `nn-NO` → `nb`), otherwise **English**.
+- A language picked by hand in the header selector is remembered; *Auto (System)* switches back. Flags are bundled SVGs ([flag-icons](https://github.com/lipis/flag-icons), MIT), no CDN.
+- `npm run check:i18n` (also part of `./build.sh check`) checks every `src/lib/locales/*.json` against `en.json`: same keys, no empty strings, same `{placeholders}`, and the locale matching rules.
+- Android Agent: `android-agent/tools/gen_strings.py` generates `res/values-*/strings.xml` (incl. `values-pt-rBR`, `values-nl-rBE`, `values-zh-rCN`, `values-in` + `values-id`) with XML/apostrophe escaping and placeholder checks.
+
 ### Drivers / udev
 - **Windows**: detects driver packages (Google ADB/Fastboot, MTP, Samsung, Motorola, Qualcomm 9008) and USB devices without a driver. Installs with one UAC prompt (`pnputil` / `msiexec`), optional SHA-256 check.
 - **Linux**: checks udev rules and `/dev/bus/usb` access. Installs `51-android.rules` via `pkexec` / `sudo` (the password is never stored), adds the user to `adbusers`, reloads udev.
@@ -105,7 +112,7 @@ Linux:
 ```bash
 ./build.sh dev      # development mode (hot reload)
 ./build.sh          # release build (.deb / .rpm / AppImage per Tauri targets)
-./build.sh check    # svelte-check + cargo check + Rust tests
+./build.sh check    # svelte-check + i18n check + cargo check + Rust tests
 ./build.sh windows  # cross-compile for Windows x64: NSIS installer + portable .exe in dist/windows/
 ./build.sh agent    # build only the helper app -> src-tauri/resources/agent/Agent.apk
 ```
@@ -142,7 +149,7 @@ adb-service-tool/
 ├─ scripts/                    # icon and installer artwork generators (plain Node)
 ├─ src/                        # SvelteKit GUI (Svelte 5, Tailwind)
 │  └─ lib/
-│     ├─ api.ts, stores.svelte.ts, i18n.ts, locales/{pl,en}.json
+│     ├─ api.ts, stores.svelte.ts, i18n.ts, locales/*.json (27 languages), localeMatch.js
 │     ├─ components/           # progress card, log panel, dialogs, toasts
 │     ├─ vendors/              # Samsung / Xiaomi / Motorola panels, Samsung Flasher
 │     └─ views/                # one view per tab

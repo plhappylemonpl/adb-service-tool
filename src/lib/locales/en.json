@@ -577,7 +577,7 @@
   "nav.backup": "Contacts & SMS",
   "backup.title": "Contacts & SMS backup",
   "backup.subtitle": "Companion app (Drapco Backup Agent) – works on any Android 5.0+, no root",
-  "backup.how": "The tool installs a small companion app on the device and opens it on screen. After you allow the permissions and tap “Wykonaj kopię” (Back up), contacts (.vcf) and SMS (.xml, SMS Backup & Restore compatible) are pulled to the computer automatically.",
+  "backup.how": "The tool installs a small companion app on the device and opens it on screen. After you allow the permissions and tap “Make backup”, contacts (.vcf) and SMS (.xml, SMS Backup & Restore compatible) are pulled to the computer automatically.",
   "backup.privacy": "After pulling, the files are deleted from the device and the companion app is uninstalled – also on error or cancel. Data never leaves the USB cable.",
   "backup.step.deploy": "Installing the companion app (adb install, manually from Download if blocked)",
   "backup.step.launch": "Opening it on the device screen",
@@ -589,7 +589,7 @@
   "backup.modalTitle": "Finish on the device",
   "backup.modal1": "Unlock the device screen – “Drapco Backup Agent” is already open.",
   "backup.modal2": "Allow Contacts and SMS access in the system dialogs.",
-  "backup.modal3": "Tap “Wykonaj kopię” on the phone – files are pulled automatically.",
+  "backup.modal3": "Tap “Make backup” on the phone – files are pulled automatically.",
   "backup.polling": "Checking every 2 s",
   "backup.doneTitle": "Backup ready",
   "backup.failedTitle": "Backup failed",
@@ -686,5 +686,7 @@
   "update.checkFailed": "Could not check for updates",
   "update.noneFound": "No newer version",
   "update.skippedInfo": "Skipped version: {v}",
-  "update.unskip": "Undo skip"
+  "update.unskip": "Undo skip",
+  "lang.choose": "Language",
+  "lang.auto": "Auto (system)"
 }

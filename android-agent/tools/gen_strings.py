@@ -26,15 +26,34 @@ def android_escape(s):
     return s
 
 
+FLEMISH = [
+    (r"\bapparaten\b", "toestellen"), (r"\bApparaten\b", "Toestellen"),
+    (r"apparaat", "toestel"), (r"Apparaat", "Toestel"),
+    (r"\btelefoon\b", "gsm"), (r"sms'jes", "sms'en"), (r"Sms'jes", "Sms'en"),
+]
+
+
+def flemish(s):
+    for a, b in FLEMISH:
+        s = re.sub(a, b, s)
+    return s
+
+
+# historyczny kod indonezyjskiego (Android < 7 zgłasza "in", nowsze "id")
+ALIASES = {"in": ["id"]}
+
+
 def main():
     base = load("base.py")
     en, langs = base["EN"], {"pl": base["PL"], "de": base["DE"]}
     keys = list(en)
-    for f in ("set_a.py", "set_b.py", "set_c.py", "set_d.py"):
+    for f in ("set_a.py", "set_b.py", "set_c.py", "set_d.py", "set_e.py"):
         for code, values in load(f)["L"].items():
             if len(values) != len(keys):
                 sys.exit(f"{code}: {len(values)} tekstów, oczekiwano {len(keys)}")
             langs[code] = dict(zip(keys, values))
+    # odmiany pochodne
+    langs["nl-rBE"] = {k: flemish(v) for k, v in langs["nl"].items()}  # Vlaams: toestel, gsm
     errors = []
     for code, d in langs.items():
         if set(d) != set(keys):
@@ -65,6 +84,8 @@ def main():
     write("values", en, True)
     for code, d in sorted(langs.items()):
         write(f"values-{code}", d, False)
+        for alias in ALIASES.get(code, []):
+            write(f"values-{alias}", d, False)
     print(f"OK: {len(langs) + 1} języków × {len(keys)} tekstów")
 
 

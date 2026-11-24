@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Wygenerowane przez tools/gen_strings.py - nie edytuj ręcznie. -->
+<resources>
+    <string name="title_backup">Huoltotyökalu – Varmuuskopio</string>
+    <string name="title_restore">Huoltotyökalu – Palautus</string>
+    <string name="session_fmt">Istunto: %1$s</string>
+    <string name="intro_backup">Drapco ADB Service Tool varmuuskopioi yhteystietosi (.vcf-tiedosto) ja tekstiviestisi (.xml-tiedosto) Download/Backup-kansioon. Kun tietokone on ladannut ne, tiedostot poistetaan tästä laitteesta ja tämä sovellus poistetaan. Mitään ei lähetetä internetin kautta.</string>
+    <string name="intro_restore">Drapco ADB Service Tool kopioi varmuuskopion tähän laitteeseen. Palauta yhteystiedot ja tekstiviestit alla olevilla painikkeilla. Napauta lopuksi Valmis – tietokone poistaa väliaikaiset tiedostot ja poistaa tämän sovelluksen.</string>
+    <string name="btn_backup">TEE VARMUUSKOPIO</string>
+    <string name="btn_backup_done">VARMUUSKOPIO VALMIS</string>
+    <string name="btn_restore_contacts">Palauta yhteystiedot</string>
+    <string name="btn_restore_sms">Palauta tekstiviestit</string>
+    <string name="btn_default_sms_back">Palauta oletustekstiviestisovellus</string>
+    <string name="btn_done">Valmis</string>
+    <string name="st_perms_ok">Käyttöoikeudet myönnetty. Napauta ”Tee varmuuskopio”.</string>
+    <string name="st_need_both">Sovellus tarvitsee pääsyn yhteystietoihin ja tekstiviesteihin – hyväksy järjestelmän ikkunat.</string>
+    <string name="st_no_sms">Ei pääsyä tekstiviesteihin – vain yhteystiedot varmuuskopioidaan (tai myönnä käyttöoikeus).</string>
+    <string name="st_no_contacts">Ei pääsyä yhteystietoihin – vain tekstiviestit varmuuskopioidaan (tai myönnä käyttöoikeus).</string>
+    <string name="st_no_storage">Ei oikeutta kirjoittaa tallennustilaan – hyväksy järjestelmän ikkuna.</string>
+    <string name="st_grant_dialogs">Hyväksy käyttöoikeudet järjestelmän ikkunoissa varmuuskopion tekemiseksi.</string>
+    <string name="st_perm_blocked">Käyttöoikeudet on estetty. Sovelluksen asetukset avautuvat – ota yhteystiedot ja tekstiviestit käyttöön ja palaa tänne.</string>
+    <string name="st_working">Viedään… älä sulje sovellusta.</string>
+    <string name="st_done_fmt">Valmis ✔ (%1$s).\nTietokone lataa nyt tiedostoja – voit palata tietokoneelle.</string>
+    <string name="part_contacts_fmt">yhteystiedot: %1$d</string>
+    <string name="part_contacts_denied">yhteystiedot: ei oikeutta</string>
+    <string name="part_sms_fmt">tekstiviestit: %1$d</string>
+    <string name="part_sms_denied">tekstiviestit: ei oikeutta</string>
+    <string name="err_backup_fmt">Varmuuskopiointivirhe: %1$s</string>
+    <string name="err_no_perms">Ei oikeutta yhteystietoihin ja tekstiviesteihin – ei mitään varmuuskopioitavaa</string>
+    <string name="progress_contacts_fmt">Yhteystiedot: %1$d / %2$d</string>
+    <string name="progress_sms_fmt">Tekstiviestit: %1$d / %2$d</string>
+    <string name="rs_files_fmt">Varmuuskopio löytyi: %1$s</string>
+    <string name="rs_none">Download/Restore-kansiosta ei löytynyt varmuuskopiotiedostoja.</string>
+    <string name="rs_need_files">Salli pääsy tiedostoihin, jotta varmuuskopio voidaan lukea.</string>
+    <string name="rs_contacts_started_fmt">Yhteystiedot-sovellus tuo %1$d yhteystietoa – vahvista siellä pyydettäessä ja odota, kunnes se valmistuu.</string>
+    <string name="rs_contacts_done_fmt">Tuotuja yhteystietoja: %1$d</string>
+    <string name="rs_need_contacts_perm">Salli pääsy yhteystietoihin niiden tuomiseksi.</string>
+    <string name="rs_need_default">Tekstiviestien palauttamiseksi tämän sovelluksen on oltava väliaikaisesti oletustekstiviestisovellus – vahvista seuraavassa ikkunassa.</string>
+    <string name="rs_default_denied">Oletustekstiviestisovellusta ei vaihdettu – tekstiviestejä ei voi palauttaa.</string>
+    <string name="rs_sms_progress_fmt">Palautetaan tekstiviestejä: %1$d / %2$d</string>
+    <string name="rs_sms_done_fmt">Palautettuja tekstiviestejä: %1$d (ohitettuja kaksoiskappaleita: %2$d).</string>
+    <string name="rs_default_back">TÄRKEÄÄ: aseta tavallinen tekstiviestisovelluksesi (esim. Google Viestit, Samsung Viestit) takaisin oletukseksi – napauta ”Palauta oletustekstiviestisovellus”.</string>
+    <string name="rs_default_back_ok">Oletustekstiviestisovellus palautettu ✔</string>
+    <string name="rs_finish_hint">Kun olet valmis, napauta Valmis.</string>
+    <string name="rs_error_fmt">Palautusvirhe: %1$s</string>
+    <string name="rs_done_sent">Valmis ✔ Tietokone siivoaa – voit palata tietokoneelle.</string>
+    <string name="rs_still_default">Tämä sovellus on yhä oletustekstiviestisovellus. Palauta ensin tavallinen tekstiviestisovelluksesi tai lopeta silti napauttamalla Valmis uudelleen (se vaihtuu takaisin automaattisesti poiston jälkeen).</string>
+    <string name="compose_info">Tämä on väliaikainen huoltotyökalu, joka ei voi lähettää viestejä. Aseta tavallinen tekstiviestisovelluksesi takaisin oletukseksi.</string>
+    <string name="rs_contacts_importing_fmt">Tuodaan yhteystietoja: %1$d / %2$d</string>
+    <string name="rs_mms_skipped_fmt">MMS-viestit ohitettu (ei tuettu): %1$d</string>
+    <string name="rs_restricted_hint">Jos Android ilmoittaa asetuksen olevan rajoitettu: avaa Sovelluksen tiedot → ⋮ → Salli rajoitetut asetukset ja yritä uudelleen.</string>
+</resources>

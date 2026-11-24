@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Wygenerowane przez tools/gen_strings.py - nie edytuj ręcznie. -->
+<resources>
+    <string name="title_backup">Servicetool – Back-up</string>
+    <string name="title_restore">Servicetool – Herstellen</string>
+    <string name="session_fmt">Sessie: %1$s</string>
+    <string name="intro_backup">Drapco ADB Service Tool maakt een back-up van je contacten (.vcf-bestand) en sms-berichten (.xml-bestand) in de map Download/Backup. Nadat de computer ze heeft gedownload, worden de bestanden van dit toestel verwijderd en wordt deze app verwijderd. Er wordt niets via internet verzonden.</string>
+    <string name="intro_restore">Drapco ADB Service Tool heeft een back-up naar dit toestel gekopieerd. Herstel je contacten en sms-berichten met de knoppen hieronder. Tik als je klaar bent op Klaar – de computer verwijdert de tijdelijke bestanden en deze app.</string>
+    <string name="btn_backup">BACK-UP MAKEN</string>
+    <string name="btn_backup_done">BACK-UP VOLTOOID</string>
+    <string name="btn_restore_contacts">Contacten herstellen</string>
+    <string name="btn_restore_sms">Sms herstellen</string>
+    <string name="btn_default_sms_back">Standaard sms-app herstellen</string>
+    <string name="btn_done">Klaar</string>
+    <string name="st_perms_ok">Rechten verleend. Tik op ‘Back-up maken’.</string>
+    <string name="st_need_both">De app heeft toegang nodig tot Contacten en sms – accepteer de systeemvensters.</string>
+    <string name="st_no_sms">Geen toegang tot sms – alleen contacten worden gekopieerd (of verleen het recht).</string>
+    <string name="st_no_contacts">Geen toegang tot contacten – alleen sms’jes worden gekopieerd (of verleen het recht).</string>
+    <string name="st_no_storage">Geen recht om naar de opslag te schrijven – accepteer het systeemvenster.</string>
+    <string name="st_grant_dialogs">Accepteer de rechten in de systeemvensters om een back-up te maken.</string>
+    <string name="st_perm_blocked">De rechten zijn geblokkeerd. App-instellingen worden geopend – schakel Contacten en sms in en kom dan hier terug.</string>
+    <string name="st_working">Bezig met exporteren… sluit de app niet.</string>
+    <string name="st_done_fmt">Klaar ✔ (%1$s).\nDe computer downloadt nu de bestanden – je kunt terug naar de computer.</string>
+    <string name="part_contacts_fmt">contacten: %1$d</string>
+    <string name="part_contacts_denied">contacten: geen recht</string>
+    <string name="part_sms_fmt">sms: %1$d</string>
+    <string name="part_sms_denied">sms: geen recht</string>
+    <string name="err_backup_fmt">Back-upfout: %1$s</string>
+    <string name="err_no_perms">Geen recht voor Contacten en sms – niets om te kopiëren</string>
+    <string name="progress_contacts_fmt">Contacten: %1$d / %2$d</string>
+    <string name="progress_sms_fmt">Sms: %1$d / %2$d</string>
+    <string name="rs_files_fmt">Back-up gevonden: %1$s</string>
+    <string name="rs_none">Geen back-upbestanden gevonden in Download/Restore.</string>
+    <string name="rs_need_files">Sta toegang tot bestanden toe zodat de back-up kan worden gelezen.</string>
+    <string name="rs_contacts_started_fmt">De Contacten-app importeert %1$d contacten – bevestig als daarom wordt gevraagd en wacht tot het klaar is.</string>
+    <string name="rs_contacts_done_fmt">Contacten geïmporteerd: %1$d</string>
+    <string name="rs_need_contacts_perm">Sta toegang tot contacten toe om ze te importeren.</string>
+    <string name="rs_need_default">Om sms’jes te herstellen moet deze app tijdelijk de standaard sms-app zijn – bevestig in het volgende venster.</string>
+    <string name="rs_default_denied">De standaard sms-app is niet gewijzigd – sms’jes kunnen niet worden hersteld.</string>
+    <string name="rs_sms_progress_fmt">Sms herstellen: %1$d / %2$d</string>
+    <string name="rs_sms_done_fmt">Sms hersteld: %1$d (duplicaten overgeslagen: %2$d).</string>
+    <string name="rs_default_back">BELANGRIJK: stel je gebruikelijke sms-app (bijv. Google Berichten, Samsung Berichten) weer in als standaard – tik op ‘Standaard sms-app herstellen’.</string>
+    <string name="rs_default_back_ok">Standaard sms-app hersteld ✔</string>
+    <string name="rs_finish_hint">Tik op Klaar als je klaar bent.</string>
+    <string name="rs_error_fmt">Herstelfout: %1$s</string>
+    <string name="rs_done_sent">Klaar ✔ De computer ruimt op – je kunt terug naar de computer.</string>
+    <string name="rs_still_default">Deze app is nog steeds de standaard sms-app. Herstel eerst je gebruikelijke sms-app of tik nogmaals op Klaar om toch af te ronden (na het verwijderen wordt automatisch teruggeschakeld).</string>
+    <string name="compose_info">Dit is een tijdelijke servicetool die geen berichten kan versturen. Stel je gebruikelijke sms-app weer in als standaard.</string>
+    <string name="rs_contacts_importing_fmt">Contacten importeren: %1$d / %2$d</string>
+    <string name="rs_mms_skipped_fmt">Mms-berichten overgeslagen (niet ondersteund): %1$d</string>
+    <string name="rs_restricted_hint">Als Android meldt dat de instelling beperkt is: open App-info → ⋮ → Beperkte instellingen toestaan en probeer het opnieuw.</string>
+</resources>

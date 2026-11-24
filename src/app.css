@@ -13,7 +13,8 @@ body {
   margin: 0;
   background: #0a0a0a;
   color: #e0e0e0;
-  font-family: Inter, 'Segoe UI', Ubuntu, 'Noto Sans', sans-serif;
+  font-family: Inter, 'Segoe UI', Ubuntu, 'Noto Sans', 'Noto Sans CJK SC', 'Microsoft YaHei UI', 'PingFang SC',
+    'Yu Gothic UI', 'Malgun Gothic', sans-serif;
   -webkit-font-smoothing: antialiased;
   user-select: none;
 }
@@ -138,4 +139,18 @@ body {
 
 input[type='number'] {
   -moz-appearance: textfield;
+}
+
+/* CJK: właściwe kroje dla języka (te same znaki han wyglądają inaczej w ja / zh / ko) */
+html:lang(ja) body,
+[lang='ja']:not(html) {
+  font-family: Inter, 'Segoe UI', 'Yu Gothic UI', 'Meiryo', 'Noto Sans CJK JP', 'Noto Sans JP', 'Hiragino Sans', sans-serif;
+}
+html:lang(zh-CN) body,
+[lang='zh-CN']:not(html) {
+  font-family: Inter, 'Segoe UI', 'Microsoft YaHei UI', 'Microsoft YaHei', 'Noto Sans CJK SC', 'Noto Sans SC', 'PingFang SC', sans-serif;
+}
+html:lang(ko) body,
+[lang='ko']:not(html) {
+  font-family: Inter, 'Segoe UI', 'Malgun Gothic', 'Noto Sans CJK KR', 'Noto Sans KR', 'Apple SD Gothic Neo', sans-serif;
 }

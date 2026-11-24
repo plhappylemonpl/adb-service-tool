@@ -280,6 +280,12 @@ async fn agent_install_confirm(state: State<'_, AppState>, serial: String) -> Re
 // Aktualizacje (własny aktualizator, publiczne wydania GitHub - bez tokenów)
 // --------------------------------------------------------------------------- //
 
+/// Locale systemu (frontend dobiera z nich język GUI w trybie "Auto").
+#[tauri::command]
+fn system_locales() -> Vec<String> {
+    utils::locale::system_locales()
+}
+
 #[tauri::command]
 async fn update_check() -> Result<updater::UpdateInfo> {
     updater::check().await
@@ -1115,6 +1121,7 @@ pub fn run() {
             agent_install_confirm,
             cancel_job,
             update_check,
+            system_locales,
             update_install,
             update_install_package,
             list_apps,

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Wygenerowane przez tools/gen_strings.py - nie edytuj ręcznie. -->
+<resources>
+    <string name="title_backup">Ferramenta de serviço – Backup</string>
+    <string name="title_restore">Ferramenta de serviço – Restauração</string>
+    <string name="session_fmt">Sessão: %1$s</string>
+    <string name="intro_backup">O Drapco ADB Service Tool fará o backup dos seus contatos (arquivo .vcf) e mensagens SMS (arquivo .xml) na pasta Download/Backup. Depois que o computador os baixar, os arquivos serão excluídos deste dispositivo e este aplicativo será desinstalado. Nada é enviado pela internet.</string>
+    <string name="intro_restore">O Drapco ADB Service Tool copiou um backup para este dispositivo. Restaure seus contatos e mensagens SMS com os botões abaixo. Ao terminar, toque em Concluído – o computador excluirá os arquivos temporários e desinstalará este aplicativo.</string>
+    <string name="btn_backup">FAZER BACKUP</string>
+    <string name="btn_backup_done">BACKUP CONCLUÍDO</string>
+    <string name="btn_restore_contacts">Restaurar contatos</string>
+    <string name="btn_restore_sms">Restaurar SMS</string>
+    <string name="btn_default_sms_back">Restaurar app de SMS padrão</string>
+    <string name="btn_done">Concluído</string>
+    <string name="st_perms_ok">Permissões concedidas. Toque em “Fazer backup”.</string>
+    <string name="st_need_both">O aplicativo precisa de acesso a Contatos e SMS – aceite as janelas do sistema.</string>
+    <string name="st_no_sms">Sem acesso aos SMS – apenas os contatos serão copiados (ou conceda a permissão).</string>
+    <string name="st_no_contacts">Sem acesso aos contatos – apenas os SMS serão copiados (ou conceda a permissão).</string>
+    <string name="st_no_storage">Sem permissão para gravar no armazenamento – aceite a janela do sistema.</string>
+    <string name="st_grant_dialogs">Aceite as permissões nas janelas do sistema para fazer o backup.</string>
+    <string name="st_perm_blocked">As permissões estão bloqueadas. Abrindo as configurações do aplicativo – ative Contatos e SMS e volte aqui.</string>
+    <string name="st_working">Exportando… não feche o aplicativo.</string>
+    <string name="st_done_fmt">Concluído ✔ (%1$s).\nO computador está baixando os arquivos – você pode voltar ao computador.</string>
+    <string name="part_contacts_fmt">contatos: %1$d</string>
+    <string name="part_contacts_denied">contatos: sem permissão</string>
+    <string name="part_sms_fmt">SMS: %1$d</string>
+    <string name="part_sms_denied">SMS: sem permissão</string>
+    <string name="err_backup_fmt">Erro no backup: %1$s</string>
+    <string name="err_no_perms">Sem permissão para Contatos e SMS – nada para copiar</string>
+    <string name="progress_contacts_fmt">Contatos: %1$d / %2$d</string>
+    <string name="progress_sms_fmt">SMS: %1$d / %2$d</string>
+    <string name="rs_files_fmt">Backup encontrado: %1$s</string>
+    <string name="rs_none">Nenhum arquivo de backup encontrado em Download/Restore.</string>
+    <string name="rs_need_files">Permita o acesso aos arquivos para que o backup possa ser lido.</string>
+    <string name="rs_contacts_started_fmt">O app Contatos está importando %1$d contatos – confirme se for solicitado e aguarde a conclusão.</string>
+    <string name="rs_contacts_done_fmt">Contatos importados: %1$d</string>
+    <string name="rs_need_contacts_perm">Permita o acesso aos contatos para importá-los.</string>
+    <string name="rs_need_default">Para restaurar os SMS, este aplicativo precisa ser temporariamente o app de SMS padrão – confirme na próxima janela.</string>
+    <string name="rs_default_denied">O app de SMS padrão não foi alterado – não é possível restaurar os SMS.</string>
+    <string name="rs_sms_progress_fmt">Restaurando SMS: %1$d / %2$d</string>
+    <string name="rs_sms_done_fmt">SMS restaurados: %1$d (duplicados ignorados: %2$d).</string>
+    <string name="rs_default_back">IMPORTANTE: defina novamente o seu app de SMS habitual (ex.: Google Mensagens, Samsung Messages) como padrão – toque em “Restaurar app de SMS padrão”.</string>
+    <string name="rs_default_back_ok">App de SMS padrão restaurado ✔</string>
+    <string name="rs_finish_hint">Quando terminar, toque em Concluído.</string>
+    <string name="rs_error_fmt">Erro na restauração: %1$s</string>
+    <string name="rs_done_sent">Concluído ✔ O computador está fazendo a limpeza – você pode voltar ao computador.</string>
+    <string name="rs_still_default">Este aplicativo ainda é o app de SMS padrão. Restaure primeiro o seu app de SMS habitual ou toque em Concluído novamente para finalizar mesmo assim (ele será restaurado automaticamente após a desinstalação).</string>
+    <string name="compose_info">Esta é uma ferramenta de serviço temporária e não pode enviar mensagens. Defina novamente o seu app de SMS habitual como padrão.</string>
+    <string name="rs_contacts_importing_fmt">Importando contatos: %1$d / %2$d</string>
+    <string name="rs_mms_skipped_fmt">Mensagens MMS ignoradas (não suportadas): %1$d</string>
+    <string name="rs_restricted_hint">Se o Android disser que a configuração é restrita: abra Informações do app → ⋮ → Permitir configurações restritas e tente novamente.</string>
+</resources>

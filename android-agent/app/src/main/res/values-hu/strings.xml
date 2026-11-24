@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Wygenerowane przez tools/gen_strings.py - nie edytuj ręcznie. -->
+<resources>
+    <string name="title_backup">Szervizeszköz – Mentés</string>
+    <string name="title_restore">Szervizeszköz – Visszaállítás</string>
+    <string name="session_fmt">Munkamenet: %1$s</string>
+    <string name="intro_backup">A Drapco ADB Service Tool biztonsági mentést készít a névjegyeidről (.vcf fájl) és az SMS-eidről (.xml fájl) a Download/Backup mappába. Miután a számítógép letöltötte őket, a fájlok törlődnek erről az eszközről, és ez az alkalmazás eltávolításra kerül. Semmi sem kerül fel az internetre.</string>
+    <string name="intro_restore">A Drapco ADB Service Tool biztonsági mentést másolt erre az eszközre. Állítsd vissza a névjegyeidet és SMS-eidet a lenti gombokkal. A végén érintsd meg a Kész gombot – a számítógép törli az ideiglenes fájlokat, és eltávolítja ezt az alkalmazást.</string>
+    <string name="btn_backup">BIZTONSÁGI MENTÉS</string>
+    <string name="btn_backup_done">MENTÉS KÉSZ</string>
+    <string name="btn_restore_contacts">Névjegyek visszaállítása</string>
+    <string name="btn_restore_sms">SMS-ek visszaállítása</string>
+    <string name="btn_default_sms_back">Alapértelmezett SMS-alkalmazás visszaállítása</string>
+    <string name="btn_done">Kész</string>
+    <string name="st_perms_ok">Engedélyek megadva. Érintsd meg a „Biztonsági mentés” gombot.</string>
+    <string name="st_need_both">Az alkalmazásnak hozzáférés kell a Névjegyekhez és az SMS-ekhez – fogadd el a rendszerablakokat.</string>
+    <string name="st_no_sms">Nincs hozzáférés az SMS-ekhez – csak a névjegyek mentődnek (vagy add meg az engedélyt).</string>
+    <string name="st_no_contacts">Nincs hozzáférés a névjegyekhez – csak az SMS-ek mentődnek (vagy add meg az engedélyt).</string>
+    <string name="st_no_storage">Nincs engedély a tárhelyre írásra – fogadd el a rendszerablakot.</string>
+    <string name="st_grant_dialogs">A mentéshez fogadd el az engedélyeket a rendszerablakokban.</string>
+    <string name="st_perm_blocked">Az engedélyek le vannak tiltva. Megnyílnak az alkalmazás beállításai – kapcsold be a Névjegyeket és az SMS-t, majd gyere vissza ide.</string>
+    <string name="st_working">Exportálás… ne zárd be az alkalmazást.</string>
+    <string name="st_done_fmt">Kész ✔ (%1$s).\nA számítógép most tölti le a fájlokat – visszamehetsz a számítógéphez.</string>
+    <string name="part_contacts_fmt">névjegyek: %1$d</string>
+    <string name="part_contacts_denied">névjegyek: nincs engedély</string>
+    <string name="part_sms_fmt">SMS: %1$d</string>
+    <string name="part_sms_denied">SMS: nincs engedély</string>
+    <string name="err_backup_fmt">Mentési hiba: %1$s</string>
+    <string name="err_no_perms">Nincs engedély a Névjegyekhez és az SMS-ekhez – nincs mit menteni</string>
+    <string name="progress_contacts_fmt">Névjegyek: %1$d / %2$d</string>
+    <string name="progress_sms_fmt">SMS: %1$d / %2$d</string>
+    <string name="rs_files_fmt">Talált mentés: %1$s</string>
+    <string name="rs_none">Nem található mentésfájl a Download/Restore mappában.</string>
+    <string name="rs_need_files">Engedélyezd a fájlokhoz való hozzáférést a mentés beolvasásához.</string>
+    <string name="rs_contacts_started_fmt">A Névjegyek alkalmazás %1$d névjegyet importál – ha kéri, erősítsd meg, és várd meg a végét.</string>
+    <string name="rs_contacts_done_fmt">Importált névjegyek: %1$d</string>
+    <string name="rs_need_contacts_perm">Engedélyezd a névjegyekhez való hozzáférést az importáláshoz.</string>
+    <string name="rs_need_default">Az SMS-ek visszaállításához ennek az alkalmazásnak ideiglenesen alapértelmezett SMS-alkalmazásnak kell lennie – erősítsd meg a következő ablakban.</string>
+    <string name="rs_default_denied">Az alapértelmezett SMS-alkalmazás nem változott – az SMS-ek nem állíthatók vissza.</string>
+    <string name="rs_sms_progress_fmt">SMS-ek visszaállítása: %1$d / %2$d</string>
+    <string name="rs_sms_done_fmt">Visszaállított SMS-ek: %1$d (kihagyott ismétlődések: %2$d).</string>
+    <string name="rs_default_back">FONTOS: állítsd vissza alapértelmezettnek a megszokott SMS-alkalmazásodat (pl. Google Üzenetek, Samsung Üzenetek) – érintsd meg az „Alapértelmezett SMS-alkalmazás visszaállítása” gombot.</string>
+    <string name="rs_default_back_ok">Alapértelmezett SMS-alkalmazás visszaállítva ✔</string>
+    <string name="rs_finish_hint">Ha végeztél, érintsd meg a Kész gombot.</string>
+    <string name="rs_error_fmt">Visszaállítási hiba: %1$s</string>
+    <string name="rs_done_sent">Kész ✔ A számítógép takarít – visszamehetsz a számítógéphez.</string>
+    <string name="rs_still_default">Még mindig ez az alkalmazás az alapértelmezett SMS-alkalmazás. Előbb állítsd vissza a megszokott SMS-alkalmazásodat, vagy érintsd meg újra a Kész gombot a befejezéshez (az eltávolítás után automatikusan visszavált).</string>
+    <string name="compose_info">Ez egy ideiglenes szervizeszköz, és nem tud üzenetet küldeni. Állítsd vissza alapértelmezettnek a megszokott SMS-alkalmazásodat.</string>
+    <string name="rs_contacts_importing_fmt">Névjegyek importálása: %1$d / %2$d</string>
+    <string name="rs_mms_skipped_fmt">Kihagyott MMS-ek (nem támogatott): %1$d</string>
+    <string name="rs_restricted_hint">Ha az Android szerint a beállítás korlátozott: nyisd meg az Alkalmazásinformációt → ⋮ → Korlátozott beállítások engedélyezése, majd próbáld újra.</string>
+</resources>

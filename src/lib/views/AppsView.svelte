@@ -7,7 +7,7 @@
   } from 'lucide-svelte';
   import { api, ACTION_MIN_SDK, type AppAction, type AppDetails, type AppEntry, type AppsLoadEvent } from '$lib/api';
   import { selectedDevice, Job, pushLog } from '$lib/stores.svelte';
-  import { t, lang } from '$lib/i18n';
+  import { t, lang, apkLang } from '$lib/i18n';
   import { errText, humanBytes } from '$lib/format';
   import AppIcon from '$lib/components/AppIcon.svelte';
   import AppsLoader from '$lib/components/AppsLoader.svelte';
@@ -106,7 +106,7 @@
     status.clear();
     details.clear();
     try {
-      loadId = await api.loadApps(dev.serial, $lang, (e) => onLoadEvent(myGen, e));
+      loadId = await api.loadApps(dev.serial, apkLang($lang), (e) => onLoadEvent(myGen, e));
     } catch (e) {
       stage = 'error';
       pushLog('error', errText(e), 'apps');

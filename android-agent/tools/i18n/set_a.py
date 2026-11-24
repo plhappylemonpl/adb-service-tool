@@ -149,7 +149,7 @@ L["it"] = [
 "MMS saltati (non supportati): %1$d",
 "Se Android segnala che l’impostazione è limitata: apri Info app → ⋮ → Consenti impostazioni limitate e riprova.",
 ]
-L["pt"] = [
+L["pt-rBR"] = [
 "Ferramenta de serviço – Backup",
 "Ferramenta de serviço – Restauração",
 "Sessão: %1$s",

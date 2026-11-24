@@ -23,7 +23,7 @@ export default {
         err: '#e08a8a'
       },
       fontFamily: {
-        sans: ['Inter', 'Segoe UI', 'Ubuntu', 'Noto Sans', 'sans-serif'],
+        sans: ['Inter', 'Segoe UI', 'Ubuntu', 'Noto Sans', 'Noto Sans CJK SC', 'Microsoft YaHei UI', 'Yu Gothic UI', 'Malgun Gothic', 'sans-serif'],
         mono: ['JetBrains Mono', 'Consolas', 'monospace']
       },
       keyframes: {
