@@ -73,5 +73,66 @@ object RestoreMarkers {
 }
 
 object BuildInfo {
-    const val VERSION = "1.1"
+    const val VERSION = "1.2"
+}
+
+/**
+ * Stan przywracania i sesji Smart EI w SharedPreferences. Android zabija proces agenta, gdy
+ * odbiera mu rolę domyślnej aplikacji SMS, i od razu wznawia ostatnią aktywność w nowym
+ * procesie - dzięki temu stanowi nie wraca ona do ekranu startowego ani nie zgłasza błędu.
+ */
+object RestoreState {
+    private const val PREFS = "agent_state"
+    private const val MAX_AGE_MS = 6L * 60 * 60 * 1000
+
+    private fun prefs(ctx: Context) = ctx.getSharedPreferences(PREFS, Context.MODE_PRIVATE)
+
+    private fun fresh(ts: Long) = System.currentTimeMillis() - ts in 0..MAX_AGE_MS
+
+    fun save(ctx: Context, session: String, state: JSONObject) {
+        prefs(ctx).edit().putString("restore_session", session)
+            .putString("restore_state", state.put("ts", System.currentTimeMillis()).toString()).commit()
+    }
+
+    fun load(ctx: Context, session: String): JSONObject? {
+        val p = prefs(ctx)
+        if (p.getString("restore_session", null) != session) return null
+        val o = runCatching { JSONObject(p.getString("restore_state", "{}")!!) }.getOrNull() ?: return null
+        return o.takeIf { fresh(it.optLong("ts")) }
+    }
+
+    fun saveLocalReport(ctx: Context, dir: String, report: String) {
+        prefs(ctx).edit().putString("local_dir", dir).putString("local_report", report)
+            .putLong("local_ts", System.currentTimeMillis()).commit()
+    }
+
+    fun localReport(ctx: Context, dir: String): String? {
+        val p = prefs(ctx)
+        if (p.getString("local_dir", null) != dir || !fresh(p.getLong("local_ts", 0))) return null
+        return p.getString("local_report", null)
+    }
+
+    fun clearLocalReport(ctx: Context) {
+        prefs(ctx).edit().remove("local_dir").remove("local_report").commit()
+    }
+
+    /** Smart EI: sesja (host:port:PIN) zakończona - po wznowieniu procesu pokaż ekran końcowy. */
+    fun markSmartEiDone(ctx: Context, key: String, text: String, adb: Boolean) {
+        prefs(ctx).edit().putString("sei_done_key", key).putString("sei_done_text", text)
+            .putBoolean("sei_done_adb", adb).putLong("sei_done_ts", System.currentTimeMillis()).commit()
+    }
+
+    /** (tekst, adb) gdy sesja `key` (albo dowolna, gdy key == null) zakończyła się niedawno. */
+    fun smartEiDone(ctx: Context, key: String?): Pair<String, Boolean>? {
+        val p = prefs(ctx)
+        val k = p.getString("sei_done_key", null) ?: return null
+        val ts = p.getLong("sei_done_ts", 0)
+        val recent = if (key == null) System.currentTimeMillis() - ts in 0..30L * 60 * 1000 else fresh(ts)
+        if ((key != null && k != key) || !recent) return null
+        return (p.getString("sei_done_text", "") ?: "") to p.getBoolean("sei_done_adb", false)
+    }
+
+    fun clearSmartEi(ctx: Context) {
+        prefs(ctx).edit().remove("sei_done_key").remove("sei_done_text").remove("sei_done_ts").commit()
+    }
 }

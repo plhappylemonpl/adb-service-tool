@@ -1,6 +1,6 @@
 [package]
 name = "adb-service-tool"
-version = "1.1.0"
+version = "1.2.0"
 description = "ADB Service Tool - serwisowe narzędzie ADB/Fastboot/MTP"
 authors = ["Drapco"]
 edition = "2021"
@@ -48,6 +48,11 @@ tar = "0.4"
 lz4_flex = { version = "0.11", default-features = false, features = ["frame", "safe-decode", "std"] }
 semver = "1"
 sys-locale = "0.3"
+# Smart EI: kryptograficzny PIN/token sesji, wybór IP w LAN, kod QR (SVG lokalnie), wolne miejsce
+getrandom = "0.2"
+local-ip-address = "0.6"
+qrcode = { version = "0.14", default-features = false, features = ["svg"] }
+fs4 = "0.13"
 
 # Linux: stały app_id / WM_CLASS (ikona na pasku KDE Wayland, XFCE, MATE...)
 # wersje zgodne z gtk 0.18 używanym przez Tauri

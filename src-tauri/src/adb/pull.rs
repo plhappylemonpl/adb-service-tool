@@ -134,6 +134,20 @@ pub struct PullOptions {
     /// Użyj roota, jeśli urządzenie go ma (su / adbd root).
     #[serde(default = "default_true")]
     pub use_root: bool,
+    /// Pomijaj śmieci systemowe: foldery `.thumbnails` (Android 11+ blokuje w nich `.nomedia`,
+    /// galeria i tak je odtworzy) oraz pliki robocze narzędzia (`.adb_pull_progress.jsonl`, `.adbst-partial/`).
+    #[serde(default)]
+    pub exclude_junk: bool,
+}
+
+/// Foldery pomijane przy `exclude_junk` (oraz zawsze przy wysyłaniu na urządzenie: pliki robocze).
+pub const JUNK_DIRS: &[&str] = &[".thumbnails"];
+/// Pliki/foldery robocze narzędzia - nigdy nie trafiają na urządzenie ani do kopii.
+pub const TOOL_FILES: &[&str] = &[CHECKPOINT_FILENAME, ".adbst-partial"];
+
+/// Czy ścieżka (dowolne separatory) zawiera folder-śmieć albo plik roboczy narzędzia.
+pub fn is_junk_path(path: &str, thumbnails: bool) -> bool {
+    path.split(['/', '\\']).any(|c| TOOL_FILES.contains(&c) || (thumbnails && JUNK_DIRS.contains(&c)))
 }
 
 fn default_workers() -> usize {
@@ -476,9 +490,16 @@ async fn build_file_list(
             res.empty_dirs.len()
         ));
         for d in res.empty_dirs {
-            empty_dirs.push((d, path.clone()));
+            if !is_junk_path(&d, opts.exclude_junk) {
+                empty_dirs.push((d, path.clone()));
+            }
         }
+        let mut junk = 0usize;
         for f in res.files {
+            if is_junk_path(&f.logical, opts.exclude_junk) {
+                junk += 1;
+                continue;
+            }
             match (normalize_remote(&f.device), normalize_remote(&f.logical)) {
                 (Ok(dp), Ok(lp)) => all_files.push(RemoteFile {
                     path: dp,
@@ -490,6 +511,9 @@ async fn build_file_list(
                 }),
                 (Err(e), _) | (_, Err(e)) => scan_failures.push(FailedItem { path: f.logical, error: e }),
             }
+        }
+        if junk > 0 {
+            emitter.info(format!("Pominięto {junk} plików roboczych / miniatur (.thumbnails) / skipped junk files."));
         }
     }
 
@@ -1351,6 +1375,16 @@ async fn append_checkpoint(file: &Arc<Mutex<Option<std::fs::File>>>, remote: &st
 
 #[cfg(test)]
 mod tests {
+
+    #[test]
+    fn junk_paths() {
+        assert!(is_junk_path("/sdcard/DCIM/.thumbnails/123.jpg", true));
+        assert!(!is_junk_path("/sdcard/DCIM/.thumbnails/123.jpg", false));
+        assert!(is_junk_path("/x/.adb_pull_progress.jsonl", false));
+        assert!(is_junk_path("C:\\kopia\\.adbst-partial\\1.part", false));
+        assert!(!is_junk_path("/sdcard/DCIM/Camera/thumbnails.jpg", true));
+        assert!(!is_junk_path("/sdcard/Pictures/.nomedia", true));
+    }
     use super::*;
     use crate::adb::scan::scan_error_path;
 
@@ -1601,6 +1635,7 @@ esac
             preserve_time: true,
             ntfs_safe: true,
             use_root: true,
+            exclude_junk: false,
         };
         run_pull(adb, "SERIAL".into(), opts, None, Emitter::new(ch), CancelToken::new()).await;
 

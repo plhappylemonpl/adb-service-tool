@@ -2,7 +2,7 @@
 
 # ADB Service Tool
 
-Desktopowe narzędzie serwisowe do telefonów z Androidem oparte na ADB, Fastboot i MTP: kopia i przywracanie plików, migracja kontaktów/SMS, zarządzanie aplikacjami, diagnostyka i narzędzia producentów (Samsung, Xiaomi, Motorola).
+Desktopowe narzędzie serwisowe do telefonów z Androidem oparte na ADB, Fastboot i MTP: kopia i przywracanie plików, przeprowadzka telefon → telefon Smart EI (Wi-Fi albo ADB), migracja kontaktów/SMS, zarządzanie aplikacjami, diagnostyka i narzędzia producentów (Samsung, Xiaomi, Motorola).
 Działa na **Linuksie** i **Windows** (Tauri v2: backend w Rust, frontend w SvelteKit) i jest przeznaczone dla serwisów GSM i techników.
 Interfejs jest dostępny w 27 językach (zob. [Języki](#języki)).
 
@@ -24,6 +24,17 @@ Interfejs jest dostępny w 27 językach (zob. [Języki](#języki)).
 - **Nazwy zgodne z NTFS** (domyślnie włączone, na Windows zawsze): usuwanie `: * ? " < > |`, kropek/spacji na końcu i nazw zarezerwowanych.
 - **Tryb root**: wykrywa root `adbd`, `su -c` (Magisk/KernelSU) i `su 0`. Pliki chronione (`/data/data`, `Android/data`) są czytane strumieniem `adb exec-out su -c 'cat …'`.
 - Wysyłanie: tworzy brakujące foldery, wznawia (pomija pliki o identycznym rozmiarze), postęp bajtowy.
+
+### Smart EI (Smart Export Import)
+Kreator krok po kroku (zakładka *Smart EI* w sekcji Podstawowe) do przeprowadzki na nowy telefon: **Eksport** (telefon → PC) i **Import** (PC → telefon). Oparty na publicznym API Androida i własnych modułach projektu – bez kopiowania i dekompilacji aplikacji producentów.
+- **Folder kopii** `SmartEI_<Model>_<Data>/`: `manifest.json` (wersja formatu, producent/model/SDK źródła, data, moduły, SHA-256 plików danych), `files/` (DCIM, Pictures, Movies, Music, Download, Documents, multimedia WhatsApp – ścieżki względem `/sdcard`, nazwy przyjazne NTFS, wznawianie), `contacts_sms/` (`contacts.vcf`, `sms.xml`), `wallpaper/` (ekran główny/blokady, jeśli Android pozwala, zrzut `homescreen_ref.png` przez ADB), `settings.json` (tylko przenośne, walidowane ustawienia: wygaszanie ekranu, rozmiar czcionki, autoobracanie, tryb ciemny, 12/24 h, głośności), `apps.json` + `apks/<pakiet>/` (base + wszystkie splity aplikacji spoza Google Play).
+- **Aplikacje**: źródło instalacji z `InstallSourceInfo` / `getInstallerPackageName` – `play_store` (`com.android.vending`, APK nie jest eksportowany) albo `sideload` („Własne APK”, eksport po zaznaczeniu). Aplikacje systemowe są pomijane, chyba że zaktualizowane.
+- **Podsumowanie importu**: kategorie do zaznaczenia, lista aplikacji z wyszukiwarką i plakietkami *Google Play* / *Własne APK*, potrzebne vs wolne miejsce w telefonie. **Smart Vendor Filter**: gdy producent docelowy jest inny, pakiety producenta źródłowego (`com.miui.*`, `com.xiaomi.*`, `com.mi.*`, `com.samsung.*`, `com.sec.*`, `com.huawei.*`, `com.coloros.*`, `com.vivo.*`, `com.motorola.*`…) są domyślnie odznaczone; aplikacje obecne na nowym telefonie mają oznaczenie *Już zainstalowana*.
+- **Przywracanie**: własne APK przez `adb install` / `install-multiple` (plan B: `adb push` do `Download/SmartEI_APKs/` i systemowy instalator przez agenta); aplikacje z Google Play w półautomatycznej kolejce – `market://details?id=…` otwierane po kolei, następna otwiera się, gdy pakiet się pojawi (sprawdzane co 2 s) albo po *Dalej* / *Pomiń* (komputer lub telefon), postęp `3 / 18`.
+- **Dwa tryby połączenia**:
+  - **ADB** (domyślny): automatyczna instalacja agenta (z planem B przez `Download/`), agent ↔ komputer przez `adb reverse` (127.0.0.1), pliki/APK przez weryfikowane `adb pull/push/install`, ustawienia przez `settings`, `cmd uimode`, `cmd media_session`.
+  - **Bez ADB (Smart Wi-Fi Bridge)**: tymczasowy serwer HTTP tylko na wybranym adresie LAN (interfejsy wirtualne/VPN/Docker pomijane, wybór przy kilku), losowy port, **6-cyfrowy PIN** (porównanie w stałym czasie, blokada po 5 błędach) → **jednorazowy token sesji** w `X-SmartEI-Token`, połączenia tylko z adresów prywatnych/loopback, jedno urządzenie na sesję. Ekran w trzech krokach: folder z `Agent.apk` albo lokalnie generowany **kod QR** do pobrania go przez Wi-Fi, duży QR parowania (plus czytelne IP:port i PIN do wpisania), potem przesyłanie z kontrolą rozmiarów. W Windows wyświetlana jest wskazówka o zaporze.
+- Szacowany rozmiar kopii i kontrola wolnego miejsca przed startem, wyjaśnione ograniczenia (układu ikon nie da się przenieść między markami, Sklep Play wymaga stuknięcia *Zainstaluj*), bezpieczne anulowanie i wznawianie (wskaż istniejący folder `SmartEI_`; skopiowane pliki są pomijane).
 
 ### Kontakty i SMS (aplikacja pomocnicza Android)
 - `android-agent/`: mała aplikacja w Kotlinie bez AndroidX (minSdk 21, targetSdk 34), interfejs w tych samych językach co aplikacja desktopowa (plus arabski, hindi i bengalski), wybierany automatycznie według języka telefonu.
@@ -155,6 +166,7 @@ adb-service-tool/
 │     └─ views/                # jeden widok na zakładkę
 ├─ src-tauri/                  # backend Rust (Tauri v2, tokio)
 │  ├─ src/adb/                 # urządzenia, pull/push, skan, root, aplikacje, Wi-Fi, agent kontaktów/SMS
+│  ├─ src/smart_ei/            # Smart EI: manifest, aplikacje/filtr producenta, kolejka Play, most Wi-Fi (PIN/token), przebieg
 │  ├─ src/vendors/             # Samsung (Heimdall, PIT), Xiaomi, Motorola, enterprise
 │  ├─ src/hardware/            # USB (nusb), LOKE/PIT, sterowniki/udev, diagnostyka, logcat
 │  ├─ src/devtools/            # APK DevTools (apktool, signer, manifest)

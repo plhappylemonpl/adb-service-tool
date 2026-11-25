@@ -25,7 +25,11 @@ import java.util.Locale
 class Exporter(
     private val ctx: Context,
     private val session: String,
-    private val progress: (String) -> Unit
+    private val progress: (String) -> Unit,
+    /** Smart EI: zapis do własnego folderu (domyślnie Download/Backup/<sesja>/ przez Storage). */
+    private val writer: ((String, String, (OutputStream) -> Int) -> Pair<Storage.Written, Int>)? = null,
+    private val wantContacts: Boolean = true,
+    private val wantSms: Boolean = true
 ) {
     data class Result(
         val contacts: Int,
@@ -41,8 +45,8 @@ class Exporter(
         Build.VERSION.SDK_INT < 23 || ctx.checkSelfPermission(p) == PackageManager.PERMISSION_GRANTED
 
     fun run(): Result {
-        val canContacts = granted(Manifest.permission.READ_CONTACTS)
-        val canSms = granted(Manifest.permission.READ_SMS)
+        val canContacts = wantContacts && granted(Manifest.permission.READ_CONTACTS)
+        val canSms = wantSms && granted(Manifest.permission.READ_SMS)
         if (!canContacts && !canSms) {
             throw SecurityException(ctx.tr("err_no_perms"))
         }
@@ -50,17 +54,20 @@ class Exporter(
         var contacts = 0
         var sms = 0
         if (canContacts) {
-            val (w, n) = Storage.write(ctx, session, "contacts.vcf", "text/x-vcard") { exportContacts(it) }
+            val (w, n) = write("contacts.vcf", "text/x-vcard") { exportContacts(it) }
             files += w
             contacts = n
         }
         if (canSms) {
-            val (w, n) = Storage.write(ctx, session, "sms.xml", "text/xml") { exportSms(it, canContacts) }
+            val (w, n) = write("sms.xml", "text/xml") { exportSms(it, canContacts) }
             files += w
             sms = n
         }
-        return Result(contacts, sms, !canContacts, !canSms, files)
+        return Result(contacts, sms, wantContacts && !canContacts, wantSms && !canSms, files)
     }
+
+    private fun write(name: String, mime: String, block: (OutputStream) -> Int): Pair<Storage.Written, Int> =
+        writer?.invoke(name, mime, block) ?: Storage.write(ctx, session, name, mime) { block(it) }
 
     // ------------------------------------------------------------------ //
     // Kontakty

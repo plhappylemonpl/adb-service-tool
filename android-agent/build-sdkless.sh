@@ -20,8 +20,8 @@ HERE="$(cd "$(dirname "$0")" && pwd)"
 OUT="$HERE/build"
 TOOLS="$HERE/.tools"
 PKG="com.drapco.agent"
-VERSION_CODE=3
-VERSION_NAME="1.1"
+VERSION_CODE=4
+VERSION_NAME="1.2"
 MIN_SDK=21
 TARGET_SDK=34
 MIN_COMPILE_API=29
@@ -239,6 +239,17 @@ say "[2/6] R8 (dex + odchudzenie kotlin-stdlib)"
 "$JAVA_BIN" -cp "$D8_JAR" com.android.tools.r8.R8 --release --min-api "$MIN_SDK" \
   --lib "$ANDROID_JAR" --pg-conf "$HERE/app/proguard-rules.pro" \
   --output "$OUT/dex" "$OUT/classes.jar" "$KOTLINC_HOME/lib/kotlin-stdlib.jar"
+
+# Każdy komponent z manifestu musi być w dex (R8 poza Gradle nie czyta manifestu).
+MISSING_CLS=""
+for cls in $(grep -oE 'android:name="\.[A-Za-z0-9_]+"' "$HERE/app/src/main/AndroidManifest.xml" | sed -E 's/.*"\.([^"]+)"/\1/' | sort -u); do
+  grep -aq "Lcom/drapco/agent/$cls;" "$OUT/dex/classes.dex" || MISSING_CLS="$MISSING_CLS $cls"
+done
+if [ -n "$MISSING_CLS" ]; then
+  say "BŁĄD: R8 usunął klasy z manifestu:$MISSING_CLS - dodaj -keep w app/proguard-rules.pro"
+  exit 1
+fi
+say "      komponenty manifestu obecne w classes.dex"
 
 say "[3/6] struktura APK (manifest + zasoby + dex)"
 cp "$OUT/dex/classes.dex" "$OUT/apk/"

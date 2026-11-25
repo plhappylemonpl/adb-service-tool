@@ -12,8 +12,8 @@ android {
         minSdk = 21
         // targetSdk >= 24: Android 14/15 blokują instalację starszych celów
         targetSdk = 34
-        versionCode = 2
-        versionName = "1.1"
+        versionCode = 4
+        versionName = "1.2"
     }
 
     signingConfigs {

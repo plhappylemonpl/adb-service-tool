@@ -1,6 +1,6 @@
 {
   "name": "adb-service-tool",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "ADB Service Tool - serwisowe narzędzie ADB/Fastboot/MTP (Drapco)",
   "type": "module",
   "scripts": {

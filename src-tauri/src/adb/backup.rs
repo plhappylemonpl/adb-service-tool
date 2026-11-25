@@ -249,6 +249,69 @@ fn warn_items(w: Vec<String>) -> Vec<FailedItem> {
 }
 
 // --------------------------------------------------------------------------- //
+// Agent dla innych modułów (Smart EI): wgranie -> praca -> sprzątanie ZAWSZE
+// --------------------------------------------------------------------------- //
+
+/// Agent wgrany na czas zadania; `agent_release` sprząta (SMS, Agent.apk, odinstalowanie).
+#[derive(Default)]
+pub(crate) struct AgentLease {
+    trace: Trace,
+}
+
+impl AgentLease {
+    pub(crate) fn sdk(&self) -> u32 {
+        self.trace.sdk
+    }
+}
+
+/// Wgrywa agenta (ADB albo plan B: ręczna instalacja z Download/). Lease zwracany zawsze -
+/// także po błędzie trzeba po nim posprzątać.
+pub(crate) async fn agent_acquire(ctx: &AgentCtx, emitter: &Emitter, cancel: &CancelToken) -> (Result<u32>, AgentLease) {
+    let mut lease = AgentLease::default();
+    let r = deploy(ctx, emitter, cancel, &mut lease.trace).await;
+    if let Ok(sdk) = r {
+        grant_file_access(&ctx.adb, &ctx.serial, sdk, emitter).await;
+    }
+    (r, lease)
+}
+
+/// Zapamiętuje domyślną aplikację SMS (przywracanie SMS przez agenta zmienia ją na chwilę).
+pub(crate) async fn agent_watch_sms(ctx: &AgentCtx, lease: &mut AgentLease) {
+    lease.trace.watch_sms = true;
+    lease.trace.prev_sms = current_sms_app(&ctx.adb, &ctx.serial, lease.trace.sdk)
+        .await
+        .filter(|p| p != AGENT_PKG);
+}
+
+/// `am start -n com.drapco.agent/<activity>` z dodatkami (wartości przekazywane jako osobne argumenty).
+pub(crate) async fn agent_start(ctx: &AgentCtx, activity: &str, extras: &[String], cancel: &CancelToken) -> Result<()> {
+    let (adb, serial) = (&*ctx.adb, ctx.serial.as_str());
+    let _ = adb.shell(Some(serial), "input keyevent KEYCODE_WAKEUP", 10).await;
+    let comp = format!("{AGENT_PKG}/{activity}");
+    let mut args: Vec<&str> = vec!["shell", "am", "start", "-n", &comp];
+    args.extend(extras.iter().map(String::as_str));
+    let o = adb.run_c(Some(serial), &args, 30, cancel).await?;
+    let txt = format!("{}\n{}", o.stdout, o.stderr);
+    if !o.ok() || txt.contains("Error:") || txt.contains("Exception") {
+        return Err(AdbError::Other(format!(
+            "Nie udało się uruchomić agenta na urządzeniu / failed to start agent: {}",
+            txt.trim()
+        )));
+    }
+    Ok(())
+}
+
+/// Sprzątanie po agencie (bez anulowania). Zwraca ostrzeżenia dla raportu.
+pub(crate) async fn agent_release(ctx: &AgentCtx, lease: AgentLease, emitter: &Emitter) -> Vec<String> {
+    cleanup(ctx, &lease.trace, emitter).await.warnings
+}
+
+/// APK agenta (zasoby albo kopia wbudowana) - np. do pobrania przez Wi-Fi.
+pub(crate) async fn agent_apk_path(resource_apk: Option<PathBuf>, cache_dir: &Path) -> Result<PathBuf> {
+    resolve_apk(resource_apk, cache_dir, &Emitter::silent()).await
+}
+
+// --------------------------------------------------------------------------- //
 // Kopia
 // --------------------------------------------------------------------------- //
 

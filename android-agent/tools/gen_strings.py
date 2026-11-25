@@ -52,6 +52,14 @@ def main():
             if len(values) != len(keys):
                 sys.exit(f"{code}: {len(values)} tekstów, oczekiwano {len(keys)}")
             langs[code] = dict(zip(keys, values))
+    # Smart EI (v1.2): słowniki klucz -> tekst dla wszystkich języków
+    sei = load("smartei.py")["S"]
+    en.update(sei["en"])
+    for code, d in langs.items():
+        if code not in sei:
+            sys.exit(f"smartei.py: brak języka {code}")
+        d.update(sei[code])
+    keys = list(en)
     # odmiany pochodne
     langs["nl-rBE"] = {k: flemish(v) for k, v in langs["nl"].items()}  # Vlaams: toestel, gsm
     errors = []

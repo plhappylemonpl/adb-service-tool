@@ -34,12 +34,31 @@ eksportu i przywracania **kontaktów (.vcf)** i **SMS (.xml, format SMS Backup &
   „ustawieniem z ograniczeniami” – Informacje o aplikacji → ⋮ → „Zezwalaj na ustawienia
   z ograniczeniami”.
 
+## Smart EI (`.SmartEiActivity`, v1.2)
+
+- **ADB**: komputer uruchamia `am start -n com.drapco.agent/.SmartEiActivity --es host 127.0.0.1
+  --ei port <P> --es pin <PIN> --es role export|import --ez adb true`; połączenie przez `adb reverse`.
+- **Wi-Fi (bez ADB)**: ikona agenta w menu → ekran parowania (IP:port + 6-cyfrowy PIN) albo link
+  z kodu QR (`drapco-smartei://pair?h=&p=&k=`, strona `/p` mostka buduje odnośnik `intent://`).
+- Po parowaniu agent wysyła `hello` (model, wolne miejsce, rozmiary kategorii, zainstalowane pakiety)
+  i czeka na „Rozpocznij” na komputerze; eksport/import startuje dopiero po stuknięciu przycisku
+  na telefonie („Rozpocznij eksport” / „Rozpocznij import”).
+- Eksport: kontakty/SMS (`Exporter` do folderu prywatnego), tapeta (`WallpaperManager`; Android 13+
+  odmawia – zapis informacji w manifeście, bez awarii), ustawienia, lista aplikacji
+  (`InstallSourceInfo` / `getInstallerPackageName`, `sourceDir` + `splitSourceDirs`), w Wi-Fi także
+  pliki i APK (strumieniowo, stała długość, kontrola rozmiaru, pomijanie plików już obecnych).
+- Import: kontakty/SMS przez istniejący ekran przywracania (`MainActivity` z `localDir` w folderze
+  prywatnym agenta), tapeta (`SET_WALLPAPER`), ustawienia (Wi-Fi: `WRITE_SETTINGS` za zgodą
+  użytkownika), pliki, własne APK przez `PackageInstaller` (`REQUEST_INSTALL_PACKAGES`, systemowe
+  okno potwierdzenia), skanowanie multimediów, kolejka Google Play (`market://`, Dalej/Pomiń).
+
 ## Języki
 
-Teksty UI wyłącznie z zasobów: `res/values/strings.xml` (angielski – domyślny) +
-`values-pl`, `-de`, `-es`, `-fr`, `-it`, `-pt`, `-nl`, `-cs`, `-ru`, `-uk`, `-tr`,
-`-ar`, `-hi`, `-bn`, `-zh-rCN`, `-ja`, `-ko`, `-in` (indonezyjski), `-vi` (20 języków).
-Źródło tłumaczeń: `tools/i18n/*.py`, generator: `python3 tools/gen_strings.py`
+Teksty UI wyłącznie z zasobów: `res/values/strings.xml` (angielski – domyślny) + 29 tłumaczeń:
+`values-pl`, `-de`, `-es`, `-fr`, `-it`, `-pt`, `-pt-rBR`, `-nl`, `-nl-rBE`, `-cs`, `-sk`, `-ru`,
+`-uk`, `-tr`, `-hu`, `-ro`, `-sv`, `-nb`, `-da`, `-fi`, `-el`, `-ar`, `-hi`, `-bn`, `-zh-rCN`,
+`-ja`, `-ko`, `-in`/`-id` (indonezyjski), `-vi`.
+Źródło tłumaczeń: `tools/i18n/*.py` (Smart EI: `tools/i18n/smartei.py`), generator: `python3 tools/gen_strings.py`
 (escapowanie Androida, kontrola kompletu kluczy i placeholderów `%1$s`/`%1$d`).
 W kodzie: `ctx.tr("klucz", args…)` (`Tr.kt`) – odwołanie po nazwie, bo kompilacja bez
 Gradle kompiluje Kotlin przed zasobami (brak klasy `R`).

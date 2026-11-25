@@ -720,6 +720,118 @@ export interface UpdateInfo {
 
 export type UpdateOutcome = { action: 'restart' } | { action: 'manual'; path: string; command: string };
 
+// --- Smart EI (Smart Export Import) --- //
+
+export type SeiRole = 'export' | 'import';
+export type SeiConnection = 'adb' | 'wifi';
+
+export interface SeiModules {
+  /** dcim | pictures | movies | music | download | documents | whatsapp */
+  files: string[];
+  contacts: boolean;
+  sms: boolean;
+  wallpaper: boolean;
+  settings: boolean;
+  apps: boolean;
+  apks: boolean;
+  homescreen: boolean;
+}
+
+export interface SeiStartOptions {
+  role: SeiRole;
+  connection: SeiConnection;
+  serial?: string | null;
+  dir: string;
+  modules: SeiModules;
+  bindIp?: string | null;
+}
+
+export interface SeiSessionInfo {
+  sessionId: string;
+  jobId: string;
+  role: SeiRole;
+  connection: SeiConnection;
+  dir: string;
+  ip: string;
+  port: number;
+  pin: string;
+  pairUrl: string;
+  pairQr: string;
+  apkUrl: string;
+  apkQr: string;
+  agentApk: string;
+}
+
+export interface SeiNetIf {
+  name: string;
+  ip: string;
+  virtualIf: boolean;
+  recommended: boolean;
+}
+
+export interface SeiDevice {
+  manufacturer: string;
+  brand: string;
+  model: string;
+  device: string;
+  sdk: number;
+  androidVersion: string;
+}
+
+export interface SeiModuleEntry {
+  name: string;
+  ok: boolean;
+  items: number;
+  bytes: number;
+  note: string;
+}
+
+export interface SeiManifest {
+  format: string;
+  formatVersion: number;
+  tool: string;
+  created: string;
+  completed: string | null;
+  complete: boolean;
+  connection: SeiConnection;
+  source: SeiDevice;
+  modules: SeiModuleEntry[];
+  notes: string[];
+}
+
+export interface SeiImportApp {
+  package: string;
+  label: string;
+  source: 'play_store' | 'sideload';
+  versionName: string;
+  size: number;
+  hasApk: boolean;
+  selected: boolean;
+  reason: 'sourceVendor' | 'alreadyInstalled' | 'noApk' | null;
+  vendor: string | null;
+}
+
+export interface SeiQueueItem {
+  package: string;
+  label: string;
+  status: 'pending' | 'opened' | 'installed' | 'advanced' | 'skipped';
+}
+
+export interface SeiQueue {
+  active: boolean;
+  finished?: boolean;
+  position?: number;
+  total?: number;
+  rev?: number;
+  current?: SeiQueueItem | null;
+  items?: SeiQueueItem[];
+}
+
+export interface SeiSelection {
+  modules: SeiModules;
+  packages: string[];
+}
+
 type OnEvent = (e: TransferEvent) => void;
 
 function channel(onEvent: OnEvent): Channel<TransferEvent> {
@@ -753,6 +865,16 @@ export const api = {
   inspectRestoreDir: (dir: string) => invoke<RestoreDirInfo>('inspect_restore_dir', { dir }),
   /** Przycisk "Gotowe" w oknie ręcznej instalacji agenta (plan B). */
   agentInstallConfirm: (serial: string) => invoke<boolean>('agent_install_confirm', { serial }),
+
+  smarteiInterfaces: () => invoke<SeiNetIf[]>('smartei_interfaces'),
+  smarteiInspect: (dir: string) => invoke<{ manifest: SeiManifest; apps: number }>('smartei_inspect', { dir }),
+  /** Kopia Agent.apk w folderze danych programu (do pokazania w menedżerze plików). */
+  smarteiAgentApk: () => invoke<string>('smartei_agent_apk'),
+  smarteiStart: (options: SeiStartOptions, onEvent: OnEvent) =>
+    invoke<SeiSessionInfo>('smartei_start', { options, onEvent: channel(onEvent) }),
+  smarteiProceed: (sessionId: string, selection: SeiSelection) =>
+    invoke<boolean>('smartei_proceed', { sessionId, selection }),
+  smarteiQueue: (sessionId: string, action: 'next' | 'skip') => invoke<boolean>('smartei_queue', { sessionId, action }),
   startPush: (serial: string, options: PushOptions, onEvent: OnEvent) =>
     invoke<string>('start_push', { serial, options, onEvent: channel(onEvent) }),
   cancelJob: (jobId: string) => invoke<void>('cancel_job', { jobId }),

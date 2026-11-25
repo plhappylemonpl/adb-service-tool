@@ -66,7 +66,8 @@ export const autoLang = writable<Lang>(resolve('auto'));
 /** Pobiera locale systemu z backendu i (w trybie auto) ustawia język. */
 export async function initLang(): Promise<void> {
   try {
-    systemLocales = await invoke<string[]>('system_locales');
+    const r = await invoke<string[]>('system_locales');
+    systemLocales = Array.isArray(r) ? r : [];
   } catch {
     systemLocales = [];
   }

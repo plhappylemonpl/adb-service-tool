@@ -15,6 +15,7 @@ mod linux_desktop;
 mod mirror;
 mod mtp_handler;
 mod parsers;
+mod smart_ei;
 mod state;
 mod updater;
 mod utils;
@@ -249,6 +250,83 @@ async fn start_contacts_restore(
     let ctx = agent_ctx(&app, &state, &serial).await?;
     let em = Emitter::new(on_event);
     Ok(spawn_job(&state, "restore", move |c| adb::backup::run_restore(ctx, options, em, c)).await)
+}
+
+// --------------------------------------------------------------------------- //
+// Smart EI (Smart Export Import)
+// --------------------------------------------------------------------------- //
+
+/// Interfejsy sieciowe do trybu "Bez ADB" (rekomendowany pierwszy, wirtualne oznaczone).
+#[tauri::command]
+fn smartei_interfaces() -> Vec<smart_ei::net::NetIf> {
+    smart_ei::net::interfaces()
+}
+
+/// Podgląd folderu kopii Smart EI (manifest) - krok 1 importu.
+#[tauri::command]
+async fn smartei_inspect(dir: String) -> Result<serde_json::Value> {
+    smart_ei::flow::inspect(std::path::Path::new(&dir))
+}
+
+/// Agent.apk w folderze danych aplikacji (przycisk "Otwórz folder z Agent.apk").
+#[tauri::command]
+async fn smartei_agent_apk(app: AppHandle) -> Result<String> {
+    let resource = app.path().resource_dir().ok().map(|d| d.join("resources").join("agent").join("Agent.apk"));
+    let src = adb::backup::agent_apk_path(resource, &app_cache(&app)?.join("backup-agent")).await?;
+    let dir = app_data(&app)?.join("smartei");
+    tokio::fs::create_dir_all(&dir).await?;
+    let dst = dir.join("Drapco-Agent.apk");
+    tokio::fs::copy(&src, &dst).await?;
+    Ok(dst.to_string_lossy().to_string())
+}
+
+#[tauri::command]
+async fn smartei_start(
+    app: AppHandle,
+    state: State<'_, AppState>,
+    options: smart_ei::StartOptions,
+    on_event: Channel<TransferEvent>,
+) -> Result<smart_ei::SessionInfo> {
+    let resource = app.path().resource_dir().ok().map(|d| d.join("resources").join("agent").join("Agent.apk"));
+    let cache = app_cache(&app)?.join("backup-agent");
+    let apk = adb::backup::agent_apk_path(resource, &cache).await.ok();
+    let (adb_h, agent) = if options.connection == "adb" {
+        let serial = options.serial.clone().unwrap_or_default();
+        (Some(state.adb().await?), Some(agent_ctx(&app, &state, &serial).await?))
+    } else {
+        (state.adb().await.ok(), None)
+    };
+    let (prepared, control) = smart_ei::flow::prepare(options, apk).await?;
+    let mut info = prepared.info.clone();
+    state.smartei.lock().await.insert(info.session_id.clone(), control);
+    let env = smart_ei::flow::Env {
+        adb: if agent.is_some() { adb_h } else { None },
+        agent,
+        root: Some(state.root.clone()),
+        sessions: state.smartei.clone(),
+    };
+    let em = Emitter::new(on_event);
+    info.job_id = spawn_job(&state, "smartei", move |c| smart_ei::flow::run(prepared, env, em, c)).await;
+    Ok(info)
+}
+
+/// "Rozpocznij" na ekranie podsumowania (wybrane moduły / aplikacje).
+#[tauri::command]
+async fn smartei_proceed(state: State<'_, AppState>, session_id: String, selection: smart_ei::Selection) -> Result<bool> {
+    Ok(match state.smartei.lock().await.get(&session_id) {
+        Some(c) => c.tx.send(smart_ei::ControlMsg::Proceed(selection)).is_ok(),
+        None => false,
+    })
+}
+
+/// Kolejka Sklepu Play: "next" (Dalej) / "skip" (Pomiń).
+#[tauri::command]
+async fn smartei_queue(state: State<'_, AppState>, session_id: String, action: String) -> Result<bool> {
+    let a = smart_ei::flow::parse_action(&action).ok_or_else(|| AdbError::InvalidArg(action.clone()))?;
+    Ok(match state.smartei.lock().await.get(&session_id) {
+        Some(c) => c.tx.send(smart_ei::ControlMsg::Queue(a)).is_ok(),
+        None => false,
+    })
 }
 
 /// Pliki kopii w folderze (podgląd w GUI przed przywracaniem).
@@ -1116,6 +1194,12 @@ pub fn run() {
             start_pull,
             start_push,
             start_contacts_backup,
+            smartei_interfaces,
+            smartei_inspect,
+            smartei_agent_apk,
+            smartei_start,
+            smartei_proceed,
+            smartei_queue,
             start_contacts_restore,
             inspect_restore_dir,
             agent_install_confirm,

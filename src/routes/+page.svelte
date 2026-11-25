@@ -1,6 +1,6 @@
 <script lang="ts">
   import { onMount } from 'svelte';
-  import { Smartphone, Info, Download, Upload, Package, Power, Wrench, CircleAlert, MonitorSmartphone, Factory, Activity, ScrollText, Cable, Rocket, FileCode2, Wifi, Contact, Sparkles } from 'lucide-svelte';
+  import { Smartphone, Info, Download, Upload, Package, Power, Wrench, CircleAlert, MonitorSmartphone, Factory, Activity, ScrollText, Cable, Rocket, FileCode2, Wifi, Contact, Sparkles, ArrowLeftRight } from 'lucide-svelte';
   import { getVersion } from '@tauri-apps/api/app';
   import { updater } from '$lib/updater.svelte';
   import UpdateDialog from '$lib/components/UpdateDialog.svelte';
@@ -18,6 +18,7 @@
   import PullView from '$lib/views/PullView.svelte';
   import PushView from '$lib/views/PushView.svelte';
   import BackupView from '$lib/views/BackupView.svelte';
+  import SmartEiView from '$lib/views/SmartEiView.svelte';
   import AppsView from '$lib/views/AppsView.svelte';
   import RebootView from '$lib/views/RebootView.svelte';
   import AdvancedView from '$lib/views/AdvancedView.svelte';
@@ -30,7 +31,7 @@
   import DevToolsView from '$lib/views/DevToolsView.svelte';
 
   type Tab =
-    | 'devices' | 'info' | 'pull' | 'push' | 'backup' | 'apps' | 'mirror'
+    | 'devices' | 'info' | 'pull' | 'push' | 'smartei' | 'backup' | 'apps' | 'mirror'
     | 'vendors' | 'diag' | 'logcat' | 'drivers' | 'enterprise' | 'devtools' | 'reboot' | 'advanced';
   let tab = $state<Tab>('devices');
   // widoki montujemy przy pierwszym otwarciu i NIE odmontowujemy - zadania w tle
@@ -38,11 +39,12 @@
   let opened = $state<Record<string, boolean>>({ devices: true });
 
   // grupy nawigacji (nagłówek sekcji przed pierwszym elementem grupy)
-  const navItems: { id: Tab; icon: typeof Smartphone; key: string; section?: string }[] = [
+  const navItems: { id: Tab; icon: typeof Smartphone; key: string; section?: string; sub?: string }[] = [
     { id: 'devices', icon: Smartphone, key: 'nav.devices', section: 'nav.sBasic' },
     { id: 'info', icon: Info, key: 'nav.info' },
     { id: 'pull', icon: Download, key: 'nav.pull' },
     { id: 'push', icon: Upload, key: 'nav.push' },
+    { id: 'smartei', icon: ArrowLeftRight, key: 'nav.smartei', sub: 'Smart Export Import' },
     { id: 'backup', icon: Contact, key: 'nav.backup' },
     { id: 'apps', icon: Package, key: 'nav.apps' },
     { id: 'mirror', icon: MonitorSmartphone, key: 'nav.mirror' },
@@ -140,7 +142,13 @@
         {/if}
         <button class="tab {tab === it.id ? 'tab-active' : ''}" onclick={() => go(it.id)}>
           <it.icon size={17} />
-          {$t(it.key)}
+          {#if it.sub}
+            <span class="flex min-w-0 flex-col items-start leading-tight">
+              <span>{$t(it.key)}</span><span class="text-[9.5px] font-normal tracking-wide text-neutral-500">{it.sub}</span>
+            </span>
+          {:else}
+            {$t(it.key)}
+          {/if}
         </button>
       {/each}
 
@@ -170,6 +178,7 @@
       {#if opened.info}<div class:hidden={tab !== 'info'}><InfoView /></div>{/if}
       {#if opened.pull}<div class:hidden={tab !== 'pull'}><PullView /></div>{/if}
       {#if opened.push}<div class:hidden={tab !== 'push'}><PushView /></div>{/if}
+      {#if opened.smartei}<div class:hidden={tab !== 'smartei'}><SmartEiView /></div>{/if}
       {#if opened.backup}<div class:hidden={tab !== 'backup'}><BackupView /></div>{/if}
       {#if opened.apps}<div class:hidden={tab !== 'apps'}><AppsView /></div>{/if}
       {#if opened.mirror}<div class:hidden={tab !== 'mirror'}><MirrorView /></div>{/if}

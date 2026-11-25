@@ -38,6 +38,9 @@ pub struct PushOptions {
     pub timeout_seconds: u64,
     #[serde(default = "default_true")]
     pub skip_existing: bool,
+    /// Pomijaj foldery `.thumbnails` (pliki robocze narzędzia pomijane są zawsze).
+    #[serde(default)]
+    pub exclude_junk: bool,
 }
 
 fn default_workers() -> usize {
@@ -75,7 +78,8 @@ pub async fn run_push(adb: Arc<Adb>, serial: String, opts: PushOptions, emitter:
     emitter.info("Przygotowuję listę plików lokalnych / collecting local files...");
     let items = opts.items.clone();
     let dest2 = dest.clone();
-    let collected = tokio::task::spawn_blocking(move || collect_local(&items, &dest2)).await;
+    let junk = opts.exclude_junk;
+    let collected = tokio::task::spawn_blocking(move || collect_local(&items, &dest2, junk)).await;
     let (mut files, targets, warnings) = match collected {
         Ok(v) => v,
         Err(e) => {
@@ -305,7 +309,7 @@ async fn prepare_remote_dirs(adb: &Adb, serial: &str, files: &[PushFile], emitte
 }
 
 /// Zbiera pliki z lokalnych elementów. Zwraca (pliki, cele_na_urządzeniu, ostrzeżenia).
-fn collect_local(items: &[String], dest: &str) -> (Vec<PushFile>, Vec<String>, Vec<String>) {
+fn collect_local(items: &[String], dest: &str, junk: bool) -> (Vec<PushFile>, Vec<String>, Vec<String>) {
     let mut files = Vec::new();
     let mut targets = Vec::new();
     let mut warnings = Vec::new();
@@ -329,7 +333,7 @@ fn collect_local(items: &[String], dest: &str) -> (Vec<PushFile>, Vec<String>, V
             Ok(m) if m.is_dir() => {
                 let remote_base = remote_join(dest, &base);
                 targets.push(remote_base.clone());
-                walk_dir(p, p, &remote_base, &mut files, &mut warnings);
+                walk_dir(p, p, &remote_base, junk, &mut files, &mut warnings);
             }
             _ => warnings.push(format!("Pomijam '{item}' - nie znaleziono na dysku / not found.")),
         }
@@ -338,7 +342,7 @@ fn collect_local(items: &[String], dest: &str) -> (Vec<PushFile>, Vec<String>, V
 }
 
 /// Rekurencyjny spacer po katalogu (bez podążania za symlinkami katalogów - jak os.walk).
-fn walk_dir(root: &Path, dir: &Path, remote_base: &str, out: &mut Vec<PushFile>, warnings: &mut Vec<String>) {
+fn walk_dir(root: &Path, dir: &Path, remote_base: &str, junk: bool, out: &mut Vec<PushFile>, warnings: &mut Vec<String>) {
     let rd = match std::fs::read_dir(dir) {
         Ok(r) => r,
         Err(e) => {
@@ -351,8 +355,12 @@ fn walk_dir(root: &Path, dir: &Path, remote_base: &str, out: &mut Vec<PushFile>,
     for e in entries {
         let path = e.path();
         let Ok(ft) = e.file_type() else { continue };
+        // pliki robocze narzędzia (checkpoint pobierania, .adbst-partial) nigdy na urządzenie
+        if crate::adb::pull::is_junk_path(&e.file_name().to_string_lossy(), junk) {
+            continue;
+        }
         if ft.is_dir() {
-            walk_dir(root, &path, remote_base, out, warnings);
+            walk_dir(root, &path, remote_base, junk, out, warnings);
         } else if ft.is_file() || ft.is_symlink() {
             let Ok(m) = std::fs::metadata(&path) else { continue };
             if !m.is_file() {
@@ -369,5 +377,28 @@ fn walk_dir(root: &Path, dir: &Path, remote_base: &str, out: &mut Vec<PushFile>,
                 size: m.len(),
             });
         }
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn push_skips_tool_files_and_thumbnails() {
+        let dir = std::env::temp_dir().join(format!("adbst-push-junk-{}", std::process::id()));
+        let _ = std::fs::remove_dir_all(&dir);
+        for p in ["Download/doc.pdf", "Download/.adb_pull_progress.jsonl", "Download/.adbst-partial/1.part", "Download/.thumbnails/t.jpg"] {
+            let f = dir.join(p);
+            std::fs::create_dir_all(f.parent().unwrap()).unwrap();
+            std::fs::write(f, b"x").unwrap();
+        }
+        let item = vec![dir.join("Download").to_string_lossy().to_string()];
+        let (f, _, _) = collect_local(&item, "/sdcard", false);
+        let r: Vec<&str> = f.iter().map(|x| x.remote.as_str()).collect();
+        assert_eq!(r, vec!["/sdcard/Download/.thumbnails/t.jpg", "/sdcard/Download/doc.pdf"], "pliki robocze zawsze pominięte");
+        let (f, _, _) = collect_local(&item, "/sdcard", true);
+        assert_eq!(f.len(), 1, ".thumbnails pominięte przy exclude_junk");
+        let _ = std::fs::remove_dir_all(&dir);
     }
 }

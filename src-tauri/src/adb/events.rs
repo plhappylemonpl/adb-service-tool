@@ -52,21 +52,41 @@ pub struct FailedItem {
 /// (jeśli front się rozłączył, backend i tak dokończy robotę).
 #[derive(Clone)]
 pub struct Emitter {
-    channel: tauri::ipc::Channel<TransferEvent>,
+    sink: Sink,
+}
+
+type Callback = std::sync::Arc<dyn Fn(TransferEvent) + Send + Sync>;
+
+#[derive(Clone)]
+enum Sink {
+    Channel(tauri::ipc::Channel<TransferEvent>),
+    /// Zdarzenia pod-zadania przekazywane do zadania nadrzędnego (np. Smart EI:
+    /// `run_pull` w środku eksportu - jego Finished nie może zamknąć całego zadania w GUI).
+    Callback(Callback),
 }
 
 impl Emitter {
     pub fn new(channel: tauri::ipc::Channel<TransferEvent>) -> Self {
-        Self { channel }
+        Self { sink: Sink::Channel(channel) }
     }
 
     /// Emitter bez odbiorcy (operacje synchroniczne, testy).
     pub fn silent() -> Self {
-        Self { channel: tauri::ipc::Channel::new(|_| Ok(())) }
+        Self::callback(|_| {})
+    }
+
+    /// Emitter wywołujący funkcję dla każdego zdarzenia.
+    pub fn callback(f: impl Fn(TransferEvent) + Send + Sync + 'static) -> Self {
+        Self { sink: Sink::Callback(std::sync::Arc::new(f)) }
     }
 
     pub fn send(&self, e: TransferEvent) {
-        let _ = self.channel.send(e);
+        match &self.sink {
+            Sink::Channel(c) => {
+                let _ = c.send(e);
+            }
+            Sink::Callback(f) => f(e),
+        }
     }
 
     pub fn log(&self, level: LogLevel, message: impl Into<String>) {

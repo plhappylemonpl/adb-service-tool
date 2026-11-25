@@ -22,6 +22,8 @@ pub struct AppState {
     pub root: crate::adb::root::RootCache,
     /// Przycisk "Gotowe" (ręczna instalacja agenta) per urządzenie -> czekające zadanie.
     pub agent_confirm: Arc<Mutex<HashMap<String, Arc<tokio::sync::Notify>>>>,
+    /// Sesje Smart EI (sessionId -> sterowanie z GUI).
+    pub smartei: crate::smart_ei::Sessions,
 }
 
 impl AppState {
@@ -34,6 +36,7 @@ impl AppState {
             logcat: Arc::new(Mutex::new(HashMap::new())),
             root: Arc::new(Mutex::new(HashMap::new())),
             agent_confirm: Arc::new(Mutex::new(HashMap::new())),
+            smartei: Arc::new(Mutex::new(HashMap::new())),
         }
     }
 

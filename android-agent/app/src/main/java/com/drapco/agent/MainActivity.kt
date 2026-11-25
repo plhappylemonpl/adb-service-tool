@@ -65,6 +65,8 @@ class MainActivity : Activity() {
 
     private var session: String = ""
     private var restoreMode = false
+    /** Smart EI: pliki kopii w prywatnym folderze agenta (bez znaczników w Download/). */
+    private var localDir: File? = null
     private val worker = Executors.newSingleThreadExecutor()
 
     @Volatile
@@ -101,7 +103,14 @@ class MainActivity : Activity() {
     private fun readIntent(i: Intent?) {
         session = sessionFrom(i)
         restoreMode = i?.getStringExtra("mode") == "restore"
+        localDir = i?.getStringExtra("localDir")?.let { File(it) }?.takeIf { d ->
+            // tylko własne foldery prywatne agenta - nic z zewnątrz
+            val c = runCatching { d.canonicalPath }.getOrDefault("")
+            c.startsWith(cacheDir.canonicalPath + File.separator) || c.startsWith(filesDir.canonicalPath + File.separator)
+        }
     }
+
+    private fun restoreFiles(): RestoreFiles = localDir?.let { RestoreFiles(it) } ?: RestoreFiles.forSession(session)
 
     private fun start() {
         files = null
@@ -113,8 +122,17 @@ class MainActivity : Activity() {
         doneWarned = false
         finished = false
         reportLines.clear()
+        // Smart EI: proces mógł zostać zabity i wznowiony przez system po zakończeniu -> raport od razu
+        if (restoreMode && localDir != null) {
+            RestoreState.localReport(this, localDir!!.path)?.let { rep ->
+                setResult(RESULT_OK, Intent().putExtra("report", rep))
+                finish()
+                return
+            }
+        }
         setContentView(buildUi())
         if (restoreMode) {
+            loadState()
             initRestore(askForAccess = true)
         } else {
             updateIdleStatus()
@@ -130,7 +148,7 @@ class MainActivity : Activity() {
             return
         }
         // powrót z ustawień: dostęp do plików / zmiana domyślnej aplikacji SMS
-        if (files == null && !finished && RestoreFiles.forSession(session).readable()) initRestore(askForAccess = false)
+        if (files == null && !finished && restoreFiles().readable()) initRestore(askForAccess = false)
         if (defaultTaken && !defaultRestored && !DefaultSms.isDefault(this)) {
             defaultRestored = true
             addReport("default", tr("rs_default_back_ok"), OK)
@@ -170,7 +188,7 @@ class MainActivity : Activity() {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
         when (requestCode) {
             REQ_PERMS -> updateIdleStatus()
-            REQ_FILES -> if (RestoreFiles.forSession(session).readable()) initRestore(askForAccess = false)
+            REQ_FILES -> if (restoreFiles().readable()) initRestore(askForAccess = false)
             REQ_CONTACTS -> if (isGranted(Manifest.permission.WRITE_CONTACTS)) {
                 importContactsDirect()
             } else {
@@ -225,9 +243,9 @@ class MainActivity : Activity() {
         val currentSession = session
         worker.execute {
             try {
-                val result = Exporter(applicationContext, currentSession) { msg ->
+                val result = Exporter(applicationContext, currentSession, progress = { msg ->
                     runOnUiThread { setStatus(msg, GOLD) }
-                }.run()
+                }).run()
                 Markers.writeDone(applicationContext, currentSession, result)
                 runOnUiThread { onDone(result) }
             } catch (t: Throwable) {
@@ -278,7 +296,7 @@ class MainActivity : Activity() {
     // ------------------------------------------------------------------ //
 
     private fun initRestore(askForAccess: Boolean) {
-        val f = RestoreFiles.forSession(session)
+        val f = restoreFiles()
         if (!f.readable()) {
             files = null
             setStatus(tr("rs_need_files"), WARN)
@@ -352,6 +370,7 @@ class MainActivity : Activity() {
                 try {
                     startActivity(view)
                     contactsMethod = "intent"
+                    saveState()
                     addReport("contacts", tr("rs_contacts_started_fmt", contactsCards), GOLD)
                     setStatus(tr("rs_finish_hint"), OK)
                 } catch (_: ActivityNotFoundException) {
@@ -388,6 +407,7 @@ class MainActivity : Activity() {
                 r.onSuccess { n ->
                     contactsMethod = "direct"
                     contactsImported = n
+                    saveState()
                     addReport("contacts", tr("rs_contacts_done_fmt", n), OK)
                     setStatus(tr("rs_finish_hint"), OK)
                 }.onFailure { addReport("contacts", tr("rs_error_fmt", errText(it)), ERR) }
@@ -402,6 +422,7 @@ class MainActivity : Activity() {
         if (files?.sms == null || running || finished) return
         if (DefaultSms.isDefault(this)) {
             defaultTaken = true
+            saveState()
             restoreSms()
             return
         }
@@ -426,6 +447,7 @@ class MainActivity : Activity() {
         if (requestCode != REQ_ROLE) return
         if (DefaultSms.isDefault(this)) {
             defaultTaken = true
+            saveState()
             restoreSms()
         } else {
             defaultDenied()
@@ -463,6 +485,7 @@ class MainActivity : Activity() {
                 busy(false)
                 r.onSuccess { res ->
                     smsResult = res
+                    saveState()
                     addReport("sms", tr("rs_sms_done_fmt", res.inserted, res.skipped), OK)
                     if (res.mms > 0) addReport("mms", tr("rs_mms_skipped_fmt", res.mms), WARN)
                     if (DefaultSms.isDefault(this)) {
@@ -483,7 +506,7 @@ class MainActivity : Activity() {
 
     private fun onRestoreDone() {
         if (running || finished) return
-        if (defaultTaken && DefaultSms.isDefault(this) && !doneWarned) {
+        if (localDir == null && defaultTaken && DefaultSms.isDefault(this) && !doneWarned) {
             doneWarned = true
             setStatus(tr("rs_still_default"), WARN)
             return
@@ -492,6 +515,15 @@ class MainActivity : Activity() {
         busy(true)
         val accessible = files != null
         val json = summary()
+        if (localDir != null) {
+            // Smart EI: raport wraca do ekranu Smart EI. Domyślną aplikację SMS przywracamy dopiero
+            // PO potwierdzeniu zakończenia do komputera (utrata roli SMS = system zabija proces agenta).
+            json.put("defaultSmsStillAgent", DefaultSms.isDefault(this))
+            RestoreState.saveLocalReport(this, localDir!!.path, json.toString())
+            setResult(RESULT_OK, Intent().putExtra("report", json.toString()))
+            finish()
+            return
+        }
         val currentSession = session
         worker.execute {
             val r = runCatching {
@@ -514,6 +546,42 @@ class MainActivity : Activity() {
                     }
                 updateRestoreButtons()
             }
+        }
+    }
+
+    /** Stan przywracania w SharedPreferences - przetrwa zabicie procesu przez system (np. po utracie roli SMS). */
+    private fun saveState() {
+        val sms = smsResult
+        val o = JSONObject()
+            .put("contactsMethod", contactsMethod)
+            .put("contactsImported", contactsImported)
+            .put("contactsCards", contactsCards)
+            .put("defaultTaken", defaultTaken)
+        if (sms != null) {
+            o.put("sms", JSONObject().put("total", sms.total).put("inserted", sms.inserted)
+                .put("skipped", sms.skipped).put("failed", sms.failed).put("mms", sms.mms))
+        }
+        RestoreState.save(this, session, o)
+    }
+
+    private fun loadState() {
+        val o = RestoreState.load(this, session) ?: return
+        contactsMethod = o.optString("contactsMethod", "none")
+        contactsImported = o.optInt("contactsImported", -1)
+        contactsCards = o.optInt("contactsCards", contactsCards)
+        defaultTaken = o.optBoolean("defaultTaken")
+        o.optJSONObject("sms")?.let {
+            smsResult = SmsRestorer.Result(it.optInt("total"), it.optInt("inserted"), it.optInt("skipped"),
+                it.optInt("failed"), it.optInt("mms"))
+        }
+        when (contactsMethod) {
+            "intent" -> addReport("contacts", tr("rs_contacts_started_fmt", contactsCards), GOLD)
+            "direct" -> addReport("contacts", tr("rs_contacts_done_fmt", contactsImported), OK)
+        }
+        smsResult?.let { addReport("sms", tr("rs_sms_done_fmt", it.inserted, it.skipped), OK) }
+        if (defaultTaken && !DefaultSms.isDefault(this)) {
+            defaultRestored = true
+            addReport("default", tr("rs_default_back_ok"), OK)
         }
     }
 
@@ -562,7 +630,7 @@ class MainActivity : Activity() {
         val idle = !running && !finished
         btnContacts.state(f?.contacts != null, idle)
         btnSms.state(f?.sms != null && smsCounts != null, idle && smsResult == null)
-        btnDefaultBack.state(defaultTaken && !defaultRestored && smsResult != null, !finished)
+        btnDefaultBack.state(localDir == null && defaultTaken && !defaultRestored && smsResult != null, !finished)
         btnDone.state(true, idle)
     }
 
